@@ -521,8 +521,8 @@
       .hero-tag { margin-bottom: 24px; }
       .hero-h1 { font-size: clamp(3rem, 14vw, 6rem); }
       .hero-intro { font-size: 0.84rem; max-width: 100%; }
-      .hero-chips { gap: 8px; }
-      .chip { font-size: 0.5rem; padding: 8px 16px; min-height: 44px; display: flex; align-items: center; }
+      .hero-chips { gap: 8px; flex-wrap: wrap; }
+      .chip { font-size: 0.5rem; padding: 10px 18px; min-height: 44px; display: flex; align-items: center; }
 
       /* Kids photo strip: height 260px on mobile */
       #kids-strip { padding: 72px 0 0; }
@@ -542,10 +542,10 @@
       .family-photo::after { background: linear-gradient(to bottom, transparent 60%, var(--warm) 100%); }
       .family-text { padding: 40px 20px 48px; }
 
-      /* Story blocks */
-      .story-block { grid-template-columns: 1fr; }
-      .story-photo { min-height: 320px; max-height: 420px; }
-      .story-text, .story-block.alt .story-text { padding: 40px 20px; order: 0; }
+      /* Story blocks — text ABOVE photo on mobile */
+      .story-block { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+      .story-text, .story-block.alt .story-text { padding: 40px 20px; order: 1; }
+      .story-photo { order: 2; min-height: 260px; max-height: 360px; width: 100%; }
 
       /* Pull quote */
       .pull { padding: 72px 20px; }
@@ -772,11 +772,11 @@
 <!-- ── STORY: ORIGINS ── -->
 <div id="story">
 <section class="story-block">
-  <div class="story-photo" style="min-height:unset; display:flex; align-items:center; justify-content:center; background:var(--surface);">
+  <div class="story-photo" style="min-height:unset; display:flex; align-items:center; justify-content:center; background:var(--surface); padding: 40px 20px;">
     <!-- Replace with photo of Heather and her brother when available -->
     <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Heather_Beach-April87-122-scaled.jpg"
          alt="Heather Fernstrom — Naples, Florida"
-         style="width:auto; height:auto; max-height:420px; max-width:100%; object-fit:unset;" />
+         style="width:auto; height:auto; max-height:380px; max-width:280px; object-fit:unset;" />
   </div>
   <div class="story-text">
     <div class="section-label reveal"><span>Origins</span></div>

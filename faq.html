@@ -151,21 +151,30 @@
       .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
 
-      /* Hero section */
-      .page-hero { padding: 120px 20px 60px; }
-      .page-title { font-size: clamp(2.2rem, 10vw, 4rem); }
-      .page-sub { font-size: 0.84rem; max-width: 100%; }
+      /* Hero */
+      .page-hero { padding: 110px 20px 56px; }
+      .page-title { font-size: clamp(2.4rem, 10vw, 4rem); line-height: 1.0; }
+      .page-sub { font-size: 0.86rem; max-width: 100%; line-height: 1.8; }
 
       /* FAQ accordion */
-      .faq-section { padding: 56px 20px; }
-      .faq-q { padding: 22px 0; }
-      .faq-q-text { font-size: clamp(1rem, 4vw, 1.3rem); line-height: 1.4; word-break: break-word; }
-      .faq-a-inner { font-size: 0.84rem; line-height: 1.85; }
+      .faq-section { padding: 48px 20px 80px; }
+      .faq-q { padding: 20px 0; gap: 16px; }
+      .faq-q-text {
+        font-size: clamp(1.05rem, 4vw, 1.25rem);
+        line-height: 1.4; word-break: break-word;
+      }
+      .faq-icon { font-size: 1rem; width: 20px; }
+      .faq-a-inner { font-size: 0.85rem; line-height: 1.9; padding-bottom: 20px; }
+      .faq-a-inner a { word-break: break-word; }
 
       /* CTA strip */
       .faq-cta-strip { padding: 56px 20px; }
-      .faq-cta-strip h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
-      .btn-gold, .btn-outline { display: block; width: 100%; text-align: center; margin: 6px 0; padding: 16px 28px; min-height: 48px; }
+      .faq-cta-strip h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); margin-bottom: 16px; }
+      .faq-cta-strip p { font-size: 0.84rem; margin-bottom: 32px; }
+      .btn-gold, .btn-outline {
+        display: block; width: 100%; text-align: center;
+        margin: 8px 0; padding: 17px 28px; min-height: 52px;
+      }
 
       /* Footer */
       footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -173,18 +182,11 @@
     }
 
     @media (max-width: 480px) {
-      /* Hero */
-      .page-hero { padding: 120px 20px 60px; }
-      .page-title { font-size: clamp(2rem, 11vw, 3rem); }
-      .page-sub { font-size: 0.84rem; }
-
-      /* FAQ */
-      .faq-section { padding: 56px 20px; }
-      .faq-q-text { font-size: clamp(1rem, 4vw, 1.3rem); word-break: break-word; }
-      .faq-a-inner { font-size: 0.84rem; line-height: 1.85; }
-
-      /* Buttons */
-      .btn-gold, .btn-outline { min-height: 48px; padding: 16px 28px; }
+      .page-hero { padding: 100px 20px 48px; }
+      .page-title { font-size: clamp(2.2rem, 11vw, 3.2rem); }
+      .faq-section { padding: 40px 20px 72px; }
+      .faq-q-text { font-size: clamp(1rem, 4.5vw, 1.2rem); }
+      .btn-gold, .btn-outline { min-height: 52px; font-size: 0.6rem; }
     }
   </style>
 </head>

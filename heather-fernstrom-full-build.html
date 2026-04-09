@@ -718,7 +718,7 @@
       box-shadow: 0 24px 64px rgba(0,0,0,0.12);
     }
     .cover-badge {
-      position: absolute; top: -14px; left: 20px;
+      position: absolute; top: 14px; left: 14px;
       background: var(--gold); color: var(--bg);
       font-size: 0.56rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
       padding: 6px 16px; z-index: 2;
@@ -1063,11 +1063,15 @@
         display: block !important;
       }
 
+      /* ─── CEO VIEWS — stack on mobile ─── */
+      .ceo-views-wrap { padding: 56px 20px !important; }
+      .ceo-views-wrap > div { grid-template-columns: 1fr !important; gap: 36px !important; }
+
       /* ─── COVER STORY / INC. MAGAZINE ─── */
       .cover-story { padding: 56px 20px; }
       .cover-story-inner { grid-template-columns: 1fr; gap: 36px; }
-      .cover-story-img { text-align: center; }
-      .cover-story-img img { max-width: 240px; margin: 0 auto; }
+      .cover-story-img { text-align: center; display: flex; justify-content: center; }
+      .cover-story-img img { max-width: 220px; }
 
       /* ─── PRESS FEATURES: stack photo above text, photo max-width 100% ─── */
       .press-feature { padding: 44px 20px; }
@@ -1360,18 +1364,19 @@
 
 
 <!-- ════════ CEO VIEWS — Most Innovative Companies to Watch 2025 ════════ -->
-<section class="ceo-views-wrap" style="border-top:1px solid var(--border); background:var(--surface); display:flex; justify-content:center; align-items:center; padding:80px 60px; position:relative; overflow:hidden;">
+<section class="ceo-views-wrap" style="border-top:1px solid var(--border); background:var(--surface); display:flex; flex-direction:column; justify-content:center; align-items:center; padding:80px 60px; position:relative; overflow:hidden;">
   <span class="press-ghost" aria-hidden="true">2025</span>
+  <!-- "As Featured In" sits above the grid on all screen sizes -->
+  <div class="label reveal" style="margin-bottom:32px; position:relative; z-index:1; align-self:flex-start; max-width:var(--max); width:100%;"><span>As Featured In</span></div>
   <div style="max-width:var(--max); width:100%; display:grid; grid-template-columns:auto 1fr; gap:80px; align-items:center; position:relative; z-index:1;">
-    <!-- Team photo — crops bottom text bar via overflow:hidden -->
-    <div style="flex-shrink:0; position:relative; width:480px; height:235px; overflow:hidden; border:1px solid var(--border); box-shadow:0 16px 48px rgba(0,0,0,0.12);">
+    <!-- Team photo -->
+    <div style="flex-shrink:0; position:relative; width:min(480px,100%); overflow:hidden; border:1px solid var(--border); box-shadow:0 16px 48px rgba(0,0,0,0.12);">
       <span class="cover-badge">Cover Story</span>
       <img src="team-ceo-views.jpeg"
            alt="Heather Fernstrom, Jennifer Stevens, and Leah Dillon — Alliance Global Advisors leadership team"
            style="display:block; width:100%; height:auto;" />
     </div>
     <div>
-      <div class="label reveal" style="margin-bottom:24px;"><span>As Featured In</span></div>
       <div class="press-pub reveal" style="margin-bottom:20px;">The CEO Views &nbsp;·&nbsp; <em style="font-style:normal; color:var(--gold-lt);">2025</em></div>
       <div class="press-title reveal d1" style="margin-bottom:20px;">
         Most <em>Innovative</em> Companies<br />to Watch &nbsp;·&nbsp; 2025
