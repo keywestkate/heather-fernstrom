@@ -988,8 +988,8 @@
     /* ─── RESPONSIVE ──────────────────────────── */
     @media (max-width: 960px) {
       /* ─── NAV ─── */
-      nav { padding: 18px 20px; }
-      nav.s { padding: 14px 20px; }
+      nav { padding: 16px 20px; }
+      nav.s { padding: 12px 20px; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
@@ -1001,7 +1001,7 @@
       /* ─── HERO ─── */
       #hero { grid-template-columns: 1fr; min-height: 100svh; }
       .hero-panel {
-        padding: 96px 24px 52px;
+        padding: 96px 20px 52px;
         align-items: flex-start;
         background: linear-gradient(to bottom, #080d14 65%, rgba(8,13,20,0.96) 100%);
       }
@@ -1009,19 +1009,19 @@
       .hero-logo-img { height: 60px !important; }
       .hero-eyebrow { margin-bottom: 24px; }
       .hero-eyebrow span { font-size: 0.5rem; letter-spacing: 0.16em; }
-      .hero-h1 { font-size: clamp(4rem, 16vw, 7rem); }
-      .hero-tagline { font-size: 0.65rem; white-space: normal; letter-spacing: 0.2em; }
+      .hero-h1 { font-size: clamp(2.8rem, 13vw, 5rem); }
+      .hero-tagline { font-size: clamp(0.55rem, 3vw, 0.75rem); white-space: nowrap; letter-spacing: 0.2em; }
       .hero-body { font-size: 0.84rem; max-width: 100%; margin-bottom: 36px; }
       .hero-ctas { gap: 12px; }
-      .hero-ctas .btn-gold, .hero-ctas .btn-outline { padding: 14px 22px; font-size: 0.6rem; }
+      .hero-ctas .btn-gold, .hero-ctas .btn-outline { padding: 16px 28px; font-size: 0.6rem; min-height: 44px; }
       .hero-photo { height: 52vw; min-height: 220px; max-height: 360px; }
-      .hero-scroll-ind { left: 24px; bottom: 24px; }
+      .hero-scroll-ind { left: 20px; bottom: 24px; }
 
       /* ─── STATS TICKER ─── */
-      .ticker { padding: 18px 0; }
-      .ticker-track { gap: 36px; }
-      .t-item .n { font-size: 1.05rem; }
-      .t-item .l { font-size: 0.52rem; letter-spacing: 0.1em; }
+      .ticker { padding: 18px 0; overflow: hidden; }
+      .ticker-track { gap: 36px; white-space: nowrap; }
+      .t-item .n { font-size: clamp(0.55rem, 3vw, 0.75rem); font-family: var(--serif); }
+      .t-item .l { font-size: clamp(0.55rem, 2.8vw, 0.75rem); letter-spacing: 0.1em; }
 
       /* ─── AS SEEN TICKER ─── */
       .proof-ticker-wrap { padding: 30px 0; }
@@ -1032,7 +1032,7 @@
       .ifounds-layout { grid-template-columns: 1fr; min-height: auto; }
       .ifounds-photo { height: 60vw; min-height: 240px; max-height: 380px; order: -1; }
       .ifounds-photo::after { background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%); }
-      .ifounds-inner { padding: 44px 24px 56px; }
+      .ifounds-inner { padding: 44px 20px 56px; }
       .ifounds-ghost { font-size: clamp(7rem, 26vw, 13rem); top: -8px; right: -8px; }
       .ifounds-badge { font-size: 0.5rem; padding: 8px 14px; margin-bottom: 24px; }
       .ifounds-headline { font-size: clamp(2rem, 8vw, 3.5rem) !important; margin-bottom: 22px; }
@@ -1046,96 +1046,101 @@
       .stat-num { font-size: clamp(3.5rem, 12vw, 6rem); }
       .stat-label { font-size: 0.6rem; }
 
-      /* ─── CEO VIEWS ─── */
+      /* ─── CEO VIEWS: stack photo above text, photo max-width 100% ─── */
       section[style*="display:flex"][style*="justify-content:center"] {
         flex-direction: column !important;
-        padding: 56px 24px !important;
+        padding: 56px 20px !important;
       }
       section[style*="display:flex"][style*="justify-content:center"] > div[style] {
         grid-template-columns: 1fr !important;
         gap: 36px !important;
       }
-      section[style*="display:flex"][style*="justify-content:center"] img[style*="width:380px"] {
+      section[style*="display:flex"][style*="justify-content:center"] div[style*="width:480px"] {
         width: 100% !important;
-        max-width: 300px !important;
+        max-width: 100% !important;
+        height: auto !important;
         margin: 0 auto !important;
         display: block !important;
       }
 
       /* ─── COVER STORY / INC. MAGAZINE ─── */
-      .cover-story { padding: 56px 24px; }
+      .cover-story { padding: 56px 20px; }
       .cover-story-inner { grid-template-columns: 1fr; gap: 36px; }
       .cover-story-img { text-align: center; }
       .cover-story-img img { max-width: 240px; margin: 0 auto; }
 
-      /* ─── PRESS FEATURES ─── */
-      .press-feature { padding: 44px 24px; }
+      /* ─── PRESS FEATURES: stack photo above text, photo max-width 100% ─── */
+      .press-feature { padding: 44px 20px; }
       .press-feature-inner { grid-template-columns: 1fr; gap: 24px; }
-      .press-cta { align-self: flex-start; padding: 12px 22px; }
+      .press-cta { align-self: flex-start; padding: 12px 22px; min-height: 44px; }
       .press-feature-ghost { font-size: 7rem; right: 12px; opacity: 0.02; }
-      .photo-feature-strip { grid-template-columns: 1fr; padding: 36px 24px; gap: 20px; }
-      .photo-feature-img img { max-height: 360px; object-fit: cover; }
+      .photo-feature-strip { grid-template-columns: 1fr; padding: 36px 20px; gap: 20px; }
+      .photo-feature-img img { max-height: 360px; object-fit: cover; max-width: 100%; }
 
       /* ─── AWARDS ─── */
-      .proof-quote-band { padding: 56px 24px 44px; }
+      .proof-quote-band { padding: 56px 20px 44px; }
       .proof-quote { font-size: clamp(1.3rem, 5vw, 2rem) !important; margin-bottom: 28px; }
-      .proof-awards-head { padding: 52px 24px 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .proof-awards-head { padding: 52px 20px 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
       .proof-awards-headline { font-size: clamp(2.2rem, 8vw, 4rem) !important; }
-      .award-feature-row { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+      /* Award feature rows: stack to single column, year cards stay in horizontal row */
+      .award-feature-row { grid-template-columns: 1fr; gap: 24px; padding: 32px 20px; }
       .award-feature-title { font-size: 1.4rem; }
-      .award-feature-years { flex-wrap: wrap; gap: 10px; }
-      .award-year-link { padding: 14px 18px; min-width: 80px; }
+      .award-feature-years { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+      .award-year-link { padding: 14px 18px; min-width: 80px; min-height: 44px; }
       .ayl-year { font-size: 1.6rem; }
       .awards-grid { grid-template-columns: 1fr 1fr; margin: 0; gap: 2px; }
-      .award-card { padding: 36px 22px 32px; }
+      .award-card { padding: 36px 20px 32px; }
       .award-card-year { font-size: clamp(1.8rem, 7vw, 2.6rem) !important; padding-bottom: 14px; margin-bottom: 14px; }
       .award-card-name { font-size: clamp(1.1rem, 4vw, 1.6rem); }
       .award-card::before { font-size: 7rem; }
 
-      /* ─── PODCASTS ─── */
+      /* ─── PODCASTS: full width stacked ─── */
       #podcasts { padding: 60px 0 0; }
       #podcasts .container { padding: 0 20px 44px; }
-      .podcast-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
-      .p-card { aspect-ratio: 3/4; }
+      .podcast-grid { grid-template-columns: 1fr; gap: 2px; }
+      .p-card { aspect-ratio: 3/4; width: 100%; }
       .p-card-content { padding: 20px 16px; }
       .p-card-title { font-size: 1rem; }
       .p-card-show { font-size: 0.45rem; }
 
       /* ─── CTA ─── */
-      #cta-close { padding: 80px 24px; min-height: auto; }
+      #cta-close { padding: 80px 20px; min-height: auto; }
       .cta-close-headline { font-size: clamp(2.2rem, 8vw, 4rem) !important; }
       .cta-close-sub { font-size: 0.84rem; padding: 0 4px; }
       .cta-email { font-size: 0.9rem; word-break: break-all; }
       .cta-btns { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; max-width: 320px; }
-      .cta-btns a { text-align: center; padding: 16px; }
+      .cta-btns a { text-align: center; padding: 16px 28px; min-height: 44px; }
 
-      /* ─── FOOTER ─── */
-      footer { padding: 44px 20px 32px; }
-      .f-top { grid-template-columns: 1fr; gap: 28px; padding-bottom: 28px; margin-bottom: 28px; }
+      /* ─── FOOTER: stack all columns vertically with 24px gap ─── */
+      footer { padding: 36px 20px; }
+      .f-top { grid-template-columns: 1fr; gap: 24px; padding-bottom: 28px; margin-bottom: 28px; }
       .f-bottom { flex-direction: column; gap: 10px; }
 
       /* ─── SPOTLIGHT ─── */
       .award-spotlight { grid-template-columns: 1fr; min-height: auto; direction: ltr !important; }
       .award-spotlight.flip { direction: ltr; }
       .award-left { height: 280px; }
-      .award-right { padding: 40px 24px; }
+      .award-right { padding: 40px 20px; }
 
       /* ─── VALUE / PAIN / OBJECTIONS ─── */
-      #value { padding: 80px 24px; }
+      #value { padding: 80px 20px; }
       .value-pillars { grid-template-columns: 1fr; }
-      #outcomes { padding: 80px 24px; }
+      #outcomes { padding: 80px 20px; }
       .outcomes-grid { grid-template-columns: 1fr; }
       #pain { grid-template-columns: 1fr; }
-      .pain-left { padding: 52px 24px; border-right: none; border-bottom: 1px solid var(--border); }
-      .pain-right { padding: 40px 24px; gap: 32px; }
-      #objections { padding: 80px 24px; }
+      .pain-left { padding: 52px 20px; border-right: none; border-bottom: 1px solid var(--border); }
+      .pain-right { padding: 40px 20px; gap: 32px; }
+      #objections { padding: 80px 20px; }
       .obj-grid { grid-template-columns: 1fr; }
+
+      /* ─── ALL BUTTONS: 44px min tap target ─── */
+      .btn-gold, .btn-outline { min-height: 44px; padding: 16px 28px; }
     }
 
     @media (max-width: 480px) {
       /* ─── HERO ─── */
-      .hero-h1 { font-size: clamp(3.4rem, 15vw, 5.5rem); }
-      .hero-tagline { font-size: 0.6rem; }
+      .hero-h1 { font-size: clamp(2.8rem, 13vw, 5rem); }
+      .hero-tagline { font-size: clamp(0.55rem, 3vw, 0.75rem); white-space: nowrap; }
       .hero-photo { height: 48vw; }
 
       /* ─── AS SEEN TICKER ─── */
@@ -1150,9 +1155,9 @@
       .awards-grid { grid-template-columns: 1fr; }
       .award-card { padding: 32px 20px 28px; }
 
-      /* ─── PODCASTS ─── */
-      .podcast-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-      .p-card { aspect-ratio: 2/3; }
+      /* ─── PODCASTS: full width stacked ─── */
+      .podcast-grid { grid-template-columns: 1fr; gap: 2px; }
+      .p-card { aspect-ratio: 4/3; width: 100%; }
       .p-card-content { padding: 14px 12px; }
       .p-card-show { font-size: 0.42rem; }
       .p-card-title { font-size: 0.82rem; line-height: 1.2; }
@@ -1165,8 +1170,8 @@
       /* ─── CEO VIEWS SECTION ─── */
       .press-title { font-size: clamp(1.5rem, 6vw, 2.2rem) !important; }
 
-      /* ─── BUTTONS ─── */
-      .btn-gold, .btn-outline { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+      /* ─── BUTTONS: 44px min tap target ─── */
+      .btn-gold, .btn-outline { min-height: 44px; padding: 16px 28px; display: flex; align-items: center; justify-content: center; }
     }
   </style>
 </head>
@@ -1636,25 +1641,23 @@
   <div class="gold-rule"></div>
   <p style="font-size:0.58rem; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:24px; position:relative; z-index:1;">Connect with Heather</p>
 
-  <!-- Headline: confident closer, no cliché -->
   <h2 class="cta-close-headline reveal">
-    For managers who move<br />fast and know when to<br /><em>make the call.</em>
+    Connect, Collaborate,<br /><em>Create.</em>
   </h2>
 
-  <!-- Sub: frictionless. One sentence. -->
   <p class="cta-close-sub reveal d1">
-    Capital raising, repositioning, keynote bookings, podcast inquiries—
-    Heather reads every message and responds personally.
+    I believe great conversations spark meaningful change. Whether you have a question, a collaboration idea, or just want to connect, I'd love to hear from you. Reach out via email, and I'll be in touch soon.
   </p>
 
-  <!-- Email visible — builds trust, reduces friction -->
-  <p class="cta-email reveal d2">h***@alliance-globaladvisors.com</p>
+  <p class="cta-close-sub reveal d2" style="font-size:0.78rem; font-weight:500; color:var(--mid); margin-bottom:8px;">
+    Have a question, idea, or request?
+  </p>
 
-  <!-- Two actions: primary connect + secondary LinkedIn -->
+  <p class="cta-email reveal d2">heathfern@gmail.com</p>
+
   <div class="cta-btns">
-    <a href="https://heatherfernstrom.com/contact/" class="btn-gold reveal d2">Send a Message</a>
-    <a href="https://www.linkedin.com/in/heatherfernstrom/" class="btn-outline reveal d3" target="_blank">Connect on LinkedIn</a>
-    <a href="https://alliance-globaladvisors.com" class="btn-outline reveal d3" target="_blank">Visit Alliance Global</a>
+    <a href="mailto:heathfern@gmail.com" class="btn-gold reveal d2">Send a Message</a>
+    <a href="https://www.linkedin.com/in/heatherfernstrom/" class="btn-outline reveal d3" target="_blank" rel="noopener">Connect on LinkedIn</a>
   </div>
 </section>
 

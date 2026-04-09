@@ -516,72 +516,91 @@
       /* Photo panel stacks on top */
       .hero-left { height: 58vw; min-height: 260px; max-height: 420px; }
       .hero-left::after { background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%); }
-      /* Text panel below */
-      .hero-right { padding: 40px 24px 64px; justify-content: flex-start; }
+      /* Text panel below — ensure text doesn't touch edges */
+      .hero-right { padding: 36px 20px 56px; justify-content: flex-start; }
       .hero-tag { margin-bottom: 24px; }
       .hero-h1 { font-size: clamp(3rem, 14vw, 6rem); }
       .hero-intro { font-size: 0.84rem; max-width: 100%; }
       .hero-chips { gap: 8px; }
-      .chip { font-size: 0.5rem; padding: 8px 16px; }
+      .chip { font-size: 0.5rem; padding: 8px 16px; min-height: 44px; display: flex; align-items: center; }
 
+      /* Kids photo strip: height 260px on mobile */
       #kids-strip { padding: 72px 0 0; }
-      .kids-strip-head { padding: 0 24px 48px; }
-      .strip-photo { height: 300px; }
-      .kids-strip-caption { padding: 24px 24px 56px; }
+      .kids-strip-head { padding: 0 20px 48px; }
+      .strip-photo { height: 260px; }
+      .kids-strip-caption { padding: 24px 20px 56px; }
 
-      #giving-back { padding: 72px 24px; }
+      /* Giving back section */
+      #giving-back { padding: 72px 20px; }
       .giving-back-inner { grid-template-columns: 1fr; gap: 40px; }
       .giving-back-photo { max-width: 360px; margin: 0 auto; }
+      .org-chips { gap: 8px; flex-wrap: wrap; }
 
+      /* Family section */
       .family-inner { grid-template-columns: 1fr; min-height: auto; }
       .family-photo { height: 55vw; min-height: 260px; max-height: 420px; }
       .family-photo::after { background: linear-gradient(to bottom, transparent 60%, var(--warm) 100%); }
-      .family-text { padding: 56px 24px; }
+      .family-text { padding: 40px 20px 48px; }
 
+      /* Story blocks */
       .story-block { grid-template-columns: 1fr; }
       .story-photo { min-height: 320px; max-height: 420px; }
-      .story-text, .story-block.alt .story-text { padding: 56px 24px; order: 0; }
+      .story-text, .story-block.alt .story-text { padding: 40px 20px; order: 0; }
 
-      .pull { padding: 72px 24px; }
-      .pull-quote { font-size: clamp(1.4rem, 5vw, 2.2rem); }
+      /* Pull quote */
+      .pull { padding: 72px 20px; }
+      .pull blockquote { font-size: clamp(1.3rem, 5vw, 2rem); }
 
-      #milestones { padding: 56px 24px; }
-      .milestone-row { grid-template-columns: 76px 1fr; }
-      .milestone-date { padding: 18px 12px 18px 0; }
-      .milestone-body { padding: 18px 0 18px 16px; }
+      /* Milestones: wider body column */
+      #milestones { padding: 56px 20px; }
+      .milestone-row { grid-template-columns: 68px 1fr; }
+      .milestone-date { padding: 18px 10px 18px 0; }
+      .milestone-body { padding: 18px 0 18px 14px; }
       .milestone-year-big { font-size: clamp(1rem, 4.5vw, 1.5rem); }
       .milestone-cat { font-size: 0.44rem; }
 
-      #philosophy { padding: 72px 24px; }
+      /* Philosophy: single column, proper padding */
+      #philosophy { padding: 72px 20px; }
       .pillars { grid-template-columns: 1fr; max-width: 100%; }
-      .pillar { padding: 36px 28px; }
+      .pillar { padding: 32px 20px; }
 
-      #speaking { padding: 72px 24px; }
+      /* Speaking: single column */
+      #speaking { padding: 72px 20px; }
       .speaking-inner { grid-template-columns: 1fr; gap: 40px; }
       .events { grid-template-columns: 1fr; }
 
-      #cta-about { padding: 80px 24px; min-height: auto; }
+      #cta-about { padding: 80px 20px; min-height: auto; }
       .cta-btns { flex-direction: column; align-items: stretch; gap: 12px; }
-      .cta-btns a { text-align: center; }
+      .cta-btns a { text-align: center; min-height: 44px; padding: 16px 28px; }
 
-      footer { padding: 36px 24px 28px; flex-direction: column; align-items: flex-start; gap: 14px; }
+      footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; gap: 14px; }
     }
 
     @media (max-width: 480px) {
-      .hero-h1 { font-size: clamp(3.5rem, 15vw, 6rem); }
+      .hero-right { padding: 36px 20px 56px; }
+      .hero-h1 { font-size: clamp(3rem, 14vw, 5rem); }
       .hero-intro { font-size: 0.82rem; }
       .hero-chips { gap: 6px; }
       .chip { font-size: 0.48rem; padding: 7px 14px; }
 
-      .milestone-row { grid-template-columns: 72px 1fr; }
-      .milestone-date { padding: 22px 12px 22px 0; }
-      .milestone-body { padding: 22px 0 22px 16px; }
+      /* Milestones: wider body column on small screens */
+      .milestone-row { grid-template-columns: 68px 1fr; }
+      .milestone-date { padding: 22px 10px 22px 0; }
+      .milestone-body { padding: 22px 0 22px 14px; }
       .milestone-year-big { font-size: clamp(1.4rem, 7vw, 2rem); }
 
-      .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
+      /* Pull quote */
+      .pull blockquote { font-size: clamp(1.3rem, 5vw, 2rem); }
 
       .giving-back-photo { max-width: 100%; }
+      .org-chips { gap: 8px; flex-wrap: wrap; }
       .story-photo { min-height: 260px; }
+
+      /* Philosophy pillars */
+      .pillar { padding: 32px 20px; }
+
+      /* Buttons */
+      .btn-gold-solid, .btn-ghost { min-height: 44px; padding: 16px 28px; width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -692,7 +711,7 @@
 <section id="family">
   <div class="family-inner">
     <div class="family-photo">
-      <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/FernstromBorder-137-scaled-2-681x1024.jpg"
+      <img src="the-kids/421A9362.jpeg"
            alt="Heather Fernstrom with her children" />
     </div>
     <div class="family-text">
@@ -753,10 +772,11 @@
 <!-- ── STORY: ORIGINS ── -->
 <div id="story">
 <section class="story-block">
-  <div class="story-photo">
+  <div class="story-photo" style="min-height:unset; display:flex; align-items:center; justify-content:center; background:var(--surface);">
     <!-- Replace with photo of Heather and her brother when available -->
     <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Heather_Beach-April87-122-scaled.jpg"
-         alt="Heather Fernstrom — Naples, Florida" />
+         alt="Heather Fernstrom — Naples, Florida"
+         style="width:auto; height:auto; max-height:420px; max-width:100%; object-fit:unset;" />
   </div>
   <div class="story-text">
     <div class="section-label reveal"><span>Origins</span></div>
@@ -1083,8 +1103,8 @@
   <div class="footer-links">
     <a href="heather-fernstrom-full-build.html">Home</a>
     <a href="faq.html">FAQ</a>
-    <a href="https://alliance-globaladvisors.com" target="_blank">Alliance Global</a>
-    <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank">LinkedIn</a>
+    <a href="https://alliance-globaladvisors.com" target="_blank" rel="noopener">Alliance Global</a>
+    <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 

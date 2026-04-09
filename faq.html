@@ -151,25 +151,40 @@
       .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
 
-      .page-hero { padding: 100px 24px 52px; }
+      /* Hero section */
+      .page-hero { padding: 120px 20px 60px; }
       .page-title { font-size: clamp(2.2rem, 10vw, 4rem); }
-      .page-sub { font-size: 0.84rem; }
+      .page-sub { font-size: 0.84rem; max-width: 100%; }
 
-      .faq-section { padding: 52px 24px 80px; }
+      /* FAQ accordion */
+      .faq-section { padding: 56px 20px; }
       .faq-q { padding: 22px 0; }
-      .faq-q-text { font-size: 1.05rem; }
+      .faq-q-text { font-size: clamp(1rem, 4vw, 1.3rem); line-height: 1.4; word-break: break-word; }
+      .faq-a-inner { font-size: 0.84rem; line-height: 1.85; }
 
-      .faq-cta-strip { padding: 56px 24px; }
+      /* CTA strip */
+      .faq-cta-strip { padding: 56px 20px; }
       .faq-cta-strip h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
-      .btn-gold, .btn-outline { display: block; width: 100%; text-align: center; margin: 6px 0; padding: 16px; min-height: 48px; }
+      .btn-gold, .btn-outline { display: block; width: 100%; text-align: center; margin: 6px 0; padding: 16px 28px; min-height: 48px; }
 
-      footer { padding: 36px 24px 28px; flex-direction: column; align-items: flex-start; gap: 14px; }
+      /* Footer */
+      footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; gap: 14px; }
       .f-links { flex-wrap: wrap; gap: 16px; }
     }
 
     @media (max-width: 480px) {
+      /* Hero */
+      .page-hero { padding: 120px 20px 60px; }
       .page-title { font-size: clamp(2rem, 11vw, 3rem); }
-      .faq-q-text { font-size: 1rem; }
+      .page-sub { font-size: 0.84rem; }
+
+      /* FAQ */
+      .faq-section { padding: 56px 20px; }
+      .faq-q-text { font-size: clamp(1rem, 4vw, 1.3rem); word-break: break-word; }
+      .faq-a-inner { font-size: 0.84rem; line-height: 1.85; }
+
+      /* Buttons */
+      .btn-gold, .btn-outline { min-height: 48px; padding: 16px 28px; }
     }
   </style>
 </head>
@@ -221,7 +236,7 @@
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
-          Alliance Global Advisors provides strategic advisory, IR platform development, and capital formation guidance to real estate investment managers. Engagements are customized — some clients need full-service IR buildouts, others need strategic positioning or targeted LP introductions. The first step is always a direct conversation. Visit <a href="https://alliance-globaladvisors.com/connect" target="_blank">alliance-globaladvisors.com</a> to get in touch.
+          Alliance Global Advisors provides strategic advisory, IR platform development, and capital formation guidance to real estate investment managers. Engagements are customized — some clients need full-service IR buildouts, others need strategic positioning or targeted LP introductions. The first step is always a direct conversation. Visit <a href="https://alliance-globaladvisors.com/connect" target="_blank" rel="noopener">alliance-globaladvisors.com</a> to get in touch.
         </div>
       </div>
     </div>
@@ -269,7 +284,7 @@
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
-          Connect on <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank">LinkedIn</a> for regular insights on real asset investment, capital markets, and leadership. You can also follow Alliance Global Advisors on LinkedIn and visit <a href="https://alliance-globaladvisors.com/insights" target="_blank">alliance-globaladvisors.com/insights</a> for Heather's thought leadership and industry commentary.
+          Connect on <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" rel="noopener">LinkedIn</a> for regular insights on real asset investment, capital markets, and leadership. You can also follow Alliance Global Advisors on LinkedIn and visit <a href="https://alliance-globaladvisors.com/insights" target="_blank" rel="noopener">alliance-globaladvisors.com/insights</a> for Heather's thought leadership and industry commentary.
         </div>
       </div>
     </div>
@@ -329,8 +344,8 @@
 <div class="faq-cta-strip">
   <h2>Ready to have a<br /><em>real conversation?</em></h2>
   <p>Heather reads every message and responds personally. Capital raising, repositioning, keynote bookings, podcast inquiries — reach out directly.</p>
-  <a href="https://heatherfernstrom.com/contact/" class="btn-gold">Send a Message</a>
-  <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" class="btn-outline">Connect on LinkedIn</a>
+  <a href="https://heatherfernstrom.com/contact/" class="btn-gold" target="_blank" rel="noopener">Send a Message</a>
+  <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" rel="noopener" class="btn-outline">Connect on LinkedIn</a>
 </div>
 
 <!-- FOOTER -->
@@ -339,8 +354,8 @@
   <div class="f-links">
     <a href="heather-fernstrom-full-build.html">Home</a>
     <a href="heather.html">About</a>
-    <a href="https://alliance-globaladvisors.com" target="_blank">Alliance Global</a>
-    <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank">LinkedIn</a>
+    <a href="https://alliance-globaladvisors.com" target="_blank" rel="noopener">Alliance Global</a>
+    <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
