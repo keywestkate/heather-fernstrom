@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heather Fernstrom — Investment. Innovation. Influence.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ────────────────── */
+    :root {
+      --bg:       #FAF9F7;
+      --surface:  #F2F0ED;
+      --card:     #ECEAE6;
+      --border:   #D8D3CC;
+      --gold:     #96722E;
+      --gold-lt:  #B8965A;
+      --cream:    #0A0A0A;
+      --mid:      #555555;
+      --dim:      #999999;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+      --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+      --max:      1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { background: var(--bg); color: var(--cream); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* ─── UTILITIES ────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 60px; }
+    .label {
+      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .label span { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    .serif-h {
+      font-family: var(--serif); font-weight: 300; line-height: 1.1;
+    }
+    .serif-h em { font-style: italic; color: var(--gold); }
+    .gold-rule { width: 1px; height: 56px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0 auto 40px; }
+    .btn-gold {
+      display: inline-block; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      background: var(--gold); color: var(--bg); padding: 16px 36px;
+      transition: opacity 0.25s, transform 0.2s;
+    }
+    .btn-gold:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid var(--border); color: var(--cream); padding: 16px 36px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+    /* ─── NAV ───────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      transition: padding 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s;
+    }
+    /* Scrolled — over light sections */
+    nav.s {
+      padding: 18px 60px;
+      background: rgba(250,249,247,0.96); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav.s .nav-logo { filter: invert(1); }
+    nav.s .nav-links a { color: var(--mid); }
+    nav.s .nav-links a:hover { color: var(--cream); }
+    nav.s .nav-cta { border-color: var(--gold); color: var(--gold); }
+    nav.s .nav-cta:hover { background: var(--gold); color: var(--bg); }
+    /* Default — over dark hero */
+    .nav-logo { font-family: var(--serif); font-size: 1rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-logo em { font-style: normal; color: var(--gold-lt); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.85); padding: 10px 22px; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .nav-cta:hover { border-color: var(--gold-lt); color: var(--gold-lt); }
+
+    /* ─── SUB-NAV ─── */
+    .subnav {
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 89;
+      height: 38px;
+      background: rgba(8,13,20,0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center; gap: 40px;
+      transition: top 0.4s var(--ease);
+    }
+    nav.s ~ .subnav { top: 57px; }
+    .subnav a {
+      font-size: 0.57rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.42); transition: color 0.2s;
+    }
+    .subnav a:hover { color: var(--gold-lt); }
+
+    /* ════════════════════════════════════════
+       §1 — HERO  (split layout)
+       Left panel: dark navy, all text, vertically centered.
+       Right panel: photo flush to right edge, full height.
+       No overlay — photo bg and panel bg match seamlessly.
+    ════════════════════════════════════════ */
+    #hero {
+      display: grid;
+      grid-template-columns: 52% 48%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: #080d14;
+    }
+    .hero-panel {
+      display: flex; align-items: center;
+      padding: 120px 72px 100px 60px;
+      background: linear-gradient(105deg, #080d14 75%, rgba(8,13,20,0.88) 100%);
+      position: relative; z-index: 2;
+    }
+    .hero-left {
+      display: flex; flex-direction: column;
+      max-width: 580px; width: 100%;
+    }
+    /* Logo inside hero */
+    .hero-logo-wrap {
+      margin-bottom: 52px;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 0.2s forwards;
+    }
+    .hero-logo-img { height: 100px; width: auto; display: block; }
+    .hero-photo {
+      position: relative; overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .hero-photo::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, #080d14 0%, transparent 28%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 0.4s forwards;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold-lt); }
+    .hero-eyebrow span { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold-lt); }
+    .hero-h1 {
+      font-family: var(--serif); font-size: clamp(6rem, 9vw, 12rem);
+      font-weight: 300; line-height: 0.88; letter-spacing: -0.02em; margin-bottom: 0; color: #fff;
+    }
+    .hero-h1 .line { display: block; overflow: hidden; }
+    .hero-h1 .line-inner {
+      display: block; transform: translateY(105%);
+      animation: slideUp 1s var(--ease) forwards;
+    }
+    .hero-h1 .line:nth-child(1) .line-inner { animation-delay: 0.55s; }
+    .hero-h1 .line:nth-child(2) .line-inner { animation-delay: 0.72s; font-style: italic; color: rgba(255,255,255,0.85); }
+    /* dramatic tagline — each word separated, large */
+    .hero-tagline {
+      font-family: var(--sans); font-size: clamp(0.7rem, 1vw, 0.95rem); font-weight: 700;
+      color: var(--gold-lt); letter-spacing: 0.3em; text-transform: uppercase;
+      white-space: nowrap;
+      margin-top: 28px; margin-bottom: 36px;
+      opacity: 0; animation: fadeUp 0.8s var(--ease) 1s forwards;
+    }
+    .hero-divider {
+      width: 40px; height: 1px; background: rgba(255,255,255,0.18); margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.6s var(--ease) 1.05s forwards;
+    }
+    .hero-body {
+      font-size: 0.9rem; color: rgba(255,255,255,0.6); max-width: 420px; line-height: 2; margin-bottom: 48px;
+      opacity: 0; animation: fadeUp 0.8s var(--ease) 1.1s forwards;
+    }
+    .hero-ctas {
+      display: flex; gap: 18px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s var(--ease) 1.2s forwards;
+    }
+    #hero .btn-gold { background: var(--gold-lt); color: #080d14; }
+    #hero .btn-outline { border-color: rgba(255,255,255,0.28); color: #fff; }
+    #hero .btn-outline:hover { border-color: var(--gold-lt); color: var(--gold-lt); }
+    .hero-scroll-ind {
+      position: absolute; bottom: 44px; left: 60px; z-index: 3;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 1.8s forwards;
+    }
+    .scroll-bar { width: 1px; height: 52px; background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent); animation: pulse 2s ease-in-out infinite 2s; }
+    .hero-scroll-ind span { font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+    /* ─── TICKER ──────────────────────────────── */
+    .ticker { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 26px 0; overflow: hidden; }
+    .ticker-track { display: flex; gap: 64px; animation: ticker 26s linear infinite; white-space: nowrap; }
+    .t-item { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .t-item .n { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; color: var(--gold); }
+    .t-item .l { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+    .t-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+
+    /* ════════════════════════════════════════
+       §2 — PAIN / AGITATION
+       Visual: Dark, stark, high-contrast.
+       Left: bold statement in Cormorant.
+       Right: three pain points with icons.
+       Mood: "we understand the problem."
+    ════════════════════════════════════════ */
+    #pain {
+      padding: 120px 0;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; max-width: 100%; overflow: hidden;
+    }
+    .pain-left {
+      padding: 80px 80px 80px 60px;
+      background: var(--surface); border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .pain-headline {
+      font-family: var(--serif); font-size: clamp(2.2rem, 3.5vw, 4rem);
+      font-weight: 300; line-height: 1.15; margin-bottom: 28px;
+    }
+    .pain-headline em { font-style: italic; color: var(--gold); }
+    .pain-body { font-size: 0.88rem; color: var(--mid); line-height: 1.9; max-width: 440px; }
+    .pain-right { padding: 80px 60px 80px 80px; display: flex; flex-direction: column; justify-content: center; gap: 44px; }
+    .pain-point { display: flex; gap: 24px; align-items: flex-start; }
+    .pain-num {
+      font-family: var(--serif); font-size: 2.4rem; font-weight: 300;
+      color: var(--border); line-height: 1; flex-shrink: 0; width: 44px;
+    }
+    .pain-text h4 { font-size: 0.88rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; letter-spacing: 0.04em; }
+    .pain-text p { font-size: 0.8rem; color: var(--mid); line-height: 1.8; }
+
+    /* ════════════════════════════════════════
+       §3 — VALUE PROPOSITION
+       Visual: Full-width, centered, minimal.
+       Radial gold glow behind headline.
+       Single bold statement. No clutter.
+    ════════════════════════════════════════ */
+    #value {
+      padding: 160px 60px; text-align: center; position: relative; overflow: hidden;
+    }
+    #value::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(150,114,46,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .value-headline {
+      font-family: var(--serif); font-size: clamp(2.6rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.1; max-width: 900px; margin: 0 auto 32px;
+    }
+    .value-headline em { font-style: italic; color: var(--gold); }
+    .value-sub {
+      font-size: 0.9rem; color: var(--mid); max-width: 560px; margin: 0 auto 60px; line-height: 1.9;
+    }
+    .value-pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--border); max-width: var(--max); margin: 0 auto;
+      border: 1px solid var(--border);
+    }
+    .pillar { background: var(--surface); padding: 52px 36px; text-align: left; transition: background 0.3s; }
+    .pillar:hover { background: var(--card); }
+    .pillar-icon { width: 32px; height: 1px; background: var(--gold); margin-bottom: 28px; display: block; }
+    .pillar h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; margin-bottom: 14px; }
+    .pillar p { font-size: 0.8rem; color: var(--mid); line-height: 1.8; }
+
+    /* ════════════════════════════════════════
+       §4 — FEATURE STACK
+       Visual: Alternating rows, dark + light
+       surfaces. Left = large serif number.
+       Right = title + detail + link.
+       Feels like an editorial spread.
+    ════════════════════════════════════════ */
+    #features { padding: 0; }
+    .feature-row {
+      display: grid; grid-template-columns: 200px 1fr; align-items: center;
+      border-bottom: 1px solid var(--border); min-height: 180px;
+      transition: background 0.3s;
+    }
+    .feature-row:hover { background: var(--surface); }
+    .feature-num {
+      padding: 52px 40px; border-right: 1px solid var(--border);
+      font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--border);
+      text-align: center; line-height: 1;
+    }
+    .feature-content-block { padding: 44px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .feature-content-block h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; line-height: 1.3; }
+    .feature-content-block h3 em { font-style: italic; color: var(--gold); }
+    .feature-content-block p { font-size: 0.82rem; color: var(--mid); line-height: 1.85; }
+    .feature-tag {
+      display: inline-block; margin-top: 16px;
+      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(184,150,90,0.3); padding: 6px 14px;
+    }
+
+    /* ════════════════════════════════════════
+       §5 — OUTCOME BENEFITS
+       Visual: Full-bleed dark section.
+       Three cards in a grid, each with a
+       number and outcome statement.
+       Background: subtle grid texture.
+    ════════════════════════════════════════ */
+    #outcomes {
+      background: var(--surface); padding: 120px 60px;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .outcomes-header { max-width: 600px; margin-bottom: 72px; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .outcome-card {
+      background: var(--bg); border: 1px solid var(--border); padding: 44px 36px;
+      position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;
+    }
+    .outcome-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .outcome-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease);
+    }
+    .outcome-card:hover::before { transform: scaleX(1); }
+    .outcome-big { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .outcome-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; line-height: 1.4; margin-bottom: 14px; }
+    .outcome-card p { font-size: 0.78rem; color: var(--mid); line-height: 1.85; }
+
+    /* ════════════════════════════════════════
+       §6 — TESTIMONIAL / SOCIAL PROOF
+       Visual: Full-width editorial. Single
+       large quote in Cormorant Italic.
+       Attribution below with gold line.
+       Background: subtle warm surface.
+    ════════════════════════════════════════ */
+    /* ════════ RECOGNITION / AWARDS — dramatic redesign ════════ */
+    #awards { padding: 0; background: var(--bg); overflow: hidden; border-top: 1px solid var(--border); }
+
+    /* Pull quote top band */
+    .proof-quote-band {
+      padding: 100px 60px 80px;
+      text-align: center;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .proof-quote {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 3rem); font-style: italic;
+      font-weight: 300; line-height: 1.5; max-width: 860px; margin: 0 auto 40px; color: var(--cream);
+    }
+    .proof-divider { width: 40px; height: 1px; background: var(--gold); margin: 0 auto 24px; }
+    .proof-attr { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+    .proof-context { font-size: 0.7rem; color: var(--dim); }
+
+    /* CEO Views section mobile */
+    .ceo-views-wrap { }
+
+    /* AS SEEN IN marquee ticker */
+    .proof-ticker-wrap {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .proof-ticker-label {
+      text-align: center;
+      font-size: 0.54rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 32px;
+    }
+    .proof-ticker {
+      display: flex; align-items: center; gap: 0;
+      animation: ticker-scroll 28s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+    .proof-ticker:hover { animation-play-state: paused; }
+    .proof-ticker-item {
+      font-family: var(--serif); font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+      font-weight: 300; color: var(--cream); padding: 0 52px;
+      opacity: 0.55; transition: opacity 0.3s;
+      display: inline-flex; align-items: center; gap: 52px;
+    }
+    .proof-ticker-item::after {
+      content: '·'; color: var(--gold); font-size: 1.4rem; opacity: 0.7;
+    }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Awards grid — dramatic */
+    .proof-awards-head {
+      padding: 100px 60px 60px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      max-width: var(--max); margin: 0 auto;
+    }
+    .proof-awards-headline {
+      font-family: var(--serif); font-size: clamp(3rem, 5.5vw, 6.5rem);
+      font-weight: 300; line-height: 0.9; color: var(--cream); letter-spacing: -0.01em;
+    }
+    .proof-awards-headline em { color: var(--gold); font-style: italic; }
+    .proof-awards-count {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--dim); text-align: right; line-height: 1.6;
+    }
+
+    /* awards-grid + award-card defined later in flashier version below */
+
+    /* ════════════════════════════════════════
+       §7 — OBJECTION HANDLING
+       Visual: Two-column grid, each card
+       addresses one "but what about..."
+       Left side: the objection (dimmed).
+       Right side: the answer (bright).
+    ════════════════════════════════════════ */
+    #objections { padding: 120px 60px; }
+    .obj-header { max-width: 600px; margin-bottom: 72px; }
+    .obj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .obj-card { background: var(--surface); padding: 44px 40px; transition: background 0.3s; }
+    .obj-card:hover { background: var(--card); }
+    .obj-q {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .obj-card h4 { font-family: var(--serif); font-size: 1.3rem; font-weight: 300; line-height: 1.4; color: var(--mid); margin-bottom: 18px; font-style: italic; }
+    .obj-card p { font-size: 0.82rem; color: var(--cream); line-height: 1.85; }
+
+    /* ════════════════════════════════════════
+       §8 — FAQ
+       Visual: Minimal accordion. Clean lines.
+       Gold "+" expands each item.
+       Serif question, sans body answer.
+    ════════════════════════════════════════ */
+    #faq { padding: 120px 0; border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 760px; margin: 0 auto; padding: 0 60px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--cream); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 0; text-align: left; gap: 24px;
+    }
+    .faq-q-text { font-family: var(--serif); font-size: 1.15rem; font-weight: 300; line-height: 1.4; }
+    .faq-icon {
+      font-size: 1.2rem; color: var(--gold); flex-shrink: 0; width: 24px; text-align: center;
+      transition: transform 0.3s var(--ease);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.5s var(--ease); }
+    .faq-a-inner { padding: 0 0 28px; font-size: 0.85rem; color: var(--mid); line-height: 1.9; }
+    .faq-a-inner a { color: var(--gold); border-bottom: 1px solid rgba(184,150,90,0.3); transition: border-color 0.2s; }
+    .faq-a-inner a:hover { border-color: var(--gold); }
+
+    /* ════════════════════════════════════════
+       §9 — CTA CLOSE
+       Visual: Cinematic. Full-screen dark.
+       Gold radial glow. Massive headline.
+       Single bold CTA. No distractions.
+    ════════════════════════════════════════ */
+    #cta-close {
+      min-height: 80vh; padding: 140px 60px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    #cta-close::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(150,114,46,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-close-headline {
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 7rem); font-weight: 300; line-height: 1.05;
+      margin-bottom: 28px; position: relative; z-index: 1;
+    }
+    .cta-close-headline em { font-style: italic; color: var(--gold); }
+    .cta-close-sub { font-size: 0.9rem; color: var(--mid); max-width: 480px; margin: 0 auto 20px; line-height: 1.9; position: relative; z-index: 1; }
+    .cta-email { font-family: var(--serif); font-size: 1.1rem; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 52px; position: relative; z-index: 1; }
+    .cta-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+    /* ─── FOOTER ──────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border); padding: 64px 60px 48px;
+      background: var(--surface);
+    }
+    .f-top {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 60px;
+      padding-bottom: 48px; border-bottom: 1px solid var(--border);
+    }
+    .f-logo-block img { height: 48px; width: auto; display: block; margin-bottom: 20px; }
+    .f-logo-tagline { font-size: 0.72rem; color: var(--mid); line-height: 1.8; max-width: 220px; }
+    .f-col-title {
+      font-size: 0.56rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .f-col-title::before { content: ''; width: 16px; height: 1px; background: var(--gold); }
+    .f-col-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .f-col-links a {
+      font-size: 0.64rem; letter-spacing: 0.1em; color: var(--mid);
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .f-col-links a:hover { color: var(--gold); }
+    .f-bottom {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .f-copy { font-size: 0.58rem; color: var(--dim); letter-spacing: 0.06em; }
+    .f-social { display: flex; gap: 24px; }
+    .f-social a { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); transition: color 0.2s; }
+    .f-social a:hover { color: var(--gold); }
+
+    /* ─── ANIMATIONS ──────────────────────────── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    @keyframes slideUp { from { transform: translateY(105%); } to { transform: translateY(0); } }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
+
+    /* ════════════════════════════════════════
+       AWARD SPOTLIGHT SECTION
+       Full-width. Photo right. Overlay text left.
+       Bold, modern. Gold accent badge.
+    ════════════════════════════════════════ */
+    .award-spotlight {
+      position: relative; min-height: 70vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden; border-top: 1px solid var(--border);
+    }
+    .award-spotlight.flip { direction: rtl; }
+    .award-spotlight.flip > * { direction: ltr; }
+    .award-left {
+      position: relative; overflow: hidden;
+    }
+    .award-left img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+    }
+    .award-spotlight:not(.flip) .award-left::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 50%, var(--surface) 100%);
+    }
+    .award-spotlight.flip .award-left::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to left, transparent 50%, var(--surface) 100%);
+    }
+    .award-right {
+      background: var(--surface);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 60px 80px 52px;
+    }
+    .award-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--gold); color: #fff;
+      font-size: 0.56rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      padding: 8px 18px; margin-bottom: 40px; align-self: flex-start;
+    }
+    .award-year-big {
+      font-family: var(--serif); font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300; line-height: 1; color: var(--gold); opacity: 0.25;
+      display: block; margin-bottom: 4px;
+      pointer-events: none; user-select: none; letter-spacing: 0.04em;
+    }
+    .award-right h2 {
+      font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3.8rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 20px;
+    }
+    .award-right h2 em { font-style: italic; color: var(--gold); }
+    .award-right .award-org {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .award-right p {
+      font-size: 0.88rem; color: var(--mid); line-height: 1.9; max-width: 440px; margin-bottom: 40px;
+    }
+    .award-right p strong { color: var(--cream); font-weight: 500; }
+    .award-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); border-bottom: 1px solid rgba(150,114,46,0.3);
+      padding-bottom: 4px; transition: gap 0.2s, border-color 0.2s; align-self: flex-start;
+    }
+    .award-link:hover { gap: 16px; border-color: var(--gold); }
+
+    /* ════════════════════════════════════════
+       PRESS / FEATURED IN — two article covers
+       with photo overlay + description + link.
+    ════════════════════════════════════════ */
+    /* ════════════════════════════════════════
+       PRESS FEATURE — editorial text cards
+       No photo. Large typographic treatment.
+       Gold rule accent. Clean link CTA.
+    ════════════════════════════════════════ */
+    .press-feature {
+      display: block; text-decoration: none;
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 64px 60px 68px;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+    }
+    .press-feature:hover { background: var(--surface); }
+    /* giant ghost publication initial behind text */
+    .press-feature-ghost {
+      font-family: var(--serif); font-size: clamp(12rem, 22vw, 20rem);
+      font-weight: 300; line-height: 1; color: var(--gold);
+      opacity: 0.04; position: absolute; right: 40px; top: 50%;
+      transform: translateY(-50%); pointer-events: none; user-select: none;
+      transition: opacity 0.4s;
+    }
+    .press-feature:hover .press-feature-ghost { opacity: 0.07; }
+    .press-feature-inner {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 60px; position: relative; z-index: 1;
+    }
+    .press-pub {
+      font-size: 0.54rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .press-pub::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .press-title {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 300;
+      line-height: 1.1; color: var(--cream); margin-bottom: 20px;
+    }
+    .press-title em { font-style: italic; color: var(--gold); }
+    .press-desc {
+      font-size: 0.84rem; color: var(--mid); line-height: 1.85; max-width: 640px;
+    }
+    .press-cta {
+      display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; flex-shrink: 0;
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(150,114,46,0.35);
+      padding: 16px 32px; transition: gap 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .press-feature:hover .press-cta {
+      gap: 18px; border-color: var(--gold); background: rgba(150,114,46,0.07);
+    }
+
+    /* ════════════════════════════════════════
+       PODCAST SECTION — LIGHT EDITORIAL
+       Cream background, warm card borders.
+       Gold accents. Clean typography.
+    ════════════════════════════════════════ */
+    #podcasts {
+      padding: 100px 0 0;
+      background: #0a0d12;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    #podcasts .container { text-align: center; padding-bottom: 60px; }
+    #podcasts .label span { color: var(--gold-lt); }
+    #podcasts .label::before { background: var(--gold-lt); }
+    #podcasts h2 { color: #fff; }
+    #podcasts p { color: rgba(255,255,255,0.5); }
+    .podcast-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      width: 100%;
+    }
+    .p-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer; text-decoration: none;
+      display: block;
+    }
+    .p-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.25);
+      transition: background 0.4s;
+      z-index: 1;
+    }
+    .p-card:hover::after { background: rgba(0,0,0,0.1); }
+    /* Thumbnail fills the card */
+    .p-card-thumb {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.6s var(--ease);
+    }
+    .p-card:hover .p-card-thumb { transform: scale(1.06); }
+    /* Dark gradient overlay bottom */
+    .p-card-overlay {
+      display: block;
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 45%, transparent 75%);
+    }
+    .p-card-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px 24px; z-index: 3;
+      transform: translateY(6px); transition: transform 0.35s var(--ease);
+    }
+    .p-card:hover .p-card-content { transform: translateY(0); }
+    .p-card-show {
+      font-size: 0.48rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--gold-lt); margin-bottom: 8px; display: block;
+    }
+    .p-card-title {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 300;
+      line-height: 1.25; color: #fff; margin-bottom: 6px;
+    }
+    .p-card-date {
+      font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5);
+      margin-bottom: 12px; display: block;
+    }
+    .p-card-listen {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-lt);
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .p-card:hover .p-card-listen { opacity: 1; transform: translateY(0); }
+    .p-card-listen::after { content: ' →'; }
+    .p-card-wide { aspect-ratio: 3/4; }
+
+    /* ════════════════════════════════════════
+       COVER STORY — magazine cover + issuu embed
+    ════════════════════════════════════════ */
+    .cover-story { padding: 80px 60px; background: var(--surface); }
+    .cover-story-inner {
+      display: grid; grid-template-columns: 380px 1fr;
+      gap: 72px; align-items: start; max-width: var(--max); margin: 0 auto;
+    }
+    .cover-story-img { position: relative; }
+    .cover-story-img img {
+      width: 100%; display: block; border: 1px solid var(--border);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+    }
+    .cover-badge {
+      position: absolute; top: -14px; left: 20px;
+      background: var(--gold); color: var(--bg);
+      font-size: 0.56rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 6px 16px; z-index: 2;
+    }
+    .cover-story-content { display: flex; flex-direction: column; }
+    .cover-issuu-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 12px;
+    }
+
+    /* ════════════════════════════════════════
+       FULL-WIDTH PHOTO FEATURE — editorial press
+       Photo shows completely. Text strip below.
+       No overlay. Clean and tall.
+    ════════════════════════════════════════ */
+    .photo-feature { border-top: 1px solid var(--border); }
+    .photo-feature-img { width: 100%; overflow: hidden; }
+    .photo-feature-img img { width: 100%; height: auto; display: block; }
+    .photo-feature-strip {
+      padding: 56px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr auto;
+      gap: 48px;
+      align-items: center;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .photo-feature-meta {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .photo-feature-pub {
+      font-size: 0.54rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 14px;
+    }
+    .photo-feature-pub::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .photo-feature-title {
+      font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2.4rem); font-weight: 300;
+      line-height: 1.15; color: var(--cream);
+    }
+    .photo-feature-title em { font-style: italic; color: var(--gold); }
+    .photo-feature-desc {
+      font-size: 0.84rem; color: var(--mid); line-height: 1.9;
+    }
+
+    /* ════════════════════════════════════════
+       INC. FEMALE FOUNDERS 500 — 2026
+       Editorial spotlight. Ghost year. Badge.
+       No photo — pure typographic impact.
+    ════════════════════════════════════════ */
+    .inc-founders-2026 {
+      position: relative; overflow: hidden;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .ifounds-layout {
+      display: grid; grid-template-columns: 45% 55%;
+      min-height: 80vh;
+    }
+    .ifounds-photo {
+      position: relative; overflow: hidden;
+    }
+    .ifounds-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--bg) 100%);
+    }
+    .ifounds-ghost {
+      position: absolute; right: -20px; top: -30px;
+      font-family: var(--serif);
+      font-size: clamp(18rem, 32vw, 28rem);
+      font-weight: 300; line-height: 0.8;
+      color: var(--gold); opacity: 0.065;
+      user-select: none; pointer-events: none; letter-spacing: -0.04em;
+      z-index: 0;
+    }
+    .ifounds-inner {
+      position: relative; z-index: 1;
+      padding: 100px 72px 100px 52px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .ifounds-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #fff;
+      font-family: var(--sans); font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      padding: 10px 22px; margin-bottom: 44px; align-self: flex-start;
+    }
+    .ifounds-headline {
+      font-size: clamp(3rem, 5.5vw, 6.5rem); margin-bottom: 36px;
+    }
+    .ifounds-desc {
+      font-size: 0.88rem; color: var(--mid); line-height: 1.9;
+      max-width: 480px; margin-bottom: 44px;
+    }
+
+    /* ════ GHOST YEAR — PRESS SECTIONS ════ */
+    .press-ghost {
+      position: absolute; right: -20px; top: -30px;
+      font-family: var(--serif);
+      font-size: clamp(16rem, 28vw, 26rem);
+      font-weight: 300; line-height: 0.8;
+      color: var(--gold); opacity: 0.065;
+      user-select: none; pointer-events: none; letter-spacing: -0.04em;
+      z-index: 0;
+    }
+
+    /* ════ STATS CALLOUT — DRAMATIC NUMBERS ════ */
+    .stats-callout {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-block {
+      padding: 80px 60px;
+      border-right: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .stat-block:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: clamp(4.5rem, 8vw, 9rem);
+      font-weight: 300; line-height: 0.9; color: var(--gold);
+      letter-spacing: -0.02em; margin-bottom: 20px; display: block;
+    }
+    .stat-num sup {
+      font-size: 0.4em; vertical-align: super; letter-spacing: 0.05em;
+    }
+    .stat-label {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--mid); line-height: 1.6;
+    }
+
+    /* ════ AWARD FEATURE ROWS (Inc. 5000, Inc. Regionals) ════ */
+    .award-feature-row {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 60px;
+      padding: 52px 60px; border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .award-feature-label-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .award-feature-title {
+      font-family: var(--serif); font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+      font-weight: 300; color: var(--cream); line-height: 1.1;
+    }
+    .award-feature-sub {
+      font-size: 0.56rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--dim);
+    }
+    .award-feature-years {
+      display: flex; gap: 16px; align-items: center;
+    }
+    .award-year-link {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 20px 24px; border: 1px solid var(--border);
+      text-decoration: none; min-width: 96px; text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .award-year-link:hover { border-color: var(--gold); background: var(--card); }
+    .ayl-year {
+      font-family: var(--serif); font-size: 2.2rem; font-weight: 300;
+      color: var(--gold); line-height: 1;
+    }
+    .ayl-detail {
+      font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid);
+    }
+    .ayl-arrow { font-size: 0.6rem; color: var(--dim); transition: transform 0.2s, color 0.2s; }
+    .award-year-link:hover .ayl-arrow { transform: translateX(0) translateY(-2px); color: var(--gold); }
+
+    /* ════ FLASHIER AWARDS GRID ════ */
+    .awards-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin: 0 0 0;
+      gap: 2px; background: var(--border);
+      border-top: 2px solid var(--border);
+    }
+    .award-card {
+      border: none;
+      padding: 72px 52px 64px;
+      position: relative; overflow: hidden;
+      background: var(--bg);
+      transition: background 0.35s, transform 0.3s;
+    }
+    .award-card:hover { background: var(--surface); transform: translateY(-3px); }
+    .award-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt), var(--gold));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+    .award-card:hover::after { transform: scaleX(1); }
+    .award-card::before {
+      content: attr(data-num);
+      position: absolute; bottom: -20px; right: 16px;
+      font-family: var(--serif); font-size: 11rem; font-weight: 300;
+      color: var(--gold); opacity: 0.05; line-height: 1;
+      pointer-events: none; transition: opacity 0.3s;
+    }
+    .award-card:hover::before { opacity: 0.09; }
+    .award-card-year {
+      font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 4rem); font-weight: 300;
+      color: var(--gold); display: block; letter-spacing: 0.04em;
+      line-height: 1;
+      border-bottom: 2px solid rgba(150,114,46,0.3); padding-bottom: 20px; margin-bottom: 22px;
+    }
+    .award-card-name {
+      font-family: var(--serif); font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+      font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 20px;
+    }
+    .award-card-org {
+      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lt);
+      font-weight: 500;
+    }
+
+    /* ─── HAMBURGER NAV ─── */
+    .nav-hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      width: 40px; height: 36px;
+      flex-direction: column; justify-content: center; gap: 7px;
+      padding: 4px; flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block; height: 1px; width: 100%;
+      background: rgba(255,255,255,0.85);
+      transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+    nav.s .nav-hamburger span { background: var(--cream); }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-mobile-overlay {
+      display: none; position: fixed; inset: 0;
+      background: #080d14; z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center;
+      padding: 40px 32px;
+    }
+    .nav-mobile-overlay.open { display: flex; }
+    .nav-mobile-overlay ul { list-style: none; text-align: center; width: 100%; }
+    .nav-mobile-overlay li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .nav-mobile-overlay a {
+      display: block; padding: 22px 0;
+      font-family: var(--serif); font-size: clamp(1.8rem, 7vw, 2.8rem);
+      font-weight: 300; color: rgba(255,255,255,0.9); letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-mobile-overlay a:hover { color: var(--gold-lt); }
+    .overlay-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 16px auto; }
+    .nav-mobile-overlay ul + ul li { border-bottom-color: rgba(255,255,255,0.05); }
+    .nav-mobile-overlay ul + ul a { font-size: clamp(1rem, 4vw, 1.4rem); color: rgba(255,255,255,0.45); padding: 14px 0; letter-spacing: 0.12em; }
+    .nav-mobile-close {
+      position: absolute; top: 20px; right: 20px;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.5rem; color: rgba(255,255,255,0.5);
+      padding: 10px;
+    }
+    .nav-mobile-connect {
+      margin-top: 36px;
+    }
+    .nav-mobile-connect a {
+      display: inline-block; font-size: 0.65rem !important; font-family: var(--sans) !important;
+      font-weight: 600 !important; letter-spacing: 0.2em !important; text-transform: uppercase;
+      background: var(--gold); color: var(--bg) !important; padding: 14px 40px !important;
+      border: none !important;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 960px) {
+      /* ─── NAV ─── */
+      nav { padding: 18px 20px; }
+      nav.s { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .subnav { display: none; }
+
+      /* ─── CONTAINER ─── */
+      .container { padding: 0 20px; }
+
+      /* ─── HERO ─── */
+      #hero { grid-template-columns: 1fr; min-height: 100svh; }
+      .hero-panel {
+        padding: 96px 24px 52px;
+        align-items: flex-start;
+        background: linear-gradient(to bottom, #080d14 65%, rgba(8,13,20,0.96) 100%);
+      }
+      .hero-logo-wrap { margin-bottom: 28px; }
+      .hero-logo-img { height: 60px !important; }
+      .hero-eyebrow { margin-bottom: 24px; }
+      .hero-eyebrow span { font-size: 0.5rem; letter-spacing: 0.16em; }
+      .hero-h1 { font-size: clamp(4rem, 16vw, 7rem); }
+      .hero-tagline { font-size: 0.65rem; white-space: normal; letter-spacing: 0.2em; }
+      .hero-body { font-size: 0.84rem; max-width: 100%; margin-bottom: 36px; }
+      .hero-ctas { gap: 12px; }
+      .hero-ctas .btn-gold, .hero-ctas .btn-outline { padding: 14px 22px; font-size: 0.6rem; }
+      .hero-photo { height: 52vw; min-height: 220px; max-height: 360px; }
+      .hero-scroll-ind { left: 24px; bottom: 24px; }
+
+      /* ─── STATS TICKER ─── */
+      .ticker { padding: 18px 0; }
+      .ticker-track { gap: 36px; }
+      .t-item .n { font-size: 1.05rem; }
+      .t-item .l { font-size: 0.52rem; letter-spacing: 0.1em; }
+
+      /* ─── AS SEEN TICKER ─── */
+      .proof-ticker-wrap { padding: 30px 0; }
+      .proof-ticker-label { font-size: 0.48rem; margin-bottom: 18px; letter-spacing: 0.26em; }
+      .proof-ticker-item { font-size: clamp(1.1rem, 4vw, 1.6rem); padding: 0 20px; gap: 20px; }
+
+      /* ─── INC. FOUNDERS ─── */
+      .ifounds-layout { grid-template-columns: 1fr; min-height: auto; }
+      .ifounds-photo { height: 60vw; min-height: 240px; max-height: 380px; order: -1; }
+      .ifounds-photo::after { background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%); }
+      .ifounds-inner { padding: 44px 24px 56px; }
+      .ifounds-ghost { font-size: clamp(7rem, 26vw, 13rem); top: -8px; right: -8px; }
+      .ifounds-badge { font-size: 0.5rem; padding: 8px 14px; margin-bottom: 24px; }
+      .ifounds-headline { font-size: clamp(2rem, 8vw, 3.5rem) !important; margin-bottom: 22px; }
+      .ifounds-desc { font-size: 0.83rem; margin-bottom: 28px; }
+
+      /* ─── STATS CALLOUT ─── */
+      .stats-callout { grid-template-columns: 1fr 1fr; }
+      .stat-block { padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-block:nth-child(odd) { border-right: 1px solid var(--border); }
+      .stat-block:last-child { grid-column: 1 / -1; border-bottom: none; border-right: none; }
+      .stat-num { font-size: clamp(3.5rem, 12vw, 6rem); }
+      .stat-label { font-size: 0.6rem; }
+
+      /* ─── CEO VIEWS ─── */
+      section[style*="display:flex"][style*="justify-content:center"] {
+        flex-direction: column !important;
+        padding: 56px 24px !important;
+      }
+      section[style*="display:flex"][style*="justify-content:center"] > div[style] {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+      }
+      section[style*="display:flex"][style*="justify-content:center"] img[style*="width:380px"] {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        display: block !important;
+      }
+
+      /* ─── COVER STORY / INC. MAGAZINE ─── */
+      .cover-story { padding: 56px 24px; }
+      .cover-story-inner { grid-template-columns: 1fr; gap: 36px; }
+      .cover-story-img { text-align: center; }
+      .cover-story-img img { max-width: 240px; margin: 0 auto; }
+
+      /* ─── PRESS FEATURES ─── */
+      .press-feature { padding: 44px 24px; }
+      .press-feature-inner { grid-template-columns: 1fr; gap: 24px; }
+      .press-cta { align-self: flex-start; padding: 12px 22px; }
+      .press-feature-ghost { font-size: 7rem; right: 12px; opacity: 0.02; }
+      .photo-feature-strip { grid-template-columns: 1fr; padding: 36px 24px; gap: 20px; }
+      .photo-feature-img img { max-height: 360px; object-fit: cover; }
+
+      /* ─── AWARDS ─── */
+      .proof-quote-band { padding: 56px 24px 44px; }
+      .proof-quote { font-size: clamp(1.3rem, 5vw, 2rem) !important; margin-bottom: 28px; }
+      .proof-awards-head { padding: 52px 24px 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .proof-awards-headline { font-size: clamp(2.2rem, 8vw, 4rem) !important; }
+      .award-feature-row { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+      .award-feature-title { font-size: 1.4rem; }
+      .award-feature-years { flex-wrap: wrap; gap: 10px; }
+      .award-year-link { padding: 14px 18px; min-width: 80px; }
+      .ayl-year { font-size: 1.6rem; }
+      .awards-grid { grid-template-columns: 1fr 1fr; margin: 0; gap: 2px; }
+      .award-card { padding: 36px 22px 32px; }
+      .award-card-year { font-size: clamp(1.8rem, 7vw, 2.6rem) !important; padding-bottom: 14px; margin-bottom: 14px; }
+      .award-card-name { font-size: clamp(1.1rem, 4vw, 1.6rem); }
+      .award-card::before { font-size: 7rem; }
+
+      /* ─── PODCASTS ─── */
+      #podcasts { padding: 60px 0 0; }
+      #podcasts .container { padding: 0 20px 44px; }
+      .podcast-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+      .p-card { aspect-ratio: 3/4; }
+      .p-card-content { padding: 20px 16px; }
+      .p-card-title { font-size: 1rem; }
+      .p-card-show { font-size: 0.45rem; }
+
+      /* ─── CTA ─── */
+      #cta-close { padding: 80px 24px; min-height: auto; }
+      .cta-close-headline { font-size: clamp(2.2rem, 8vw, 4rem) !important; }
+      .cta-close-sub { font-size: 0.84rem; padding: 0 4px; }
+      .cta-email { font-size: 0.9rem; word-break: break-all; }
+      .cta-btns { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; max-width: 320px; }
+      .cta-btns a { text-align: center; padding: 16px; }
+
+      /* ─── FOOTER ─── */
+      footer { padding: 44px 20px 32px; }
+      .f-top { grid-template-columns: 1fr; gap: 28px; padding-bottom: 28px; margin-bottom: 28px; }
+      .f-bottom { flex-direction: column; gap: 10px; }
+
+      /* ─── SPOTLIGHT ─── */
+      .award-spotlight { grid-template-columns: 1fr; min-height: auto; direction: ltr !important; }
+      .award-spotlight.flip { direction: ltr; }
+      .award-left { height: 280px; }
+      .award-right { padding: 40px 24px; }
+
+      /* ─── VALUE / PAIN / OBJECTIONS ─── */
+      #value { padding: 80px 24px; }
+      .value-pillars { grid-template-columns: 1fr; }
+      #outcomes { padding: 80px 24px; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      #pain { grid-template-columns: 1fr; }
+      .pain-left { padding: 52px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .pain-right { padding: 40px 24px; gap: 32px; }
+      #objections { padding: 80px 24px; }
+      .obj-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      /* ─── HERO ─── */
+      .hero-h1 { font-size: clamp(3.4rem, 15vw, 5.5rem); }
+      .hero-tagline { font-size: 0.6rem; }
+      .hero-photo { height: 48vw; }
+
+      /* ─── AS SEEN TICKER ─── */
+      .proof-ticker-item { font-size: clamp(0.95rem, 4vw, 1.3rem); padding: 0 16px; gap: 16px; }
+
+      /* ─── STATS ─── */
+      .stats-callout { grid-template-columns: 1fr; }
+      .stat-block:nth-child(odd) { border-right: none; }
+      .stat-block:last-child { grid-column: auto; border-bottom: none; }
+
+      /* ─── AWARDS GRID ─── */
+      .awards-grid { grid-template-columns: 1fr; }
+      .award-card { padding: 32px 20px 28px; }
+
+      /* ─── PODCASTS ─── */
+      .podcast-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+      .p-card { aspect-ratio: 2/3; }
+      .p-card-content { padding: 14px 12px; }
+      .p-card-show { font-size: 0.42rem; }
+      .p-card-title { font-size: 0.82rem; line-height: 1.2; }
+      .p-card-date { display: none; }
+
+      /* ─── INC. FOUNDERS ─── */
+      .ifounds-inner { padding: 36px 20px 48px; }
+      .ifounds-headline { font-size: clamp(1.9rem, 9vw, 3rem) !important; }
+
+      /* ─── CEO VIEWS SECTION ─── */
+      .press-title { font-size: clamp(1.5rem, 6vw, 2.2rem) !important; }
+
+      /* ─── BUTTONS ─── */
+      .btn-gold, .btn-outline { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav id="nav">
+  <img src="heather-fernstrom-logos-1.png" alt="Heather Fernstrom" class="nav-logo" style="height:44px;width:auto;" />
+  <ul class="nav-links">
+    <li><a href="heather-fernstrom-full-build.html">Home</a></li>
+    <li><a href="heather.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <a href="#cta-close" class="nav-cta">Contact</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="subnav" id="subnav">
+  <a href="#podcasts">In Conversation</a>
+  <a href="#proof">Recognition</a>
+  <a href="#awards">Awards</a>
+  <a href="#cta-close">Connect</a>
+</div>
+
+<!-- Mobile menu overlay -->
+<div class="nav-mobile-overlay" id="navMobileOverlay">
+  <ul>
+    <li><a href="heather-fernstrom-full-build.html">Home</a></li>
+    <li><a href="heather.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="#cta-close">Contact</a></li>
+  </ul>
+  <div class="overlay-divider"></div>
+  <ul>
+    <li><a href="#podcasts">In Conversation</a></li>
+    <li><a href="#proof">Recognition</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════
+  §1 HERO
+  Copy direction: Confident, not boastful.
+  Lead with WHO she serves + the outcome.
+  Headline: bold serif, relaxed weight.
+  Desktop: 55/45 split. Mobile: stacked, full-width.
+  Spacing: 140px top padding on left column.
+  Photo: right column, full bleed portrait.
+════════════════════════════════════════ -->
+<section id="hero">
+
+  <!-- Left panel: dark bg + all text -->
+  <div class="hero-panel">
+    <div class="hero-left">
+
+      <!-- Logo inside hero -->
+      <div class="hero-logo-wrap">
+        <img src="heather-fernstrom-logos-1.png" alt="Heather Fernstrom" class="hero-logo-img" />
+      </div>
+
+      <div class="hero-eyebrow">
+        <span>Co-Founder, Alliance Global Advisors &nbsp;·&nbsp; Inc. Female Founders 500</span>
+      </div>
+
+      <h1 class="hero-h1">
+        <span class="line"><span class="line-inner">Heather</span></span>
+        <span class="line"><span class="line-inner">Fernstrom</span></span>
+      </h1>
+
+      <p class="hero-tagline">Investment &nbsp;·&nbsp; Innovation &nbsp;·&nbsp; Influence</p>
+
+      <div class="hero-divider"></div>
+
+      <p class="hero-body">
+        Capital flows to relationships. Heather has spent 20 years building the ones that matter —
+        with the allocators, consultants, and LP networks that move the market.
+        That access is now working for you.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#cta-close" class="btn-gold">Work With Heather</a>
+        <a href="#proof" class="btn-outline">See Recognition</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-ind">
+      <div class="scroll-bar"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+
+  <!-- Right panel: photo flush to right edge -->
+  <div class="hero-photo">
+    <img src="heather-border-5.jpg" alt="Heather Fernstrom" />
+  </div>
+
+</section>
+
+<!-- Stats Ticker — always in motion, both directions feel alive -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="t-item"><span class="n">20+</span><span class="l">Years in Real Estate</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">$520B+</span><span class="l">AUM Advised</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">3×</span><span class="l">Inc. 5000 Honoree</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">Inc.</span><span class="l">Female Founders 500 · 2026</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">5+</span><span class="l">Podcast Appearances</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">2020</span><span class="l">Alliance Global Founded</span></div><div class="t-dot"></div>
+    <!-- loop -->
+    <div class="t-item"><span class="n">20+</span><span class="l">Years in Real Estate</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">$520B+</span><span class="l">AUM Advised</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">3×</span><span class="l">Inc. 5000 Honoree</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">Inc.</span><span class="l">Female Founders 500 · 2026</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">5+</span><span class="l">Podcast Appearances</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">2020</span><span class="l">Alliance Global Founded</span></div><div class="t-dot"></div>
+  </div>
+</div>
+
+<!-- ════════ AS SEEN IN AND RECOGNIZED BY — scrolling ticker ════════ -->
+<div class="proof-ticker-wrap">
+  <p class="proof-ticker-label">As Seen In and Recognized By</p>
+  <div style="overflow:hidden;">
+    <div class="proof-ticker">
+      <span class="proof-ticker-item">Inc. Magazine</span>
+      <span class="proof-ticker-item">The CEO Views</span>
+      <span class="proof-ticker-item">Park Madison Partners</span>
+      <span class="proof-ticker-item">Juniper Square</span>
+      <span class="proof-ticker-item">Connect CRE</span>
+      <span class="proof-ticker-item">Stevie® Awards</span>
+      <span class="proof-ticker-item">IREI</span>
+      <span class="proof-ticker-item">Apple Podcasts</span>
+      <span class="proof-ticker-item">Inc. Magazine</span>
+      <span class="proof-ticker-item">The CEO Views</span>
+      <span class="proof-ticker-item">Park Madison Partners</span>
+      <span class="proof-ticker-item">Juniper Square</span>
+      <span class="proof-ticker-item">Connect CRE</span>
+      <span class="proof-ticker-item">Stevie® Awards</span>
+      <span class="proof-ticker-item">IREI</span>
+      <span class="proof-ticker-item">Apple Podcasts</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ INC. FEMALE FOUNDERS 500 — 2026 ════════ -->
+<section id="proof" class="inc-founders-2026">
+  <span class="ifounds-ghost" aria-hidden="true">2026</span>
+  <div class="ifounds-layout">
+    <!-- Photo -->
+    <div class="ifounds-photo">
+      <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/heather_fernstrom_alliance_global_advisors_15.jpg"
+           alt="Heather Fernstrom — Inc. Female Founders 500 · 2026"
+           style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;" />
+    </div>
+    <!-- Text -->
+    <div class="ifounds-inner">
+      <div class="ifounds-badge">Inc. Female Founders 500 &nbsp;·&nbsp; 2026</div>
+      <h2 class="serif-h ifounds-headline reveal">
+        Recognized Among<br />America's Most<br /><em>Influential</em><br />Women Founders
+      </h2>
+      <p class="ifounds-desc reveal d1">
+        Named to the Inc. Female Founders 500 — the definitive list honoring the women building America's most innovative companies. Heather joins a cohort of founders who are redefining industries, not following them.
+      </p>
+      <a href="https://alliance-globaladvisors.com/insights-news-press/inc-names-heather-fernstrom-and-jennifer-stevens-to-the-2026-female-founders-500-list" target="_blank" rel="noopener" class="award-link reveal d2">
+        View the Full List &nbsp;→
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ STATS CALLOUT ════════ -->
+<div class="stats-callout">
+  <div class="stat-block reveal">
+    <span class="stat-num">$520<sup>B+</sup></span>
+    <div class="stat-label">AUM Advised<br />Across Real Assets</div>
+  </div>
+  <div class="stat-block reveal d1">
+    <span class="stat-num">20<sup>+</sup></span>
+    <div class="stat-label">Years Building<br />Institutional Relationships</div>
+  </div>
+  <div class="stat-block reveal d2">
+    <span class="stat-num">3<sup>×</sup></span>
+    <div class="stat-label">Inc. 5000 Honoree<br />Consecutive Years</div>
+  </div>
+</div>
+
+
+<!-- ════════ CEO VIEWS — Most Innovative Companies to Watch 2025 ════════ -->
+<section class="ceo-views-wrap" style="border-top:1px solid var(--border); background:var(--surface); display:flex; justify-content:center; align-items:center; padding:80px 60px; position:relative; overflow:hidden;">
+  <span class="press-ghost" aria-hidden="true">2025</span>
+  <div style="max-width:var(--max); width:100%; display:grid; grid-template-columns:auto 1fr; gap:80px; align-items:center; position:relative; z-index:1;">
+    <!-- Team photo — crops bottom text bar via overflow:hidden -->
+    <div style="flex-shrink:0; position:relative; width:480px; height:235px; overflow:hidden; border:1px solid var(--border); box-shadow:0 16px 48px rgba(0,0,0,0.12);">
+      <span class="cover-badge">Cover Story</span>
+      <img src="team-ceo-views.jpeg"
+           alt="Heather Fernstrom, Jennifer Stevens, and Leah Dillon — Alliance Global Advisors leadership team"
+           style="display:block; width:100%; height:auto;" />
+    </div>
+    <div>
+      <div class="label reveal" style="margin-bottom:24px;"><span>As Featured In</span></div>
+      <div class="press-pub reveal" style="margin-bottom:20px;">The CEO Views &nbsp;·&nbsp; <em style="font-style:normal; color:var(--gold-lt);">2025</em></div>
+      <div class="press-title reveal d1" style="margin-bottom:20px;">
+        Most <em>Innovative</em> Companies<br />to Watch &nbsp;·&nbsp; 2025
+      </div>
+      <p class="press-desc reveal d2">
+        Heather Fernstrom, Jennifer Stevens, and Leah Dillon — the leadership team behind Alliance Global Advisors — were recognized by <em>The CEO Views</em> as one of the most innovative companies reshaping institutional real estate investment.
+      </p>
+      <a href="https://theceoviews.com/alliance-global-advisors/" target="_blank" rel="noopener" class="award-link reveal d3">
+        Read the Feature &nbsp;→
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ INC. MAGAZINE — Cover Story Feature ════════ -->
+<section class="cover-story reveal" style="border-top:1px solid var(--border); position:relative; overflow:hidden;">
+  <span class="press-ghost" aria-hidden="true">2024</span>
+  <div class="cover-story-inner" style="align-items:center; position:relative; z-index:1;">
+    <!-- Actual magazine cover -->
+    <div class="cover-story-img">
+      <span class="cover-badge">Cover Story</span>
+      <img src="https://theincmagazine.com/wp-content/uploads/2024/04/Heather-Fernstrom-Border-Jennifer-Stevens-Cover-Page-01-1-791x1024.jpg"
+           alt="Inc. Magazine April 2024 Cover — Heather Fernstrom Border & Jennifer Stevens" />
+    </div>
+    <!-- Text content — no Issuu embed -->
+    <div class="cover-story-content">
+      <div class="press-pub" style="margin-bottom:20px;">Inc. Magazine &nbsp;·&nbsp; April 2024</div>
+      <div class="press-title" style="margin-bottom:16px;">The 10 Most <em>Empowering</em><br />Women in Business &nbsp;·&nbsp; 2024</div>
+      <p class="press-desc" style="margin-bottom:32px;">
+        A national cover story. Heather Fernstrom Border was featured alongside co-founder Jennifer Stevens as one of the most impactful women reshaping American business — recognized for building the institutional advisory model that is redefining real asset investment.
+      </p>
+      <a href="https://theincmagazine.com/the-10-most-empowering-women-in-business-2024/" target="_blank" rel="noopener" class="award-link" style="display:inline-flex; align-items:center; gap:10px;">
+        Read the Full Cover Story &nbsp;→
+      </a>
+      <div style="margin-top:40px; padding-top:40px; border-top:1px solid var(--border);">
+        <p style="font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--dim); margin-bottom:16px;">Read the Full Digital Edition</p>
+        <a href="https://issuu.com/primeview001/docs/the_10_most_empowering_women_in_business_2024"
+           target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:10px; font-family:var(--sans);
+                  font-size:0.62rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase;
+                  color:var(--cream); border:1px solid var(--border); padding:14px 28px;
+                  text-decoration:none; transition:border-color 0.2s, color 0.2s;">
+          View on Issuu &nbsp;↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  AWARDS & RECOGNITION
+════════════════════════════════════════ -->
+<section id="awards">
+
+  <!-- Pull quote band -->
+  <div class="proof-quote-band">
+    <blockquote class="proof-quote reveal">
+      "Heather Fernstrom and her team at Alliance Global Advisors are reshaping the future of real asset investment — and doing it faster than almost anyone in the industry."
+    </blockquote>
+    <div class="proof-divider"></div>
+    <p class="proof-attr reveal d1">Inc. Magazine &nbsp;·&nbsp; 2024</p>
+    <p class="proof-context reveal d1">The 10 Most Empowering Women in Business</p>
+  </div>
+
+  <!-- Awards section headline -->
+  <div class="proof-awards-head reveal">
+    <div>
+      <div class="proof-awards-headline">
+        Awards &amp; <em>Recognitions</em>
+      </div>
+      <p style="font-size:0.84rem; color:var(--mid); max-width:560px; line-height:1.9; margin-top:20px;">
+        Heather Fernstrom's leadership has earned repeated recognition from the most respected voices in business and real estate — first-time honors, repeat wins, and national cover features.
+      </p>
+    </div>
+    <div class="proof-awards-count">
+      10+ industry awards<br />&amp; recognitions
+    </div>
+  </div>
+
+  <!-- INC. 5000 — Featured Award Row -->
+  <div class="award-feature-row reveal">
+    <div class="award-feature-label-wrap">
+      <div class="award-feature-title">Inc. 5000</div>
+      <div class="award-feature-sub">America's Fastest-Growing Private Companies</div>
+    </div>
+    <div class="award-feature-years">
+      <a href="https://www.inc.com/inc5000/2025" target="_blank" rel="noopener" class="award-year-link">
+        <span class="ayl-year">2025</span>
+        <span class="ayl-detail">No. 4,976</span>
+        <span class="ayl-arrow">↗</span>
+      </a>
+      <a href="https://www.inc.com/inc5000/2024" target="_blank" rel="noopener" class="award-year-link">
+        <span class="ayl-year">2024</span>
+        <span class="ayl-detail">No. 1,063</span>
+        <span class="ayl-arrow">↗</span>
+      </a>
+      <a href="https://www.inc.com/inc5000/2023" target="_blank" rel="noopener" class="award-year-link">
+        <span class="ayl-year">2023</span>
+        <span class="ayl-detail">No. 228</span>
+        <span class="ayl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- INC. REGIONALS — Featured Award Row -->
+  <div class="award-feature-row reveal">
+    <div class="award-feature-label-wrap">
+      <div class="award-feature-title">Inc. Regionals</div>
+      <div class="award-feature-sub">Southeast — Fastest-Growing Private Companies</div>
+    </div>
+    <div class="award-feature-years">
+      <a href="https://www.inc.com/regionals/2025/southeast" target="_blank" rel="noopener" class="award-year-link">
+        <span class="ayl-year">2025</span>
+        <span class="ayl-detail">No. 144</span>
+        <span class="ayl-arrow">↗</span>
+      </a>
+      <a href="https://www.inc.com/regionals/2023/southeast" target="_blank" rel="noopener" class="award-year-link">
+        <span class="ayl-year">2023</span>
+        <span class="ayl-detail">No. 4,979</span>
+        <span class="ayl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Awards dramatic grid — individual honors -->
+  <div class="awards-grid">
+
+    <div class="award-card reveal" data-num="01">
+      <div class="award-card-year">2026</div>
+      <div class="award-card-name">Inc. Female<br />Founders 500</div>
+      <div class="award-card-org">Inc. Magazine</div>
+    </div>
+
+    <div class="award-card reveal d1" data-num="02">
+      <div class="award-card-year">2025</div>
+      <div class="award-card-name">Most Innovative<br />Companies to Watch</div>
+      <div class="award-card-org">The CEO Views</div>
+    </div>
+
+    <div class="award-card reveal d2" data-num="03">
+      <div class="award-card-year">2024</div>
+      <div class="award-card-name">Top 10 Most Empowering<br />Women in Business</div>
+      <div class="award-card-org">Inc. Magazine · Cover Story</div>
+    </div>
+
+    <div class="award-card reveal" data-num="04">
+      <div class="award-card-year">2024</div>
+      <div class="award-card-name">Stevie® Award<br />Great Employers — Bronze</div>
+      <div class="award-card-org">Stevie® Awards · Real Estate</div>
+    </div>
+
+    <div class="award-card reveal d1" data-num="05">
+      <div class="award-card-year">2024</div>
+      <div class="award-card-name">Women in<br />Real Estate</div>
+      <div class="award-card-org">Connect CRE · Florida Gulf Coast</div>
+    </div>
+
+    <div class="award-card reveal d2" data-num="06">
+      <div class="award-card-year">2023</div>
+      <div class="award-card-name">Stevie® Award<br />Thought Leadership</div>
+      <div class="award-card-org">Women in Business</div>
+    </div>
+
+    <div class="award-card reveal" data-num="07">
+      <div class="award-card-year">2023</div>
+      <div class="award-card-name">Women in<br />Commercial Real Estate</div>
+      <div class="award-card-org">Otso</div>
+    </div>
+
+    <div class="award-card reveal d1" data-num="08">
+      <div class="award-card-year">2022</div>
+      <div class="award-card-name">Top 10 Inspiring<br />Women Leaders</div>
+      <div class="award-card-org">IEra Women Leaders</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ IN CONVERSATION — PODCAST SECTION ════════ -->
+<section id="podcasts">
+  <div class="container" style="padding-bottom:60px; text-align:center;">
+    <div class="label reveal" style="margin-bottom:20px; justify-content:center;"><span>In Conversation</span></div>
+    <h2 class="serif-h reveal d1" style="font-size:clamp(2rem,3.5vw,3.6rem); margin-bottom:16px;">
+      Heard on the<br /><em>industry's top shows</em>
+    </h2>
+    <p class="reveal d2" style="color:var(--mid); font-size:0.84rem; max-width:480px; line-height:1.8; margin:0 auto;">
+      Heather brings the same depth to every conversation that she brings to every client engagement.
+    </p>
+  </div>
+  <div class="podcast-grid">
+
+    <!-- Card 1 — Real Estate Capital Podcast -->
+    <a class="p-card reveal" href="https://parkmadisonpartners.com/podcast-info?ID=76148" target="_blank" rel="noopener">
+      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/09/Screenshot-2025-09-18-at-12.51.22-PM-e1761582797561-300x300.png" alt="Real Estate Capital Podcast" />
+      <div class="p-card-overlay"></div>
+      <div class="p-card-content">
+        <div class="p-card-show">Park Madison Partners</div>
+        <div class="p-card-title">Real Estate Capital</div>
+        <div class="p-card-date">October 2024</div>
+        <div class="p-card-listen">Listen Now</div>
+      </div>
+    </a>
+
+    <!-- Card 2 — Resilience in Leadership -->
+    <a class="p-card reveal d1" href="https://podcasts.apple.com/us/podcast/heather-fernstrom-border-overcoming-challenges-with/id1712714497?i=1000645223762" target="_blank" rel="noopener">
+      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Obstacles-to-Opportunities_heather_fernstrom.webp" alt="Resilience in Leadership" />
+      <div class="p-card-overlay"></div>
+      <div class="p-card-content">
+        <div class="p-card-show">Apple Podcasts</div>
+        <div class="p-card-title">Resilience in Leadership</div>
+        <div class="p-card-date">February 2024</div>
+        <div class="p-card-listen">Listen Now</div>
+      </div>
+    </a>
+
+    <!-- Card 3 — Fund Flow Podcast -->
+    <a class="p-card reveal d1" href="https://podcasts.apple.com/us/podcast/strategies-for-success-in-real-asset-investments-with/id1623210581?i=1000635015390" target="_blank" rel="noopener">
+      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/fund_flow_heather_Fernstrom-300x300.webp" alt="Fund Flow Podcast" />
+      <div class="p-card-overlay"></div>
+      <div class="p-card-content">
+        <div class="p-card-show">Fund Flow</div>
+        <div class="p-card-title">Strategies for Real Asset Success</div>
+        <div class="p-card-date">November 2023</div>
+        <div class="p-card-listen">Listen Now</div>
+      </div>
+    </a>
+
+    <!-- Card 4 — Power of Partnership -->
+    <a class="p-card reveal d2" href="https://www.junipersquare.com/podcasts/alliance-global" target="_blank" rel="noopener">
+      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/juniper_square_heather_Fernstrom-300x300.avif" alt="Power of Partnership" />
+      <div class="p-card-overlay"></div>
+      <div class="p-card-content">
+        <div class="p-card-show">Juniper Square</div>
+        <div class="p-card-title">Power of Partnership</div>
+        <div class="p-card-date">April 2023</div>
+        <div class="p-card-listen">Listen Now</div>
+      </div>
+    </a>
+
+    <!-- Card 5 — Innovating Real Assets -->
+    <a class="p-card reveal d2" href="https://www.junipersquare.com/podcasts/alliance-global" target="_blank" rel="noopener">
+      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Blog-Hero-Distribution-Interview-Alliance-Global-e1752031097215-300x233.webp" alt="Innovating Real Assets" />
+      <div class="p-card-overlay"></div>
+      <div class="p-card-content">
+        <div class="p-card-show">Juniper Square</div>
+        <div class="p-card-title">Innovating Real Assets</div>
+        <div class="p-card-date">April 2021</div>
+        <div class="p-card-listen">Listen Now</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+  §9 CTA CLOSE
+  Copy direction: Make the ask clear.
+  Don't hedge. Don't soften.
+  State exactly what happens next.
+  Visual: cinematic, full-screen feel.
+  Gold radial glow pulses gently (CSS only).
+  Single massive headline, one CTA, email.
+  Spacing: min-height 80vh, centered.
+════════════════════════════════════════ -->
+<section id="cta-close">
+  <div class="gold-rule"></div>
+  <p style="font-size:0.58rem; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:24px; position:relative; z-index:1;">Connect with Heather</p>
+
+  <!-- Headline: confident closer, no cliché -->
+  <h2 class="cta-close-headline reveal">
+    For managers who move<br />fast and know when to<br /><em>make the call.</em>
+  </h2>
+
+  <!-- Sub: frictionless. One sentence. -->
+  <p class="cta-close-sub reveal d1">
+    Capital raising, repositioning, keynote bookings, podcast inquiries—
+    Heather reads every message and responds personally.
+  </p>
+
+  <!-- Email visible — builds trust, reduces friction -->
+  <p class="cta-email reveal d2">h***@alliance-globaladvisors.com</p>
+
+  <!-- Two actions: primary connect + secondary LinkedIn -->
+  <div class="cta-btns">
+    <a href="https://heatherfernstrom.com/contact/" class="btn-gold reveal d2">Send a Message</a>
+    <a href="https://www.linkedin.com/in/heatherfernstrom/" class="btn-outline reveal d3" target="_blank">Connect on LinkedIn</a>
+    <a href="https://alliance-globaladvisors.com" class="btn-outline reveal d3" target="_blank">Visit Alliance Global</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  FOOTER
+  Minimal, professional. Logo + links + copy.
+  No filler. No social icons clutter.
+════════════════════════════════════════ -->
+<footer>
+  <div class="f-top">
+    <!-- Logo + tagline -->
+    <div class="f-logo-block">
+      <img src="heather-fernstrom-logos-1.png" alt="Heather Fernstrom" />
+      <p class="f-logo-tagline">Investment. Innovation. Influence.<br />Co-Founder &amp; Managing Partner,<br />Alliance Global Advisors.</p>
+    </div>
+
+    <!-- Site pages -->
+    <div>
+      <div class="f-col-title">Pages</div>
+      <ul class="f-col-links">
+        <li><a href="#podcasts">In Conversation</a></li>
+        <li><a href="#proof">Recognition</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="heather.html">About Heather</a></li>
+        <li><a href="#cta-close">Connect</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <div class="f-col-title">Follow</div>
+      <ul class="f-col-links">
+        <li><a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="f-bottom">
+    <div class="f-copy">© 2026 Heather Fernstrom. All rights reserved.</div>
+    <div class="f-social">
+      <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════ JS ════════════════════════ -->
+<script>
+  // NAV scroll transform
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('s', window.scrollY > 60));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Hero photo subtle parallax
+  window.addEventListener('scroll', () => {
+    const hr = document.querySelector('.hero-right');
+    if (hr) hr.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+  });
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Drag-scroll for ticker (bonus UX)
+  const track = document.querySelector('.ticker-track');
+
+  // Mobile hamburger menu
+  const hamburger = document.getElementById('navHamburger');
+  const mobileOverlay = document.getElementById('navMobileOverlay');
+  if (hamburger && mobileOverlay) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileOverlay.classList.toggle('open');
+      document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileOverlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

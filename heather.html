@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Heather Fernstrom — Real. Grounded. Built on Purpose.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --bg: #FAF9F7;
+      --surface: #F2F0ED;
+      --warm: #F5EDE2;
+      --card: #ECEAE6;
+      --peach-dk: #C07B52;
+      --gold: #96722E;
+      --gold-lt: #B8965A;
+      --ink: #0A0A0A;
+      --mid: #5A4F48;
+      --dim: #9A8F88;
+      --border: rgba(180,140,110,0.2);
+      --border-warm: rgba(180,140,110,0.35);
+      --max: 1200px;
+      --ease: cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.7; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    em { font-style: italic; }
+    strong { font-weight: 600; }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      transition: padding 0.35s var(--ease), background 0.35s, box-shadow 0.35s;
+      background: rgba(250,249,247,0.97); backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    nav.s { padding: 14px 60px; }
+    .nav-logo-img { height: 40px; width: auto; }
+    .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+    .nav-link { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: var(--ink); }
+    .nav-cta { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 10px 22px; border: 1px solid var(--gold); color: var(--gold); transition: background 0.2s, color 0.2s; }
+    .nav-cta:hover { background: var(--gold); color: var(--bg); }
+
+    /* ─── SUB-NAV ─── */
+    .subnav {
+      position: fixed; top: 63px; left: 0; right: 0; z-index: 89;
+      height: 38px;
+      background: rgba(250,249,247,0.97); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex; align-items: center; justify-content: center; gap: 40px;
+      transition: top 0.35s var(--ease);
+    }
+    nav.s ~ .subnav { top: 43px; }
+    .subnav a {
+      font-size: 0.57rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--mid); transition: color 0.2s;
+    }
+    .subnav a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+    @keyframes slideUp { to { transform: translateY(0); } }
+    #hero {
+      min-height: 100vh; display: grid; grid-template-columns: 44% 56%;
+      background: var(--bg); overflow: hidden;
+    }
+    /* Photo on LEFT */
+    .hero-left {
+      position: relative; overflow: hidden;
+    }
+    .hero-left img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .hero-left::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to left, var(--bg) 0%, transparent 22%);
+    }
+    /* Text on RIGHT — warm cream */
+    .hero-right {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 140px 80px 100px 64px;
+      background: var(--bg);
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 0.52rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.6s var(--ease) 0.3s forwards;
+    }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .hero-h1 {
+      font-family: var(--serif); font-size: clamp(3.2rem, 5vw, 6.5rem);
+      font-weight: 300; line-height: 0.95; color: var(--ink); margin-bottom: 36px;
+    }
+    .hero-h1 .line { display: block; overflow: hidden; }
+    .hero-h1 .line-inner {
+      display: block; transform: translateY(100%);
+      animation: slideUp 0.9s var(--ease) forwards;
+    }
+    .hero-h1 .line:nth-child(1) .line-inner { animation-delay: 0.45s; }
+    .hero-h1 .line:nth-child(2) .line-inner { animation-delay: 0.62s; }
+    .hero-h1 .line:nth-child(3) .line-inner { animation-delay: 0.78s; color: var(--gold); font-style: italic; }
+    .hero-intro {
+      font-size: 0.9rem; font-weight: 300; line-height: 2;
+      color: var(--mid); max-width: 380px; margin-bottom: 44px;
+      opacity: 0; animation: fadeUp 0.8s var(--ease) 1s forwards;
+    }
+    .hero-chips {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s var(--ease) 1.15s forwards;
+    }
+    .chip {
+      font-size: 0.54rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 9px 20px; border: 1px solid rgba(0,0,0,0.15); color: var(--mid);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .chip:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+    /* ─── SECTION LABELS ─── */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 24px;
+    }
+    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .section-label span { font-size: 0.56rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); }
+
+    /* ─── GIVING BACK (first major section) ─── */
+    #giving-back {
+      padding: 120px 60px; border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .giving-back-inner {
+      display: grid; grid-template-columns: 1fr 400px; gap: 100px;
+      align-items: center; max-width: var(--max); margin: 0 auto;
+    }
+    .giving-back-h2 {
+      font-family: var(--serif); font-size: clamp(2.8rem, 4.5vw, 5.5rem);
+      font-weight: 300; color: var(--ink); line-height: 1.05; margin-bottom: 32px;
+    }
+    .giving-back-h2 em { color: var(--gold); font-style: italic; }
+    .giving-back-p { font-size: 0.9rem; color: var(--mid); line-height: 2; margin-bottom: 16px; }
+    .giving-back-p strong { color: var(--ink); }
+    .giving-back-p em { color: var(--gold); font-style: italic; }
+    .org-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .org-chip {
+      font-size: 0.54rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 9px 20px; border-radius: 100px;
+      background: var(--surface); border: 1px solid var(--border-warm); color: var(--mid);
+      transition: background 0.2s, color 0.2s;
+    }
+    .org-chip:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+    .giving-back-photo { position: relative; overflow: hidden; }
+    .giving-back-photo img { width: 100%; height: auto; display: block; }
+
+    /* ─── FAMILY SECTION ─── */
+    #family {
+      background: var(--warm); border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .family-inner {
+      display: grid; grid-template-columns: 45% 55%;
+      min-height: 70vh;
+    }
+    .family-photo {
+      position: relative; overflow: hidden;
+    }
+    .family-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    }
+    .family-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 65%, var(--warm) 100%);
+    }
+    .family-text {
+      padding: 100px 72px 100px 52px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .family-h2 {
+      font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 5rem);
+      font-weight: 300; color: var(--ink); line-height: 1.05; margin-bottom: 28px;
+    }
+    .family-h2 em { color: var(--gold); font-style: italic; }
+    .family-p { font-size: 0.9rem; color: var(--mid); line-height: 2; margin-bottom: 16px; }
+    .family-p strong { color: var(--ink); }
+    .family-p em { color: var(--gold); font-style: italic; }
+
+    /* ─── STORY SECTIONS ─── */
+    .story-block {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+    .story-photo { position: relative; overflow: hidden; min-height: 600px; }
+    .story-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.7s var(--ease); }
+    .story-block:hover .story-photo img { transform: scale(1.04); }
+    .story-text {
+      padding: 100px 72px 100px 60px; display: flex; flex-direction: column; justify-content: center;
+      background: var(--bg);
+    }
+    .story-block.alt .story-text { padding: 100px 60px 100px 72px; background: var(--surface); order: -1; }
+    .story-h2 {
+      font-family: var(--serif); font-size: clamp(2.2rem, 3.5vw, 4rem);
+      font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 28px;
+    }
+    .story-h2 em { color: var(--gold); font-style: italic; }
+    .story-p { font-size: 0.9rem; color: var(--mid); line-height: 2; margin-bottom: 16px; }
+    .story-p strong { color: var(--ink); font-weight: 600; }
+    .story-p em { color: var(--gold); font-style: italic; }
+
+    /* ─── PULL QUOTE ─── */
+    .pull {
+      padding: 100px 60px; text-align: center;
+      background: #0d1016; border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .pull blockquote {
+      font-family: var(--serif); font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+      font-weight: 300; font-style: italic; line-height: 1.55; color: rgba(255,255,255,0.85);
+      max-width: 840px; margin: 0 auto 24px;
+    }
+    .pull cite { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-lt); font-style: normal; }
+
+    /* ─── MILESTONES — INTERACTIVE ─── */
+    #milestones {
+      padding: 120px 60px; background: var(--bg); border-top: 1px solid var(--border);
+    }
+    .milestones-head { max-width: var(--max); margin: 0 auto 72px; }
+    .milestones-head h2 {
+      font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 5rem);
+      font-weight: 300; color: var(--ink); line-height: 1.05;
+    }
+    .milestones-head h2 em { color: var(--gold); font-style: italic; }
+    /* Timeline-style milestones */
+    .milestones-list { max-width: var(--max); margin: 0 auto; }
+    .milestone-row {
+      display: grid; grid-template-columns: 140px 1fr;
+      gap: 0; border-top: 1px solid var(--border);
+      cursor: pointer; transition: background 0.25s;
+      position: relative;
+    }
+    .milestone-row:last-child { border-bottom: 1px solid var(--border); }
+    .milestone-row:hover { background: var(--surface); }
+    .milestone-row.open { background: var(--surface); }
+    .milestone-row.open::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: linear-gradient(to bottom, var(--gold), var(--gold-lt));
+    }
+    .milestone-date {
+      padding: 40px 32px 40px 0;
+      display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end;
+      border-right: 1px solid var(--border);
+    }
+    .milestone-year-big {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; color: var(--gold); line-height: 1; letter-spacing: 0.02em;
+    }
+    .milestone-year-sub {
+      font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--dim); margin-top: 6px;
+    }
+    .milestone-body { padding: 40px 0 40px 48px; }
+    .milestone-title {
+      font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 2rem);
+      font-weight: 300; color: var(--ink); line-height: 1.2; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 16px; justify-content: space-between;
+    }
+    .milestone-toggle {
+      font-size: 1.1rem; color: var(--gold); flex-shrink: 0;
+      transition: transform 0.3s var(--ease);
+    }
+    .milestone-row.open .milestone-toggle { transform: rotate(45deg); }
+    .milestone-desc {
+      font-size: 0.86rem; color: var(--mid); line-height: 1.9;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.45s var(--ease), padding-top 0.3s;
+      padding-top: 0;
+    }
+    .milestone-row.open .milestone-desc {
+      max-height: 200px; padding-top: 12px;
+    }
+
+    /* ─── PHILOSOPHY ─── */
+    #philosophy {
+      padding: 120px 60px; text-align: center;
+      background: var(--warm); border-top: 1px solid var(--border);
+    }
+    .philosophy-h2 {
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 7.5rem);
+      font-weight: 300; line-height: 0.9; color: var(--ink); margin-bottom: 72px;
+    }
+    .philosophy-h2 em { color: var(--gold); font-style: italic; }
+    .pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; max-width: 1000px; margin: 0 auto 72px;
+    }
+    .pillar {
+      padding: 52px 40px; background: var(--bg);
+      border: 1px solid var(--border); text-align: left;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .pillar:hover { background: #fff; transform: translateY(-4px); }
+    .pillar-icon {
+      font-family: var(--serif); font-size: 3.5rem; font-weight: 300; line-height: 1;
+      color: var(--gold); opacity: 0.35; margin-bottom: 20px; display: block;
+    }
+    .pillar-title {
+      font-family: var(--serif); font-size: 1.4rem; font-weight: 400;
+      color: var(--ink); margin-bottom: 12px;
+    }
+    .pillar-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.85; }
+    .philosophy-sign {
+      font-family: var(--serif); font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+      font-style: italic; color: var(--mid); font-weight: 300;
+    }
+
+    /* ─── SPEAKING ─── */
+    #speaking {
+      padding: 100px 60px; border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .speaking-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      max-width: var(--max); margin: 0 auto; align-items: start;
+    }
+    .speaking-h2 {
+      font-family: var(--serif); font-size: clamp(2.2rem, 3vw, 3.8rem);
+      font-weight: 300; color: var(--ink); line-height: 1.1; margin-bottom: 20px;
+    }
+    .speaking-h2 em { color: var(--gold); font-style: italic; }
+    .speaking-p { font-size: 0.88rem; color: var(--mid); line-height: 2; }
+    .events {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+    }
+    .event {
+      padding: 28px 32px; background: var(--bg);
+      transition: background 0.25s;
+    }
+    .event:hover { background: var(--surface); }
+    .event-name {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+      color: var(--ink); margin-bottom: 6px;
+    }
+    .event-sub { font-size: 0.66rem; color: var(--dim); letter-spacing: 0.06em; }
+
+    /* ─── CTA ─── */
+    #cta-about {
+      padding: 140px 60px; text-align: center;
+      background: #0d1016; border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .gold-bar { width: 40px; height: 2px; background: var(--gold); margin: 0 auto 56px; }
+    .cta-h2 {
+      font-family: var(--serif); font-size: clamp(2.8rem, 5.5vw, 6.5rem);
+      font-weight: 300; color: #fff; line-height: 1; margin-bottom: 28px;
+    }
+    .cta-h2 em { color: var(--gold-lt); font-style: italic; }
+    .cta-sub { font-size: 0.88rem; color: rgba(255,255,255,0.5); max-width: 440px; margin: 0 auto 48px; line-height: 1.8; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-gold-solid {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 18px 40px; background: var(--gold); color: #fff;
+      transition: opacity 0.2s;
+    }
+    .btn-gold-solid:hover { opacity: 0.85; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 18px 40px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 48px 60px; background: #0d1016;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 0.56rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-lt); }
+
+    /* ─── RESPONSIVE ─── */
+    /* ─── HAMBURGER ─── */
+    .nav-hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 40px; height: 36px; flex-direction: column; justify-content: center; gap: 7px; padding: 4px;
+    }
+    .nav-hamburger span { display: block; height: 1px; width: 100%; background: var(--ink); transition: transform 0.3s, opacity 0.3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-mobile-overlay {
+      display: none; position: fixed; inset: 0; background: #0d1016; z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center; padding: 40px 32px;
+    }
+    .nav-mobile-overlay.open { display: flex; }
+    .nav-mobile-overlay ul { list-style: none; text-align: center; width: 100%; }
+    .nav-mobile-overlay li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .nav-mobile-overlay a {
+      display: block; padding: 22px 0;
+      font-family: var(--serif); font-size: clamp(1.8rem, 7vw, 2.8rem);
+      font-weight: 300; color: rgba(255,255,255,0.9); letter-spacing: 0.04em; transition: color 0.2s;
+    }
+    .nav-mobile-overlay a:hover { color: var(--gold-lt); }
+    .overlay-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 16px auto; }
+    .nav-mobile-overlay ul + ul li { border-bottom-color: rgba(255,255,255,0.05); }
+    .nav-mobile-overlay ul + ul a { font-size: clamp(1rem, 4vw, 1.4rem); color: rgba(255,255,255,0.45); padding: 14px 0; letter-spacing: 0.12em; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 16px 20px; }
+      nav.s { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .subnav { display: none; }
+
+      #hero { grid-template-columns: 1fr; min-height: 100svh; }
+      /* Photo panel stacks on top */
+      .hero-left { height: 58vw; min-height: 260px; max-height: 420px; }
+      .hero-left::after { background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%); }
+      /* Text panel below */
+      .hero-right { padding: 40px 24px 64px; justify-content: flex-start; }
+      .hero-tag { margin-bottom: 24px; }
+      .hero-h1 { font-size: clamp(3rem, 14vw, 6rem); }
+      .hero-intro { font-size: 0.84rem; max-width: 100%; }
+      .hero-chips { gap: 8px; }
+      .chip { font-size: 0.5rem; padding: 8px 16px; }
+
+      #giving-back { padding: 72px 24px; }
+      .giving-back-inner { grid-template-columns: 1fr; gap: 40px; }
+      .giving-back-photo { max-width: 360px; margin: 0 auto; }
+
+      .family-inner { grid-template-columns: 1fr; min-height: auto; }
+      .family-photo { height: 55vw; min-height: 260px; max-height: 420px; }
+      .family-photo::after { background: linear-gradient(to bottom, transparent 60%, var(--warm) 100%); }
+      .family-text { padding: 56px 24px; }
+
+      .story-block { grid-template-columns: 1fr; }
+      .story-photo { min-height: 320px; max-height: 420px; }
+      .story-text, .story-block.alt .story-text { padding: 56px 24px; order: 0; }
+
+      .pull { padding: 72px 24px; }
+      .pull-quote { font-size: clamp(1.4rem, 5vw, 2.2rem); }
+
+      #milestones { padding: 72px 24px; }
+      .milestone-row { grid-template-columns: 90px 1fr; }
+      .milestone-date { padding: 28px 16px 28px 0; }
+      .milestone-body { padding: 28px 0 28px 20px; }
+      .milestone-year-big { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+      #philosophy { padding: 72px 24px; }
+      .pillars { grid-template-columns: 1fr; max-width: 100%; }
+      .pillar { padding: 36px 28px; }
+
+      #speaking { padding: 72px 24px; }
+      .speaking-inner { grid-template-columns: 1fr; gap: 40px; }
+      .events { grid-template-columns: 1fr; }
+
+      #cta-about { padding: 80px 24px; min-height: auto; }
+      .cta-btns { flex-direction: column; align-items: stretch; gap: 12px; }
+      .cta-btns a { text-align: center; }
+
+      footer { padding: 36px 24px 28px; flex-direction: column; align-items: flex-start; gap: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: clamp(3.5rem, 15vw, 6rem); }
+      .hero-intro { font-size: 0.82rem; }
+      .hero-chips { gap: 6px; }
+      .chip { font-size: 0.48rem; padding: 7px 14px; }
+
+      .milestone-row { grid-template-columns: 72px 1fr; }
+      .milestone-date { padding: 22px 12px 22px 0; }
+      .milestone-body { padding: 22px 0 22px 16px; }
+      .milestone-year-big { font-size: clamp(1.4rem, 7vw, 2rem); }
+
+      .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
+
+      .giving-back-photo { max-width: 100%; }
+      .story-photo { min-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="heather-fernstrom-full-build.html">
+    <img src="heather-fernstrom-logos-1.png" alt="Heather Fernstrom" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="heather-fernstrom-full-build.html" class="nav-link">Home</a></li>
+    <li><a href="heather.html" class="nav-link active">About</a></li>
+    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+  </ul>
+  <a href="heather-fernstrom-full-build.html#cta-close" class="nav-cta">Contact</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="subnav" id="subnav">
+  <a href="#giving-back">Giving Back</a>
+  <a href="#story">Story</a>
+  <a href="#milestones">Milestones</a>
+  <a href="#philosophy">Philosophy</a>
+  <a href="#speaking">Speaking</a>
+</div>
+
+<!-- Mobile overlay -->
+<div class="nav-mobile-overlay" id="navMobileOverlay">
+  <ul>
+    <li><a href="heather-fernstrom-full-build.html">Home</a></li>
+    <li><a href="heather.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="heather-fernstrom-full-build.html#cta-close">Contact</a></li>
+  </ul>
+  <div class="overlay-divider"></div>
+  <ul>
+    <li><a href="#giving-back">Giving Back</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#milestones">Milestones</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+  </ul>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <!-- Photo LEFT -->
+  <div class="hero-left">
+    <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/FernstromBorder-137-scaled-2-681x1024.jpg"
+         alt="Heather Fernstrom with her family" />
+  </div>
+  <!-- Text RIGHT — warm cream -->
+  <div class="hero-right">
+    <span class="hero-tag">About Heather</span>
+    <h1 class="hero-h1">
+      <span class="line"><span class="line-inner">Advisor.</span></span>
+      <span class="line"><span class="line-inner">Mentor.</span></span>
+      <span class="line"><span class="line-inner">Mother.</span></span>
+    </h1>
+    <p class="hero-intro">
+      Real-assets advisor. Philanthropist.<br />
+      Mother of three. Florida-raised.<br />
+      Built to lead with integrity, intention, and heart.
+    </p>
+    <div class="hero-chips">
+      <a href="#giving-back" class="chip">Giving Back</a>
+      <a href="#family" class="chip">Family</a>
+      <a href="#story" class="chip">Story</a>
+      <a href="#philosophy" class="chip">Philosophy</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── GIVING BACK — First Major Section ── -->
+<section id="giving-back">
+  <div class="giving-back-inner">
+    <div>
+      <div class="section-label reveal"><span>Giving Back</span></div>
+      <h2 class="giving-back-h2 reveal d1">The work only<br />matters if it<br /><em>gives back.</em></h2>
+      <p class="giving-back-p reveal d2">
+        In year one of Alliance Global Advisors, Heather and Jennifer Stevens set a <strong>charitable giving goal before a revenue goal</strong> — and have kept that commitment every year since. Giving isn't something Heather adds in — it's how she leads.
+      </p>
+      <p class="giving-back-p reveal d2">
+        Alongside her advisory work, Heather mentors young women entering finance, speaks across the country, and serves the organizations that have shaped who she is.
+      </p>
+      <p class="giving-back-p reveal d3">
+        Her three children see it all — the setbacks, the wins, the behind-the-scenes. That's by design. <em>"Leadership isn't a title; it's how you show up when it counts."</em>
+      </p>
+      <div class="org-chips reveal d3">
+        <span class="org-chip">Wellfit Girls</span>
+        <span class="org-chip">American Heart Association</span>
+        <span class="org-chip">Women in Finance Mentorship</span>
+        <span class="org-chip">Naples Community</span>
+      </div>
+    </div>
+    <div class="giving-back-photo reveal d2">
+      <img src="heather-about.jpg" alt="Heather Fernstrom" />
+    </div>
+  </div>
+</section>
+
+<!-- ── FAMILY SECTION ── -->
+<section id="family">
+  <div class="family-inner">
+    <div class="family-photo">
+      <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/FernstromBorder-137-scaled-2-681x1024.jpg"
+           alt="Heather Fernstrom with her children" />
+    </div>
+    <div class="family-text">
+      <div class="section-label reveal"><span>Family</span></div>
+      <h2 class="family-h2 reveal d1">Grounded in<br />what <em>matters most.</em></h2>
+      <p class="family-p reveal d2">
+        Behind every early morning and every late evening is the reason Heather does it all — three kids who remind her daily what real accountability looks like.
+      </p>
+      <p class="family-p reveal d2">
+        They've watched her navigate hard conversations, celebrate hard-won wins, and show up fully in every season. That's the model she's building — not just for clients, but for them.
+      </p>
+      <p class="family-p reveal d3">
+        Raised in Naples, Florida. <strong>Still here.</strong> Still building. Still believing the best investments are the people around you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── STORY: ORIGINS ── -->
+<div id="story">
+<section class="story-block">
+  <div class="story-photo">
+    <!-- Replace with photo of Heather and her brother when available -->
+    <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Heather_Beach-April87-122-scaled.jpg"
+         alt="Heather Fernstrom — Naples, Florida" />
+  </div>
+  <div class="story-text">
+    <div class="section-label reveal"><span>Origins</span></div>
+    <h2 class="story-h2 reveal d1">Born in Florida.<br /><em>Built to lead.</em></h2>
+    <p class="story-p reveal d2">
+      Hard work, humility, and the belief that <strong>real leadership starts with service</strong> —
+      those weren't classroom lessons. By age 10, Heather was working the front desk of her family's
+      Naples hotel, learning to listen, lead, and serve.
+    </p>
+    <p class="story-p reveal d2">
+      Her parents modeled entrepreneurship from the start. A father who invested in real estate.
+      A mother who built her own advisory firm. That front-row seat became the blueprint.
+    </p>
+    <p class="story-p reveal d3">
+      In 2005, at 21, Heather lost her brother. That loss reshaped everything — deepening her compassion
+      and lighting a fire to <em>live on purpose.</em> If you're still here, there's work to do.
+    </p>
+  </div>
+</section>
+
+<!-- ── PULL QUOTE ── -->
+<div class="pull">
+  <blockquote class="reveal">"In 2008, at 26, I was reporting devastating losses to pension boards of teachers, firefighters, and retirees. That taught me fiduciary responsibility isn't a phrase — it's a promise to do right by real people."</blockquote>
+  <cite class="reveal d1">— Heather Fernstrom Border</cite>
+</div>
+
+<!-- ── STORY: PATH ── -->
+<section class="story-block alt">
+  <div class="story-text">
+    <div class="section-label reveal"><span>The Path</span></div>
+    <h2 class="story-h2 reveal d1">A career built on<br /><em>earned authority.</em></h2>
+    <p class="story-p reveal d2">
+      Heather's path wasn't linear. She earned two bachelor's degrees in <strong>Accounting</strong>
+      and <strong>Business Administration</strong> from Western State — while competing as a collegiate
+      volleyball player — then two master's degrees in <strong>Finance</strong> and
+      <strong>Real Estate &amp; Construction Management</strong> from the University of Denver.
+    </p>
+    <p class="story-p reveal d2">
+      She went on to develop and lead IR platforms at <strong>National Real Estate Advisors</strong>,
+      <strong>Hunt Investment Management</strong>, and <strong>The Townsend Group</strong> —
+      building the institutional relationships that would define her career.
+    </p>
+    <p class="story-p reveal d3">
+      She became known for how she <em>builds teams</em> — with transparency, trust, and room to grow.
+      Always an advocate for those overlooked or underestimated. "We don't just need more diverse leaders —
+      we need more people willing to lead differently."
+    </p>
+  </div>
+  <div class="story-photo">
+    <img src="heather-hero.jpg" alt="Heather Fernstrom" />
+  </div>
+</section>
+</div>
+
+<!-- ── MILESTONES — Interactive Timeline ── -->
+<section id="milestones">
+  <div class="milestones-head">
+    <div class="section-label reveal"><span>Career Highlights</span></div>
+    <h2 class="reveal d1">Milestones that <em>matter.</em></h2>
+  </div>
+  <div class="milestones-list">
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2005</div>
+        <div class="milestone-year-sub">Turning point</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-title">
+          <span>A Loss That Lit the Fire</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">At 21, Heather lost her brother. That loss deepened her compassion and lit an unshakeable commitment to living — and leading — on purpose. Everything she's built since carries his memory.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">'08–'09</div>
+        <div class="milestone-year-sub">Trial by fire</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-title">
+          <span>Reporting Losses to Pension Boards</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">At 26, reporting devastating portfolio losses to pension boards of teachers, firefighters, and retirees forged an unshakeable commitment to fiduciary responsibility and people-first leadership. This wasn't theory — it was accountability in real time.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2020</div>
+        <div class="milestone-year-sub">Founded</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-title">
+          <span>Co-Founded Alliance Global Advisors</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">In the middle of a pandemic, Heather and Jennifer Stevens launched Alliance Global Advisors — setting a charitable giving goal before a revenue goal. That principle guides the firm to this day, and has never been broken.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">3×</div>
+        <div class="milestone-year-sub">2023–2025</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-title">
+          <span>Inc. 5000 — Three Consecutive Years</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Alliance Global Advisors was named to the Inc. 5000 list of America's fastest-growing private companies three years running — ranking No. 228 in 2023, No. 1,063 in 2024, and No. 4,976 in 2025. A testament to the model built from day one.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2026</div>
+        <div class="milestone-year-sub">National honor</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-title">
+          <span>Inc. Female Founders 500</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Inc. Magazine named Heather to the Female Founders 500 — a national honor reserved for the most impactful women building companies that are redefining their industries. A recognition of two decades of conviction in action.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PHILOSOPHY ── -->
+<section id="philosophy">
+  <div class="section-label reveal" style="justify-content:center; margin-bottom:24px;"><span>How She Leads</span></div>
+  <h2 class="philosophy-h2 reveal d1">Service is<br />the <em>strategy.</em></h2>
+  <div class="pillars">
+    <div class="pillar reveal">
+      <span class="pillar-icon">01</span>
+      <div class="pillar-title">Integrity</div>
+      <p class="pillar-desc">Every relationship, every deal, every team interaction governed by doing the right thing — even when no one is watching.</p>
+    </div>
+    <div class="pillar reveal d1">
+      <span class="pillar-icon">02</span>
+      <div class="pillar-title">Intention</div>
+      <p class="pillar-desc">Nothing is accidental. Strategy, positioning, relationships — all built deliberately, with long-term outcomes in mind.</p>
+    </div>
+    <div class="pillar reveal d2">
+      <span class="pillar-icon">03</span>
+      <div class="pillar-title">Heart</div>
+      <p class="pillar-desc">The warmth and human-first approach that clients consistently cite as what makes Heather — and the work — genuinely different.</p>
+    </div>
+  </div>
+  <p class="philosophy-sign reveal d3">"Giving back isn't something I add in — it's embedded in how I lead and live."</p>
+</section>
+
+<!-- ── SPEAKING ── -->
+<section id="speaking">
+  <div class="speaking-inner">
+    <div>
+      <div class="section-label reveal"><span>On Stage</span></div>
+      <h2 class="speaking-h2 reveal d1">A voice the<br />industry <em>listens to.</em></h2>
+      <p class="speaking-p reveal d2">
+        Heather speaks at the industry's most influential forums — on investor relations, institutional capital,
+        real assets strategy, and women's leadership. Her perspective is candid, earned, and deeply practical.
+      </p>
+    </div>
+    <div class="events reveal d2">
+      <div class="event">
+        <div class="event-name">PREA</div>
+        <div class="event-sub">Pension Real Estate Association</div>
+      </div>
+      <div class="event">
+        <div class="event-name">IREI</div>
+        <div class="event-sub">Institutional Real Estate, Inc.</div>
+      </div>
+      <div class="event">
+        <div class="event-name">PERE</div>
+        <div class="event-sub">Private Equity Real Estate</div>
+      </div>
+      <div class="event">
+        <div class="event-name">RELPI</div>
+        <div class="event-sub">Real Estate LP Initiative</div>
+      </div>
+      <div class="event">
+        <div class="event-name">Markets Group</div>
+        <div class="event-sub">Institutional Investment Conferences</div>
+      </div>
+      <div class="event">
+        <div class="event-name">Connect CRE</div>
+        <div class="event-sub">Women in Real Estate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="cta-about">
+  <div class="gold-bar"></div>
+  <h2 class="cta-h2 reveal">Ready to build<br /><em>something that lasts?</em></h2>
+  <p class="cta-sub reveal d1">20+ years of institutional-grade IR expertise — working for you.</p>
+  <div class="cta-btns reveal d2">
+    <a href="heather-fernstrom-full-build.html#cta-close" class="btn-gold-solid">Work With Heather</a>
+    <a href="heather-fernstrom-full-build.html" class="btn-ghost">← Back to Home</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-copy">© 2026 Heather Fernstrom Border · All Rights Reserved</span>
+  <div class="footer-links">
+    <a href="heather-fernstrom-full-build.html">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://alliance-globaladvisors.com" target="_blank">Alliance Global</a>
+    <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('s', window.scrollY > 60), { passive: true });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Interactive milestones accordion
+  document.querySelectorAll('.milestone-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const isOpen = row.classList.contains('open');
+      document.querySelectorAll('.milestone-row').forEach(r => r.classList.remove('open'));
+      if (!isOpen) row.classList.add('open');
+    });
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('navHamburger');
+  const mobileOverlay = document.getElementById('navMobileOverlay');
+  if (hamburger && mobileOverlay) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileOverlay.classList.toggle('open');
+      document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileOverlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>
+</body>
+</html>

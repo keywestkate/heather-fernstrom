@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions — Heather Fernstrom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #FAF9F7;
+      --surface:  #F2F0ED;
+      --card:     #ECEAE6;
+      --border:   #D8D3CC;
+      --gold:     #96722E;
+      --gold-lt:  #B8965A;
+      --cream:    #0A0A0A;
+      --mid:      #555555;
+      --dim:      #999999;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+      --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+      --max:      760px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { background: var(--bg); color: var(--cream); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(250,249,247,0.96); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { height: 40px; width: auto; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cream); }
+    .nav-cta { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid var(--gold); color: var(--gold); padding: 10px 22px; transition: background 0.2s, color 0.2s; }
+    .nav-cta:hover { background: var(--gold); color: var(--bg); }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 60px 80px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      max-width: 100%;
+    }
+    .page-hero-inner { max-width: var(--max); margin: 0 auto; }
+    .page-label {
+      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 28px;
+    }
+    .page-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .page-label span { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    .page-title {
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.0; color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+    .page-sub { font-size: 0.9rem; color: var(--mid); line-height: 1.9; max-width: 540px; }
+
+    /* FAQ SECTION */
+    .faq-section {
+      padding: 80px 60px 140px;
+    }
+    .faq-inner { max-width: var(--max); margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--cream); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 0; text-align: left; gap: 24px;
+    }
+    .faq-q-text { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; line-height: 1.4; }
+    .faq-icon {
+      font-size: 1.2rem; color: var(--gold); flex-shrink: 0; width: 24px; text-align: center;
+      transition: transform 0.3s var(--ease);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.5s var(--ease); }
+    .faq-a-inner { padding: 0 0 28px; font-size: 0.85rem; color: var(--mid); line-height: 1.9; }
+    .faq-a-inner a { color: var(--gold); border-bottom: 1px solid rgba(184,150,90,0.3); transition: border-color 0.2s; }
+    .faq-a-inner a:hover { border-color: var(--gold); }
+
+    /* CTA STRIP */
+    .faq-cta-strip {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 80px 60px; text-align: center;
+    }
+    .faq-cta-strip h2 {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300; margin-bottom: 20px;
+    }
+    .faq-cta-strip h2 em { font-style: italic; color: var(--gold); }
+    .faq-cta-strip p { font-size: 0.88rem; color: var(--mid); max-width: 480px; margin: 0 auto 40px; line-height: 1.9; }
+    .btn-gold {
+      display: inline-block; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      background: var(--gold); color: var(--bg); padding: 16px 36px;
+      transition: opacity 0.25s, transform 0.2s; margin: 0 8px;
+    }
+    .btn-gold:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid var(--border); color: var(--cream); padding: 16px 36px;
+      transition: border-color 0.25s, color 0.25s; margin: 0 8px;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border); padding: 48px 60px 36px;
+      background: var(--surface);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
+    }
+    .f-copy { font-size: 0.58rem; color: var(--dim); letter-spacing: 0.06em; }
+    .f-links { display: flex; gap: 28px; }
+    .f-links a { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); transition: color 0.2s; }
+    .f-links a:hover { color: var(--gold); }
+
+    /* ─── HAMBURGER ─── */
+    .nav-hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 40px; height: 36px; flex-direction: column; justify-content: center; gap: 7px; padding: 4px;
+    }
+    .nav-hamburger span { display: block; height: 1px; width: 100%; background: var(--cream); transition: transform 0.3s, opacity 0.3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-mobile-overlay {
+      display: none; position: fixed; inset: 0; background: #0d1016; z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center; padding: 40px 32px;
+    }
+    .nav-mobile-overlay.open { display: flex; }
+    .nav-mobile-overlay ul { list-style: none; text-align: center; width: 100%; }
+    .nav-mobile-overlay li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .nav-mobile-overlay a {
+      display: block; padding: 22px 0;
+      font-family: var(--serif); font-size: clamp(1.8rem, 7vw, 2.8rem);
+      font-weight: 300; color: rgba(255,255,255,0.9); letter-spacing: 0.04em; transition: color 0.2s;
+    }
+    .nav-mobile-overlay a:hover { color: var(--gold-lt); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .page-hero { padding: 100px 24px 52px; }
+      .page-title { font-size: clamp(2.2rem, 10vw, 4rem); }
+      .page-sub { font-size: 0.84rem; }
+
+      .faq-section { padding: 52px 24px 80px; }
+      .faq-q { padding: 22px 0; }
+      .faq-q-text { font-size: 1.05rem; }
+
+      .faq-cta-strip { padding: 56px 24px; }
+      .faq-cta-strip h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+      .btn-gold, .btn-outline { display: block; width: 100%; text-align: center; margin: 6px 0; padding: 16px; min-height: 48px; }
+
+      footer { padding: 36px 24px 28px; flex-direction: column; align-items: flex-start; gap: 14px; }
+      .f-links { flex-wrap: wrap; gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .page-title { font-size: clamp(2rem, 11vw, 3rem); }
+      .faq-q-text { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="heather-fernstrom-full-build.html">
+    <img src="heather-fernstrom-logos-1.png" alt="Heather Fernstrom" class="nav-logo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="heather-fernstrom-full-build.html">Home</a></li>
+    <li><a href="heather.html">About</a></li>
+    <li><a href="faq.html" class="active">FAQ</a></li>
+  </ul>
+  <a href="heather-fernstrom-full-build.html#cta-close" class="nav-cta">Contact</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="nav-mobile-overlay" id="navMobileOverlay">
+  <ul>
+    <li><a href="heather-fernstrom-full-build.html">Home</a></li>
+    <li><a href="heather.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="heather-fernstrom-full-build.html#cta-close">Contact</a></li>
+  </ul>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-label"><span>Questions &amp; Answers</span></div>
+    <h1 class="page-title">Common <em>Questions</em></h1>
+    <p class="page-sub">Everything you need to know about working with Heather, speaking engagements, and how Alliance Global Advisors can help your firm.</p>
+  </div>
+</div>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+  <div class="faq-inner">
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">How does Heather work with clients through Alliance Global Advisors?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Alliance Global Advisors provides strategic advisory, IR platform development, and capital formation guidance to real estate investment managers. Engagements are customized — some clients need full-service IR buildouts, others need strategic positioning or targeted LP introductions. The first step is always a direct conversation. Visit <a href="https://alliance-globaladvisors.com/connect" target="_blank">alliance-globaladvisors.com</a> to get in touch.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Is Heather available for speaking engagements and keynotes?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Yes. Heather speaks at industry conferences, investor forums, and corporate events on topics including real estate capital formation, women in real asset investment, entrepreneurship, and building institutional relationships. For speaking inquiries, use the contact form or reach out directly.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Does Heather take podcast or media appearances?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Heather has appeared on multiple industry podcasts including Park Madison Partners, Juniper Square's Power of Partnership series, and Apple Podcasts' leadership programming. She's selective about where she invests her voice — episodes should align with institutional real estate, capital markets, or leadership topics. Pitch via the connect form.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Who does Heather typically work with?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Heather works with real estate investment managers of all sizes — from emerging managers raising their first institutional fund to established operators running multi-billion dollar portfolios. Many clients are MWBE (Minority and Women-Owned Business Enterprises) and Diverse-Owned managers seeking to build the infrastructure and relationships needed to access institutional capital.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">How can I follow Heather's work and thought leadership?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Connect on <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank">LinkedIn</a> for regular insights on real asset investment, capital markets, and leadership. You can also follow Alliance Global Advisors on LinkedIn and visit <a href="https://alliance-globaladvisors.com/insights" target="_blank">alliance-globaladvisors.com/insights</a> for Heather's thought leadership and industry commentary.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">"We already have an IR team. Do we really need outside advisory?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          The best IR teams in the industry still use outside advisors — not because they can't do the work, but because an independent perspective, a broader network, and someone who's seen 100+ managers up close accelerates what's already working. Heather doesn't replace your team; she makes them more effective.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">"We're too early-stage for this level of advisory."</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          The managers who wait until their third fund to build proper IR infrastructure almost always wish they'd started sooner. Heather has worked with managers from day one — building the foundation that makes later fundraises dramatically easier and faster.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">"We've worked with consultants before and didn't see results."</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Most consultants hand you a deck and disappear. Heather's approach is embedded, relationship-driven, and accountable to outcomes. Alliance Global Advisors' Inc. 5000 growth — three years running — reflects what happens when advisory actually works.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">"Is now really the right time, given market conditions?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Heather has navigated multiple cycles. The managers who invest in positioning and relationships during dislocations always emerge with decisive advantages. The ones who keep building during downturns raise fastest when conditions turn.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="faq-cta-strip">
+  <h2>Ready to have a<br /><em>real conversation?</em></h2>
+  <p>Heather reads every message and responds personally. Capital raising, repositioning, keynote bookings, podcast inquiries — reach out directly.</p>
+  <a href="https://heatherfernstrom.com/contact/" class="btn-gold">Send a Message</a>
+  <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank" class="btn-outline">Connect on LinkedIn</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-copy">© 2026 Heather Fernstrom. All rights reserved.</div>
+  <div class="f-links">
+    <a href="heather-fernstrom-full-build.html">Home</a>
+    <a href="heather.html">About</a>
+    <a href="https://alliance-globaladvisors.com" target="_blank">Alliance Global</a>
+    <a href="https://www.linkedin.com/in/heatherfernstrom/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('navHamburger');
+  const mobileOverlay = document.getElementById('navMobileOverlay');
+  if (hamburger && mobileOverlay) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileOverlay.classList.toggle('open');
+      document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileOverlay.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>
+</body>
+</html>
