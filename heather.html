@@ -197,6 +197,88 @@
     .family-p strong { color: var(--ink); }
     .family-p em { color: var(--gold); font-style: italic; }
 
+    /* ─── KIDS PHOTO STRIP ─── */
+    #kids-strip {
+      background: #0d1016;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      padding: 96px 0 0;
+    }
+    .kids-strip-head {
+      text-align: center;
+      padding: 0 60px 64px;
+    }
+    .kids-strip-label {
+      display: inline-flex; align-items: center; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .kids-strip-label::before,
+    .kids-strip-label::after { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .kids-strip-label span {
+      font-size: 0.56rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--gold-lt);
+    }
+    .kids-strip-h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4.5vw, 5.2rem);
+      font-weight: 300; line-height: 1.05;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 20px;
+    }
+    .kids-strip-h2 em { color: var(--gold-lt); font-style: italic; }
+    .kids-strip-sub {
+      font-size: 0.88rem; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,0.38);
+      max-width: 460px; margin: 0 auto;
+    }
+
+    /* Auto-scroll track */
+    .photo-track-wrap {
+      width: 100%;
+      overflow: hidden;
+      padding: 24px 0 0;
+      /* fade edges */
+      -webkit-mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);
+    }
+    .photo-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      animation: scroll-strip 48s linear infinite;
+    }
+    .photo-track:hover { animation-play-state: paused; }
+    @keyframes scroll-strip {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .strip-photo {
+      flex-shrink: 0;
+      height: 420px;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.4s;
+      cursor: pointer;
+    }
+    .strip-photo:hover {
+      border-color: rgba(150,114,46,0.5);
+      box-shadow: 0 24px 72px rgba(150,114,46,0.18);
+      transform: scale(1.03) translateY(-6px);
+    }
+    .strip-photo img {
+      height: 100%; width: auto;
+      display: block;
+      pointer-events: none;
+    }
+    .kids-strip-caption {
+      text-align: center;
+      padding: 32px 60px 72px;
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+    .kids-strip-caption em { color: var(--gold); font-style: italic; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: none; }
+
     /* ─── STORY SECTIONS ─── */
     .story-block {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -233,18 +315,17 @@
 
     /* ─── MILESTONES — INTERACTIVE ─── */
     #milestones {
-      padding: 120px 60px; background: var(--bg); border-top: 1px solid var(--border);
+      padding: 80px 60px; background: var(--bg); border-top: 1px solid var(--border);
     }
-    .milestones-head { max-width: var(--max); margin: 0 auto 72px; }
+    .milestones-head { max-width: var(--max); margin: 0 auto 48px; }
     .milestones-head h2 {
-      font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 5rem);
+      font-family: var(--serif); font-size: clamp(2.2rem, 3.5vw, 4.2rem);
       font-weight: 300; color: var(--ink); line-height: 1.05;
     }
     .milestones-head h2 em { color: var(--gold); font-style: italic; }
-    /* Timeline-style milestones */
     .milestones-list { max-width: var(--max); margin: 0 auto; }
     .milestone-row {
-      display: grid; grid-template-columns: 140px 1fr;
+      display: grid; grid-template-columns: 120px 1fr;
       gap: 0; border-top: 1px solid var(--border);
       cursor: pointer; transition: background 0.25s;
       position: relative;
@@ -257,38 +338,40 @@
       background: linear-gradient(to bottom, var(--gold), var(--gold-lt));
     }
     .milestone-date {
-      padding: 40px 32px 40px 0;
+      padding: 22px 24px 22px 0;
       display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end;
       border-right: 1px solid var(--border);
     }
     .milestone-year-big {
-      font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-family: var(--serif); font-size: clamp(1.2rem, 2vw, 1.9rem);
       font-weight: 300; color: var(--gold); line-height: 1; letter-spacing: 0.02em;
     }
     .milestone-year-sub {
-      font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--dim); margin-top: 6px;
+      font-size: 0.48rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--dim); margin-top: 5px;
     }
-    .milestone-body { padding: 40px 0 40px 48px; }
+    .milestone-body { padding: 22px 0 22px 36px; }
     .milestone-title {
-      font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 2rem);
-      font-weight: 300; color: var(--ink); line-height: 1.2; margin-bottom: 8px;
+      font-family: var(--serif); font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+      font-weight: 300; color: var(--ink); line-height: 1.2; margin-bottom: 6px;
       display: flex; align-items: center; gap: 16px; justify-content: space-between;
     }
+    .milestone-cat {
+      font-size: 0.46rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 6px;
+    }
     .milestone-toggle {
-      font-size: 1.1rem; color: var(--gold); flex-shrink: 0;
+      font-size: 1rem; color: var(--gold); flex-shrink: 0;
       transition: transform 0.3s var(--ease);
     }
     .milestone-row.open .milestone-toggle { transform: rotate(45deg); }
     .milestone-desc {
-      font-size: 0.86rem; color: var(--mid); line-height: 1.9;
+      font-size: 0.84rem; color: var(--mid); line-height: 1.85;
       max-height: 0; overflow: hidden;
       transition: max-height 0.45s var(--ease), padding-top 0.3s;
       padding-top: 0;
     }
-    .milestone-row.open .milestone-desc {
-      max-height: 200px; padding-top: 12px;
-    }
+    .milestone-row.open .milestone-desc { max-height: 200px; padding-top: 10px; }
 
     /* ─── PHILOSOPHY ─── */
     #philosophy {
@@ -441,6 +524,11 @@
       .hero-chips { gap: 8px; }
       .chip { font-size: 0.5rem; padding: 8px 16px; }
 
+      #kids-strip { padding: 72px 0 0; }
+      .kids-strip-head { padding: 0 24px 48px; }
+      .strip-photo { height: 300px; }
+      .kids-strip-caption { padding: 24px 24px 56px; }
+
       #giving-back { padding: 72px 24px; }
       .giving-back-inner { grid-template-columns: 1fr; gap: 40px; }
       .giving-back-photo { max-width: 360px; margin: 0 auto; }
@@ -457,11 +545,12 @@
       .pull { padding: 72px 24px; }
       .pull-quote { font-size: clamp(1.4rem, 5vw, 2.2rem); }
 
-      #milestones { padding: 72px 24px; }
-      .milestone-row { grid-template-columns: 90px 1fr; }
-      .milestone-date { padding: 28px 16px 28px 0; }
-      .milestone-body { padding: 28px 0 28px 20px; }
-      .milestone-year-big { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      #milestones { padding: 56px 24px; }
+      .milestone-row { grid-template-columns: 76px 1fr; }
+      .milestone-date { padding: 18px 12px 18px 0; }
+      .milestone-body { padding: 18px 0 18px 16px; }
+      .milestone-year-big { font-size: clamp(1rem, 4.5vw, 1.5rem); }
+      .milestone-cat { font-size: 0.44rem; }
 
       #philosophy { padding: 72px 24px; }
       .pillars { grid-template-columns: 1fr; max-width: 100%; }
@@ -516,10 +605,11 @@
 
 <div class="subnav" id="subnav">
   <a href="#giving-back">Giving Back</a>
+  <a href="#family">Family</a>
+  <a href="#kids-strip">Life</a>
   <a href="#story">Story</a>
   <a href="#milestones">Milestones</a>
   <a href="#philosophy">Philosophy</a>
-  <a href="#speaking">Speaking</a>
 </div>
 
 <!-- Mobile overlay -->
@@ -533,10 +623,11 @@
   <div class="overlay-divider"></div>
   <ul>
     <li><a href="#giving-back">Giving Back</a></li>
+    <li><a href="#family">Family</a></li>
+    <li><a href="#kids-strip">Life With Kids</a></li>
     <li><a href="#story">Story</a></li>
     <li><a href="#milestones">Milestones</a></li>
     <li><a href="#philosophy">Philosophy</a></li>
-    <li><a href="#speaking">Speaking</a></li>
   </ul>
 </div>
 
@@ -620,6 +711,45 @@
   </div>
 </section>
 
+<!-- ── KIDS PHOTO STRIP ── -->
+<section id="kids-strip">
+  <div class="kids-strip-head">
+    <div class="kids-strip-label"><span>Life With the Kids</span></div>
+    <h2 class="kids-strip-h2 reveal">Three kids who<br />keep it <em>real.</em></h2>
+    <p class="kids-strip-sub reveal d1">
+      Ski trips. Fishing boats. Christmas morning. Sunsets on the water.<br />
+      This is the job she loves most.
+    </p>
+  </div>
+  <div class="photo-track-wrap">
+    <div class="photo-track">
+      <!-- Set 1 -->
+      <div class="strip-photo"><img src="the-kids/421A9362.jpeg"  alt="Heather and kids skiing" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_4048.jpeg"  alt="Kids at the beach" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_6980.jpeg"  alt="Family Christmas tree" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_5316.jpeg"  alt="Fishing boat adventure" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_7700.jpeg"  alt="Christmas morning PJs" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_2758.jpeg"  alt="Mountain hike together" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_5335.jpeg"  alt="Sunset on the water" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_2830.jpeg"  alt="Kids in the forest" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_2706.jpeg"  alt="Mountain lake day" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_7085.jpeg"  alt="Family moment" /></div>
+      <!-- Set 2 — duplicate for seamless loop -->
+      <div class="strip-photo"><img src="the-kids/421A9362.jpeg"  alt="Heather and kids skiing" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_4048.jpeg"  alt="Kids at the beach" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_6980.jpeg"  alt="Family Christmas tree" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_5316.jpeg"  alt="Fishing boat adventure" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_7700.jpeg"  alt="Christmas morning PJs" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_2758.jpeg"  alt="Mountain hike together" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_5335.jpeg"  alt="Sunset on the water" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_2830.jpeg"  alt="Kids in the forest" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_2706.jpeg"  alt="Mountain lake day" /></div>
+      <div class="strip-photo"><img src="the-kids/IMG_7085.jpeg"  alt="Family moment" /></div>
+    </div>
+  </div>
+  <p class="kids-strip-caption reveal">Hover to pause &nbsp;·&nbsp; <em>Best adventures, no agenda</em></p>
+</section>
+
 <!-- ── STORY: ORIGINS ── -->
 <div id="story">
 <section class="story-block">
@@ -691,12 +821,43 @@
 
     <div class="milestone-row reveal" data-open="false">
       <div class="milestone-date">
-        <div class="milestone-year-big">2005</div>
-        <div class="milestone-year-sub">Turning point</div>
+        <div class="milestone-year-big">2002–04</div>
+        <div class="milestone-year-sub">Education</div>
       </div>
       <div class="milestone-body">
+        <div class="milestone-cat">Built the Foundation</div>
         <div class="milestone-title">
-          <span>A Loss That Lit the Fire</span>
+          <span>Bachelor of Science, Business Administration</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Earned a Bachelor of Science in Business Administration, Accounting, from Western Colorado University — while competing as a collegiate volleyball player.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2004–05</div>
+        <div class="milestone-year-sub">Early Career</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-cat">Started in Accounting</div>
+        <div class="milestone-title">
+          <span>LarsonAllen, LLC</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Began her career at LarsonAllen, LLC, building the financial discipline that would shape everything that followed.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2005</div>
+        <div class="milestone-year-sub">Turning Point</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-cat">A Loss That Lit the Fire</div>
+        <div class="milestone-title">
+          <span>The Loss of Her Brother</span>
           <span class="milestone-toggle">+</span>
         </div>
         <div class="milestone-desc">At 21, Heather lost her brother. That loss deepened her compassion and lit an unshakeable commitment to living — and leading — on purpose. Everything she's built since carries his memory.</div>
@@ -705,12 +866,43 @@
 
     <div class="milestone-row reveal" data-open="false">
       <div class="milestone-date">
-        <div class="milestone-year-big">'08–'09</div>
-        <div class="milestone-year-sub">Trial by fire</div>
+        <div class="milestone-year-big">2005–07</div>
+        <div class="milestone-year-sub">Financial Leadership</div>
       </div>
       <div class="milestone-body">
+        <div class="milestone-cat">Treasury Management</div>
         <div class="milestone-title">
-          <span>Reporting Losses to Pension Boards</span>
+          <span>Bancshares of Florida</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Served as Treasury Management Officer, expanding into banking, operations, and strategic financial management.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2006–08</div>
+        <div class="milestone-year-sub">Advanced Study</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-cat">Deepened Her Expertise</div>
+        <div class="milestone-title">
+          <span>MSF / MSRECM — University of Denver</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Earned dual master's degrees in Finance and Real Estate &amp; Construction Management from the University of Denver – Daniels College of Business.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">'08–'09</div>
+        <div class="milestone-year-sub">Trial by Fire</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-cat">Reporting Losses to Pension Boards</div>
+        <div class="milestone-title">
+          <span>Fiduciary Accountability Under Pressure</span>
           <span class="milestone-toggle">+</span>
         </div>
         <div class="milestone-desc">At 26, reporting devastating portfolio losses to pension boards of teachers, firefighters, and retirees forged an unshakeable commitment to fiduciary responsibility and people-first leadership. This wasn't theory — it was accountability in real time.</div>
@@ -719,40 +911,88 @@
 
     <div class="milestone-row reveal" data-open="false">
       <div class="milestone-date">
-        <div class="milestone-year-big">2020</div>
-        <div class="milestone-year-sub">Founded</div>
+        <div class="milestone-year-big">2008–11</div>
+        <div class="milestone-year-sub">Institutional Advisory</div>
       </div>
       <div class="milestone-body">
+        <div class="milestone-cat">The Townsend Group</div>
         <div class="milestone-title">
-          <span>Co-Founded Alliance Global Advisors</span>
+          <span>Advising Institutional Investors</span>
           <span class="milestone-toggle">+</span>
         </div>
-        <div class="milestone-desc">In the middle of a pandemic, Heather and Jennifer Stevens launched Alliance Global Advisors — setting a charitable giving goal before a revenue goal. That principle guides the firm to this day, and has never been broken.</div>
+        <div class="milestone-desc">Advised institutional investors during one of the most demanding periods in the market, sharpening her perspective on risk, accountability, and long-term strategy.</div>
       </div>
     </div>
 
     <div class="milestone-row reveal" data-open="false">
       <div class="milestone-date">
-        <div class="milestone-year-big">3×</div>
-        <div class="milestone-year-sub">2023–2025</div>
+        <div class="milestone-year-big">2011–13</div>
+        <div class="milestone-year-sub">Executive Growth</div>
       </div>
       <div class="milestone-body">
+        <div class="milestone-cat">Hunt Companies</div>
         <div class="milestone-title">
-          <span>Inc. 5000 — Three Consecutive Years</span>
+          <span>Vice President</span>
           <span class="milestone-toggle">+</span>
         </div>
-        <div class="milestone-desc">Alliance Global Advisors was named to the Inc. 5000 list of America's fastest-growing private companies three years running — ranking No. 228 in 2023, No. 1,063 in 2024, and No. 4,976 in 2025. A testament to the model built from day one.</div>
+        <div class="milestone-desc">Served as Vice President, contributing to a platform focused on development, investment, and asset management across institutional real estate.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2013–19</div>
+        <div class="milestone-year-sub">Investor Relations</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-cat">National Real Estate Advisors</div>
+        <div class="milestone-title">
+          <span>Led Institutional IR Platform</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Led investor relations at National Real Estate Advisors, supporting institutional real estate investment strategies across multiple platforms and deepening the LP relationships that would define her next chapter.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2019–</div>
+        <div class="milestone-year-sub">Founded</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-cat">Co-Founded Alliance Global Advisors</div>
+        <div class="milestone-title">
+          <span>Building What Didn't Exist</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Heather and Jennifer Stevens launched Alliance Global Advisors — setting a charitable giving goal before a revenue goal. That principle guides the firm to this day, and has never been broken.</div>
+      </div>
+    </div>
+
+    <div class="milestone-row reveal" data-open="false">
+      <div class="milestone-date">
+        <div class="milestone-year-big">2023–26</div>
+        <div class="milestone-year-sub">National Recognition</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-cat">Inc. 5000 — Four Consecutive Years</div>
+        <div class="milestone-title">
+          <span>America's Fastest-Growing Private Companies</span>
+          <span class="milestone-toggle">+</span>
+        </div>
+        <div class="milestone-desc">Alliance Global Advisors was named to the Inc. 5000 four years running — No. 228 (2023), No. 1,063 (2024), No. 4,976 (2025), and continuing in 2026. A testament to the model built from day one.</div>
       </div>
     </div>
 
     <div class="milestone-row reveal" data-open="false">
       <div class="milestone-date">
         <div class="milestone-year-big">2026</div>
-        <div class="milestone-year-sub">National honor</div>
+        <div class="milestone-year-sub">National Honor</div>
       </div>
       <div class="milestone-body">
+        <div class="milestone-cat">Inc. Female Founders 500</div>
         <div class="milestone-title">
-          <span>Inc. Female Founders 500</span>
+          <span>Inc. Magazine — Female Founders 500</span>
           <span class="milestone-toggle">+</span>
         </div>
         <div class="milestone-desc">Inc. Magazine named Heather to the Female Founders 500 — a national honor reserved for the most impactful women building companies that are redefining their industries. A recognition of two decades of conviction in action.</div>
