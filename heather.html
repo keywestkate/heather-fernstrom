@@ -279,6 +279,28 @@
     }
     .kids-strip-caption em { color: var(--gold); font-style: italic; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: none; }
 
+    /* ─── ORIGINS BLOCK — custom grid: head/body right, photo spans both rows ─── */
+    .story-block-origins {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "photo head"
+        "photo body";
+      border-top: 1px solid var(--border);
+    }
+    .origins-head {
+      grid-area: head;
+      padding: 100px 60px 16px 60px;
+      background: var(--bg);
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .origins-body {
+      grid-area: body;
+      padding: 16px 60px 100px 60px;
+      background: var(--bg);
+    }
+    .story-block-origins .story-photo { grid-area: photo; }
+
     /* ─── STORY SECTIONS ─── */
     .story-block {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -542,7 +564,17 @@
       .family-photo::after { background: linear-gradient(to bottom, transparent 60%, var(--warm) 100%); }
       .family-text { padding: 40px 20px 48px; }
 
-      /* Story blocks — text ABOVE photo on mobile */
+      /* Origins block — stack: head → photo → body on mobile */
+      .story-block-origins {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: "head" "photo" "body";
+      }
+      .origins-head { padding: 40px 20px 20px; }
+      .origins-body { padding: 20px 20px 48px; }
+      .story-block-origins .story-photo { min-height: unset; }
+
+      /* Regular story blocks — text ABOVE photo on mobile */
       .story-block { grid-template-columns: 1fr; display: flex; flex-direction: column; }
       .story-text, .story-block.alt .story-text { padding: 40px 20px; order: 1; }
       .story-photo { order: 2; min-height: 260px; max-height: 360px; width: 100%; }
@@ -771,16 +803,20 @@
 
 <!-- ── STORY: ORIGINS ── -->
 <div id="story">
-<section class="story-block">
-  <div class="story-photo" style="min-height:unset; display:flex; align-items:center; justify-content:center; background:var(--surface); padding: 40px 20px;">
-    <!-- Replace with photo of Heather and her brother when available -->
-    <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Heather_Beach-April87-122-scaled.jpg"
-         alt="Heather Fernstrom — Naples, Florida"
-         style="width:auto; height:auto; max-height:380px; max-width:280px; object-fit:unset;" />
-  </div>
-  <div class="story-text">
+<section class="story-block-origins">
+  <!-- Label + Headline (above photo on mobile) -->
+  <div class="origins-head">
     <div class="section-label reveal"><span>Origins</span></div>
     <h2 class="story-h2 reveal d1">Born in Florida.<br /><em>Built to lead.</em></h2>
+  </div>
+  <!-- Photo -->
+  <div class="story-photo" style="display:flex; align-items:center; justify-content:center; background:var(--bg); padding:48px 32px;">
+    <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Heather_Beach-April87-122-scaled.jpg"
+         alt="Heather Fernstrom — Naples, Florida"
+         style="width:auto; height:auto; max-height:400px; max-width:300px; object-fit:unset; box-shadow: 0 16px 48px rgba(0,0,0,0.12);" />
+  </div>
+  <!-- Body paragraphs (below photo on mobile) -->
+  <div class="origins-body">
     <p class="story-p reveal d2">
       Hard work, humility, and the belief that <strong>real leadership starts with service</strong> —
       those weren't classroom lessons. By age 10, Heather was working the front desk of her family's
