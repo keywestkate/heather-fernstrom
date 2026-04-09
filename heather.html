@@ -511,20 +511,22 @@
 
     .nav-mobile-overlay {
       display: none; position: fixed; inset: 0; background: #0d1016; z-index: 99;
-      flex-direction: column; align-items: center; justify-content: center; padding: 40px 32px;
+      flex-direction: column; align-items: center; justify-content: flex-start;
+      padding: max(80px, env(safe-area-inset-top) + 64px) 32px 40px;
+      overflow-y: auto;
     }
     .nav-mobile-overlay.open { display: flex; }
     .nav-mobile-overlay ul { list-style: none; text-align: center; width: 100%; }
     .nav-mobile-overlay li { border-bottom: 1px solid rgba(255,255,255,0.08); }
     .nav-mobile-overlay a {
-      display: block; padding: 22px 0;
-      font-family: var(--serif); font-size: clamp(1.8rem, 7vw, 2.8rem);
+      display: block; padding: 14px 0;
+      font-family: var(--serif); font-size: clamp(1.6rem, 6.5vw, 2.4rem);
       font-weight: 300; color: rgba(255,255,255,0.9); letter-spacing: 0.04em; transition: color 0.2s;
     }
     .nav-mobile-overlay a:hover { color: var(--gold-lt); }
-    .overlay-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 16px auto; }
+    .overlay-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 12px auto; }
     .nav-mobile-overlay ul + ul li { border-bottom-color: rgba(255,255,255,0.05); }
-    .nav-mobile-overlay ul + ul a { font-size: clamp(1rem, 4vw, 1.4rem); color: rgba(255,255,255,0.45); padding: 14px 0; letter-spacing: 0.12em; }
+    .nav-mobile-overlay ul + ul a { font-size: clamp(0.9rem, 3.5vw, 1.2rem); color: rgba(255,255,255,0.45); padding: 10px 0; letter-spacing: 0.12em; }
 
     @media (max-width: 1024px) {
       nav { padding: 16px 20px; }
