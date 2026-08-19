@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heather Fernstrom — Investment. Innovation. Influence.</title>
   <meta name="description" content="Heather Fernstrom Border is co-founder of Alliance Global Advisors, an award-winning leader in institutional real asset investment recognized by Inc. Magazine, Inc. 5000, and The CEO Views." />
+
+  <!-- Social share preview (iMessage, LinkedIn, Facebook, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://heatherfernstrom.com/" />
+  <meta property="og:title" content="Heather Fernstrom — Investment. Innovation. Influence." />
+  <meta property="og:description" content="Heather Fernstrom Border is co-founder of Alliance Global Advisors, an award-winning leader in institutional real asset investment recognized by Inc. Magazine, Inc. 5000, and The CEO Views." />
+  <meta property="og:image" content="https://heatherfernstrom.com/images/heather-border-5.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heather Fernstrom — Investment. Innovation. Influence." />
+  <meta name="twitter:description" content="Heather Fernstrom Border is co-founder of Alliance Global Advisors, an award-winning leader in institutional real asset investment recognized by Inc. Magazine, Inc. 5000, and The CEO Views." />
+  <meta name="twitter:image" content="https://heatherfernstrom.com/images/heather-border-5.jpg" />
+
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     /* ─── TOKENS ────────────────── */
@@ -1720,6 +1732,13 @@
 
 <!-- ════════════════════════ JS ════════════════════════ -->
 <script>
+  // Always land at the top on a fresh visit — avoids Safari restoring a
+  // stale scroll position from bfcache when the page is reopened.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted || !location.hash) window.scrollTo(0, 0);
+  });
+
   // NAV scroll transform
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('s', window.scrollY > 60));
