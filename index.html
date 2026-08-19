@@ -663,7 +663,7 @@
     #podcasts p { color: rgba(255,255,255,0.5); }
     .podcast-grid {
       display: grid; grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
+      gap: 32px;
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
@@ -675,14 +675,17 @@
       aspect-ratio: 3/4;
       cursor: pointer; text-decoration: none;
       display: block;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
     }
     .p-card::after {
       content: ''; position: absolute; inset: 0;
-      background: rgba(0,0,0,0.25);
+      background: rgba(0,0,0,0.12);
       transition: background 0.4s;
       z-index: 1;
     }
-    .p-card:hover::after { background: rgba(0,0,0,0.1); }
+    .p-card:hover::after { background: rgba(0,0,0,0.02); }
     /* Thumbnail fills the card */
     .p-card-thumb {
       position: absolute; inset: 0;
@@ -695,7 +698,7 @@
     .p-card-overlay {
       display: block;
       position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 45%, transparent 75%);
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.22) 45%, transparent 75%);
     }
     .p-card-content {
       position: absolute; bottom: 0; left: 0; right: 0;
@@ -1123,8 +1126,8 @@
       /* ─── PODCASTS: full width stacked ─── */
       #podcasts { padding: 60px 0 0; }
       #podcasts .container { padding: 0 20px 44px; }
-      .podcast-grid { grid-template-columns: 1fr; gap: 8px; padding: 0 20px; }
-      .p-card { aspect-ratio: 3/4; width: 100%; }
+      .podcast-grid { grid-template-columns: 1fr; gap: 24px; padding: 0 20px; }
+      .p-card { aspect-ratio: 16/10; width: 100%; }
       .p-card-content { padding: 20px 16px; }
       .p-card-title { font-size: 1rem; }
       .p-card-show { font-size: 0.45rem; }
@@ -1182,8 +1185,8 @@
       .award-card { padding: 32px 20px 28px; }
 
       /* ─── PODCASTS: full width stacked ─── */
-      .podcast-grid { grid-template-columns: 1fr; gap: 8px; padding: 0 16px; }
-      .p-card { aspect-ratio: 4/3; width: 100%; }
+      .podcast-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 16px; }
+      .p-card { aspect-ratio: 16/10; width: 100%; }
       .p-card-content { padding: 14px 12px; }
       .p-card-show { font-size: 0.42rem; }
       .p-card-title { font-size: 0.82rem; line-height: 1.2; }
