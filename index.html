@@ -645,8 +645,12 @@
     #podcasts p { color: rgba(255,255,255,0.5); }
     .podcast-grid {
       display: grid; grid-template-columns: repeat(5, 1fr);
-      gap: 0;
+      gap: 14px;
       width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: border-box;
     }
     .p-card {
       position: relative; overflow: hidden;
@@ -1101,7 +1105,7 @@
       /* ─── PODCASTS: full width stacked ─── */
       #podcasts { padding: 60px 0 0; }
       #podcasts .container { padding: 0 20px 44px; }
-      .podcast-grid { grid-template-columns: 1fr; gap: 2px; }
+      .podcast-grid { grid-template-columns: 1fr; gap: 8px; padding: 0 20px; }
       .p-card { aspect-ratio: 3/4; width: 100%; }
       .p-card-content { padding: 20px 16px; }
       .p-card-title { font-size: 1rem; }
@@ -1160,7 +1164,7 @@
       .award-card { padding: 32px 20px 28px; }
 
       /* ─── PODCASTS: full width stacked ─── */
-      .podcast-grid { grid-template-columns: 1fr; gap: 2px; }
+      .podcast-grid { grid-template-columns: 1fr; gap: 8px; padding: 0 16px; }
       .p-card { aspect-ratio: 4/3; width: 100%; }
       .p-card-content { padding: 14px 12px; }
       .p-card-show { font-size: 0.42rem; }
@@ -1326,7 +1330,7 @@
   <div class="ifounds-layout">
     <!-- Photo -->
     <div class="ifounds-photo">
-      <img src="https://heatherfernstrom.com/wp-content/uploads/2025/07/heather_fernstrom_alliance_global_advisors_15.jpg"
+      <img src="images/heather_fernstrom_alliance_global_advisors_15.jpg"
            alt="Heather Fernstrom — Inc. Female Founders 500 · 2026"
            style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;" />
     </div>
@@ -1570,7 +1574,7 @@
 
     <!-- Card 1 — Real Estate Capital Podcast -->
     <a class="p-card reveal" href="https://parkmadisonpartners.com/podcast-info?ID=76148" target="_blank" rel="noopener">
-      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/09/Screenshot-2025-09-18-at-12.51.22-PM-e1761582797561-300x300.png" alt="Real Estate Capital Podcast" />
+      <img class="p-card-thumb" src="images/podcast-park-madison.png" alt="Real Estate Capital Podcast" />
       <div class="p-card-overlay"></div>
       <div class="p-card-content">
         <div class="p-card-show">Park Madison Partners</div>
@@ -1582,7 +1586,7 @@
 
     <!-- Card 2 — Resilience in Leadership -->
     <a class="p-card reveal d1" href="https://podcasts.apple.com/us/podcast/heather-fernstrom-border-overcoming-challenges-with/id1712714497?i=1000645223762" target="_blank" rel="noopener">
-      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Obstacles-to-Opportunities_heather_fernstrom.webp" alt="Resilience in Leadership" />
+      <img class="p-card-thumb" src="images/podcast-obstacles.webp" alt="Resilience in Leadership" />
       <div class="p-card-overlay"></div>
       <div class="p-card-content">
         <div class="p-card-show">Apple Podcasts</div>
@@ -1594,7 +1598,7 @@
 
     <!-- Card 3 — Fund Flow Podcast -->
     <a class="p-card reveal d1" href="https://podcasts.apple.com/us/podcast/strategies-for-success-in-real-asset-investments-with/id1623210581?i=1000635015390" target="_blank" rel="noopener">
-      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/fund_flow_heather_Fernstrom-300x300.webp" alt="Fund Flow Podcast" />
+      <img class="p-card-thumb" src="images/podcast-fund-flow.webp" alt="Fund Flow Podcast" />
       <div class="p-card-overlay"></div>
       <div class="p-card-content">
         <div class="p-card-show">Fund Flow</div>
@@ -1606,7 +1610,7 @@
 
     <!-- Card 4 — Power of Partnership -->
     <a class="p-card reveal d2" href="https://www.junipersquare.com/podcasts/alliance-global" target="_blank" rel="noopener">
-      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/juniper_square_heather_Fernstrom-300x300.avif" alt="Power of Partnership" />
+      <img class="p-card-thumb" src="images/podcast-juniper.avif" alt="Power of Partnership" />
       <div class="p-card-overlay"></div>
       <div class="p-card-content">
         <div class="p-card-show">Juniper Square</div>
@@ -1618,13 +1622,25 @@
 
     <!-- Card 5 — Innovating Real Assets -->
     <a class="p-card reveal d2" href="https://www.junipersquare.com/podcasts/alliance-global" target="_blank" rel="noopener">
-      <img class="p-card-thumb" src="https://heatherfernstrom.com/wp-content/uploads/2025/07/Blog-Hero-Distribution-Interview-Alliance-Global-e1752031097215-300x233.webp" alt="Innovating Real Assets" />
+      <img class="p-card-thumb" src="images/podcast-distribution.webp" alt="Innovating Real Assets" />
       <div class="p-card-overlay"></div>
       <div class="p-card-content">
         <div class="p-card-show">Juniper Square</div>
         <div class="p-card-title">Innovating Real Assets</div>
         <div class="p-card-date">April 2021</div>
         <div class="p-card-listen">Listen Now</div>
+      </div>
+    </a>
+
+    <!-- Card 6 — Elevator Pitch with Jonathan and Mitch -->
+    <a class="p-card reveal d2" href="https://www.youtube.com/watch?v=U95_M_MIfEI" target="_blank" rel="noopener">
+      <img class="p-card-thumb" src="https://i.ytimg.com/vi/U95_M_MIfEI/hqdefault.jpg" alt="Elevator Pitch with Jonathan and Mitch" />
+      <div class="p-card-overlay"></div>
+      <div class="p-card-content">
+        <div class="p-card-show">Elevator Pitch with Jonathan and Mitch</div>
+        <div class="p-card-title">Jennifer Stevens &amp; Heather Fernstrom</div>
+        <div class="p-card-date">June 2026</div>
+        <div class="p-card-listen">Watch Now</div>
       </div>
     </a>
 
