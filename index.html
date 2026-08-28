@@ -111,7 +111,7 @@
     .nav-logo { font-family: var(--serif); font-size: 1rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
     .nav-logo em { font-style: normal; color: var(--gold-lt); }
     .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.72); transition: color 0.2s; }
     .nav-links a:hover { color: #fff; }
     .nav-cta { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.85); padding: 10px 22px; transition: background 0.2s, color 0.2s, border-color 0.2s; }
     .nav-cta:hover { border-color: var(--gold-lt); color: var(--gold-lt); }
@@ -153,18 +153,18 @@
     /* Photo at natural scale, anchored right. Its own left edge is feathered to
        transparent with a mask so the photo melts into the dark — no column edge. */
     .hero-photo img {
-      position: absolute; top: -3%; right: 0;
-      height: 106%; width: auto; max-width: none;
+      position: absolute; top: 0; right: 0;
+      height: 104%; width: auto; max-width: none;
       object-fit: cover; object-position: right top;
       display: block;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 20%, rgba(0,0,0,0.8) 38%, #000 56%);
-              mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 20%, rgba(0,0,0,0.8) 38%, #000 56%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.10) 34%, rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.8) 82%, #000 98%);
+              mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.10) 34%, rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.8) 82%, #000 98%);
     }
-    /* Gentle darkening under the copy only — long, stop-free falloff */
+    /* Darkening that also swallows the faint left-edge of the photo — stop-free falloff */
     .hero-photo::before {
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(8,13,20,0.85) 0%, rgba(8,13,20,0.55) 40%, rgba(8,13,20,0.15) 66%, rgba(8,13,20,0) 88%),
+        linear-gradient(90deg, rgba(8,13,20,0.9) 0%, rgba(8,13,20,0.72) 40%, rgba(8,13,20,0.4) 60%, rgba(8,13,20,0.12) 78%, rgba(8,13,20,0) 94%),
         linear-gradient(180deg, rgba(8,13,20,0.4) 0%, rgba(8,13,20,0) 22%, rgba(8,13,20,0) 74%, rgba(8,13,20,0.5) 100%);
     }
     .hero-panel {
@@ -1275,12 +1275,18 @@
         ],
         "award": [
           "Inc. Female Founders 500 (2026)",
-          "Inc. 5000 Honoree (2023, 2024, 2025)",
+          "Inc. 5000 Honoree — Four Consecutive Years (2023, 2024, 2025, 2026)",
+          "Inc. Regionals Southeast (2023, 2025)",
           "Inc. Magazine — 10 Most Empowering Women in Business, Cover Story (2024)",
           "The CEO Views — Most Innovative Companies to Watch (2025)",
-          "Stevie Award — Great Employers, Bronze (2024)",
-          "Stevie Award — Thought Leadership, Women in Business (2023)",
-          "Connect CRE — Women in Real Estate, Florida Gulf Coast (2024)"
+          "Bronze Stevie Award — Women-Run Workplace of the Year, Women in Business (2025)",
+          "Bronze Stevie Award — Fastest-Growing Company, American Business Awards (2024)",
+          "Bronze Stevie Award — Great Employers, Real Estate (2024)",
+          "Silver Stevie Award — Achievement in Thought Leadership, Women in Business (2023)",
+          "Connect CRE — Women in Real Estate, Florida Gulf Coast (2024)",
+          "Otso — Women in Commercial Real Estate (2023)",
+          "GlobeSt. Women of Influence (2022)",
+          "GlobeSt. Real Estate Forum — 50 Under 40 (2022)"
         ],
         "sameAs": [
           "https://www.linkedin.com/in/heatherfernstrom/",
@@ -1306,13 +1312,6 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<div class="subnav" id="subnav">
-  <a href="#podcasts">In Conversation</a>
-  <a href="#proof">Recognition</a>
-  <a href="#awards">Awards</a>
-  <a href="#cta-close">Connect</a>
-</div>
 
 <!-- Mobile menu overlay -->
 <div class="nav-mobile-overlay" id="navMobileOverlay">
@@ -1388,14 +1387,14 @@
   <div class="ticker-track">
     <div class="t-item"><span class="n">20+</span><span class="l">Years in Real Estate</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">$520B+</span><span class="l">AUM Advised</span></div><div class="t-dot"></div>
-    <div class="t-item"><span class="n">3×</span><span class="l">Inc. 5000 Honoree</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">4×</span><span class="l">Inc. 5000 Honoree</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">Inc.</span><span class="l">Female Founders 500 · 2026</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">5+</span><span class="l">Podcast Appearances</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">2020</span><span class="l">Alliance Global Founded</span></div><div class="t-dot"></div>
     <!-- loop -->
     <div class="t-item"><span class="n">20+</span><span class="l">Years in Real Estate</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">$520B+</span><span class="l">AUM Advised</span></div><div class="t-dot"></div>
-    <div class="t-item"><span class="n">3×</span><span class="l">Inc. 5000 Honoree</span></div><div class="t-dot"></div>
+    <div class="t-item"><span class="n">4×</span><span class="l">Inc. 5000 Honoree</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">Inc.</span><span class="l">Female Founders 500 · 2026</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">5+</span><span class="l">Podcast Appearances</span></div><div class="t-dot"></div>
     <div class="t-item"><span class="n">2020</span><span class="l">Alliance Global Founded</span></div><div class="t-dot"></div>
@@ -1464,8 +1463,8 @@
     <div class="stat-label">Years Building<br />Institutional Relationships</div>
   </div>
   <div class="stat-block reveal d2">
-    <span class="stat-num">3<sup>×</sup></span>
-    <div class="stat-label">Inc. 5000 Honoree<br />Consecutive Years</div>
+    <span class="stat-num">4<sup>×</sup></span>
+    <div class="stat-label">Inc. 5000 Honoree<br />Four Consecutive Years</div>
   </div>
 </div>
 
@@ -1581,7 +1580,7 @@
       </p>
     </div>
     <div class="proof-awards-count">
-      10+ industry awards<br />&amp; recognitions
+      15+ industry awards<br />&amp; recognitions
     </div>
   </div>
 
@@ -1592,17 +1591,22 @@
       <div class="award-feature-sub">America's Fastest-Growing Private Companies</div>
     </div>
     <div class="award-feature-years">
-      <a href="https://www.inc.com/inc5000/2025" target="_blank" rel="noopener" class="award-year-link">
+      <a href="https://www.inc.com/profile/alliance-global-advisors" target="_blank" rel="noopener" class="award-year-link">
+        <span class="ayl-year">2026</span>
+        <span class="ayl-detail">No. 4,846</span>
+        <span class="ayl-arrow">↗</span>
+      </a>
+      <a href="https://www.inc.com/profile/alliance-global-advisors" target="_blank" rel="noopener" class="award-year-link">
         <span class="ayl-year">2025</span>
         <span class="ayl-detail">No. 4,976</span>
         <span class="ayl-arrow">↗</span>
       </a>
-      <a href="https://www.inc.com/inc5000/2024" target="_blank" rel="noopener" class="award-year-link">
+      <a href="https://www.inc.com/profile/alliance-global-advisors" target="_blank" rel="noopener" class="award-year-link">
         <span class="ayl-year">2024</span>
         <span class="ayl-detail">No. 1,063</span>
         <span class="ayl-arrow">↗</span>
       </a>
-      <a href="https://www.inc.com/inc5000/2023" target="_blank" rel="noopener" class="award-year-link">
+      <a href="https://www.inc.com/profile/alliance-global-advisors" target="_blank" rel="noopener" class="award-year-link">
         <span class="ayl-year">2023</span>
         <span class="ayl-detail">No. 228</span>
         <span class="ayl-arrow">↗</span>
@@ -1624,7 +1628,7 @@
       </a>
       <a href="https://www.inc.com/regionals/2023/southeast" target="_blank" rel="noopener" class="award-year-link">
         <span class="ayl-year">2023</span>
-        <span class="ayl-detail">No. 4,979</span>
+        <span class="ayl-detail">No. 15</span>
         <span class="ayl-arrow">↗</span>
       </a>
     </div>
@@ -1645,41 +1649,65 @@
       <div class="award-card-org">The CEO Views</div>
     </div>
 
-    <div class="award-card reveal d2" data-num="03">
+    <a class="award-card reveal d2" data-num="03" href="https://women.stevieawards.com/awards/2025-sawib-winners/" target="_blank" rel="noopener">
+      <div class="award-card-year">2025</div>
+      <div class="award-card-name">Women-Run Workplace<br />of the Year</div>
+      <div class="award-card-org">Bronze Stevie® · Women in Business</div>
+    </a>
+
+    <div class="award-card reveal" data-num="04">
       <div class="award-card-year">2024</div>
       <div class="award-card-name">Top 10 Most Empowering<br />Women in Business</div>
       <div class="award-card-org">Inc. Magazine · Cover Story</div>
     </div>
 
-    <div class="award-card reveal" data-num="04">
+    <div class="award-card reveal d1" data-num="05">
       <div class="award-card-year">2024</div>
       <div class="award-card-name">Stevie® Award<br />Great Employers — Bronze</div>
       <div class="award-card-org">Stevie® Awards · Real Estate</div>
     </div>
 
-    <div class="award-card reveal d1" data-num="05">
+    <a class="award-card reveal d2" data-num="06" href="https://alliance-globaladvisors.com/insights-news-press" target="_blank" rel="noopener">
+      <div class="award-card-year">2024</div>
+      <div class="award-card-name">Fastest-Growing<br />Company</div>
+      <div class="award-card-org">Bronze Stevie® · American Business Awards</div>
+    </a>
+
+    <div class="award-card reveal" data-num="07">
       <div class="award-card-year">2024</div>
       <div class="award-card-name">Women in<br />Real Estate</div>
       <div class="award-card-org">Connect CRE · Florida Gulf Coast</div>
     </div>
 
-    <div class="award-card reveal d2" data-num="06">
+    <div class="award-card reveal d1" data-num="08">
       <div class="award-card-year">2023</div>
-      <div class="award-card-name">Stevie® Award<br />Thought Leadership</div>
-      <div class="award-card-org">Women in Business</div>
+      <div class="award-card-name">Achievement in<br />Thought Leadership</div>
+      <div class="award-card-org">Silver Stevie® · Women in Business</div>
     </div>
 
-    <div class="award-card reveal" data-num="07">
+    <div class="award-card reveal d2" data-num="09">
       <div class="award-card-year">2023</div>
       <div class="award-card-name">Women in<br />Commercial Real Estate</div>
       <div class="award-card-org">Otso</div>
     </div>
 
-    <div class="award-card reveal d1" data-num="08">
+    <div class="award-card reveal" data-num="10">
       <div class="award-card-year">2022</div>
       <div class="award-card-name">Top 10 Inspiring<br />Women Leaders</div>
       <div class="award-card-org">IEra Women Leaders</div>
     </div>
+
+    <a class="award-card reveal d1" data-num="11" href="https://alliance-globaladvisors.com/heather-about" target="_blank" rel="noopener">
+      <div class="award-card-year">2022</div>
+      <div class="award-card-name">Women of<br />Influence</div>
+      <div class="award-card-org">GlobeSt.</div>
+    </a>
+
+    <a class="award-card reveal d2" data-num="12" href="https://www.globest.com/2022/06/03/50-under-40-2/" target="_blank" rel="noopener">
+      <div class="award-card-year">2022</div>
+      <div class="award-card-name">50 Under 40</div>
+      <div class="award-card-org">GlobeSt. Real Estate Forum</div>
+    </a>
 
   </div>
 </section>
