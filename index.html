@@ -139,21 +139,38 @@
        No overlay — photo bg and panel bg match seamlessly.
     ════════════════════════════════════════ */
     #hero {
-      display: grid;
-      grid-template-columns: 52% 48%;
+      position: relative;
+      display: flex; align-items: center;
       min-height: 100vh;
       overflow: hidden;
       background: #080d14;
     }
+    /* Full-bleed photo behind everything — no column seam */
+    .hero-photo {
+      position: absolute; inset: 0; z-index: 0;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 68% top;
+      display: block;
+    }
+    /* Scrim: dark on the left for text legibility, clearing to the photo on the right */
+    .hero-photo::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(90deg, #080d14 0%, rgba(8,13,20,0.92) 26%, rgba(8,13,20,0.6) 46%, rgba(8,13,20,0.22) 66%, rgba(8,13,20,0) 88%),
+        linear-gradient(180deg, rgba(8,13,20,0.45) 0%, rgba(8,13,20,0) 24%, rgba(8,13,20,0) 72%, rgba(8,13,20,0.5) 100%);
+    }
     .hero-panel {
-      display: flex; align-items: center;
-      padding: 120px 48px 100px 44px;
-      background: linear-gradient(105deg, #080d14 56%, rgba(8,13,20,0.8) 82%, rgba(8,13,20,0.4) 100%);
       position: relative; z-index: 2;
+      display: flex; align-items: center;
+      width: 100%; min-height: 100vh;
+      padding: 120px 48px 100px 60px;
     }
     .hero-left {
       display: flex; flex-direction: column;
-      max-width: 620px; width: 100%;
+      max-width: 600px; width: 100%;
     }
     /* Logo inside hero */
     .hero-logo-wrap {
@@ -161,19 +178,6 @@
       opacity: 0; animation: fadeUp 0.7s var(--ease) 0.2s forwards;
     }
     .hero-logo-img { height: 100px; width: auto; display: block; }
-    .hero-photo {
-      position: relative; overflow: hidden;
-    }
-    .hero-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-    }
-    .hero-photo::before {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to right, rgba(8,13,20,0.7) 0%, rgba(8,13,20,0.32) 16%, transparent 36%);
-      pointer-events: none;
-    }
     .hero-eyebrow {
       display: flex; align-items: center; gap: 14px; margin-bottom: 40px;
       opacity: 0; animation: fadeUp 0.7s var(--ease) 0.4s forwards;
@@ -1036,12 +1040,21 @@
       /* ─── CONTAINER ─── */
       .container { padding: 0 20px; }
 
-      /* ─── HERO ─── */
-      #hero { grid-template-columns: 1fr; min-height: 100svh; }
+      /* ─── HERO — photo bleeds into the copy, no seam ─── */
+      #hero { display: flex; flex-direction: column; min-height: 0; }
+      .hero-photo {
+        position: relative; inset: auto; order: -1;
+        width: 100%; height: 76vh; min-height: 380px; max-height: 560px;
+      }
+      .hero-photo img { object-position: center 12%; }
+      .hero-photo::before {
+        background: linear-gradient(180deg, rgba(8,13,20,0) 38%, rgba(8,13,20,0.5) 68%, rgba(8,13,20,0.9) 90%, #080d14 100%);
+      }
       .hero-panel {
-        padding: 20px 20px 52px;
+        min-height: 0;
+        margin-top: -64px;
+        padding: 0 22px 52px;
         align-items: flex-start;
-        background: linear-gradient(to bottom, #080d14 65%, rgba(8,13,20,0.96) 100%);
       }
       .hero-eyebrow { margin-bottom: 24px; order: 3; justify-content: center; width: 100%; }
       .hero-eyebrow::before { display: none; }
@@ -1050,11 +1063,11 @@
       .hero-h1 .line { padding-right: 0; margin-right: 0; }
       .hero-tagline { font-size: clamp(0.55rem, 3vw, 0.75rem); white-space: nowrap; letter-spacing: 0.2em; order: 2; }
       .hero-divider, .hero-body, .hero-ctas { order: 4; }
-      .hero-body { font-size: 0.84rem; max-width: 100%; margin-bottom: 36px; }
-      .hero-ctas { gap: 12px; }
+      .hero-divider { margin-left: auto; margin-right: auto; }
+      .hero-body { font-size: 0.84rem; max-width: 100%; margin-bottom: 36px; text-align: center; }
+      .hero-ctas { gap: 12px; justify-content: center; }
       .hero-ctas .btn-gold, .hero-ctas .btn-outline { padding: 16px 28px; font-size: 0.6rem; min-height: 44px; }
-      .hero-photo { height: 68vw; min-height: 280px; max-height: 460px; order: -1; }
-      .hero-scroll-ind { left: 20px; bottom: 24px; }
+      .hero-scroll-ind { display: none; }
 
       /* ─── STATS TICKER ─── */
       .ticker { padding: 18px 0; overflow: hidden; }
