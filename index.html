@@ -676,14 +676,15 @@
     ════════════════════════════════════════ */
     #podcasts {
       padding: 100px 0 0;
-      background: #0a0d12;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #fff;
+      border-top: 1px solid #000;
     }
     #podcasts .container { text-align: center; padding-bottom: 60px; }
-    #podcasts .label span { color: var(--gold-lt); }
-    #podcasts .label::before { background: var(--gold-lt); }
-    #podcasts h2 { color: #fff; }
-    #podcasts p { color: rgba(255,255,255,0.5); }
+    #podcasts .label span { color: #000; }
+    #podcasts .label::before { background: #000; }
+    #podcasts h2 { color: #000; }
+    #podcasts p { color: #000; }
+    #podcasts h2 em { color: #000; }
     .podcast-grid {
       display: grid; grid-template-columns: repeat(5, 1fr);
       gap: 32px;
@@ -699,16 +700,14 @@
       cursor: pointer; text-decoration: none;
       display: block;
       border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+      border: 1px solid #000;
+      box-shadow: none;
     }
     .p-card::after {
       content: ''; position: absolute; inset: 0;
-      background: rgba(0,0,0,0.12);
-      transition: background 0.4s;
+      background: transparent;
       z-index: 1;
     }
-    .p-card:hover::after { background: rgba(0,0,0,0.02); }
     /* Thumbnail fills the card */
     .p-card-thumb {
       position: absolute; inset: 0;
@@ -717,34 +716,33 @@
       transition: transform 0.6s var(--ease);
     }
     .p-card:hover .p-card-thumb { transform: scale(1.06); }
-    /* Dark gradient overlay bottom */
+    /* Overlay removed — photos stay full colour, caption sits on a white bar */
     .p-card-overlay {
-      display: block;
-      position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.22) 45%, transparent 75%);
+      display: none;
     }
     .p-card-content {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 28px 24px; z-index: 3;
+      background: #fff; border-top: 1px solid #000;
       transform: translateY(6px); transition: transform 0.35s var(--ease);
     }
     .p-card:hover .p-card-content { transform: translateY(0); }
     .p-card-show {
       font-size: 0.48rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
-      color: var(--gold-lt); margin-bottom: 8px; display: block;
+      color: #000; margin-bottom: 8px; display: block;
     }
     .p-card-title {
       font-family: var(--serif); font-size: 1.1rem; font-weight: 300;
-      line-height: 1.25; color: #fff; margin-bottom: 6px;
+      line-height: 1.25; color: #000; margin-bottom: 6px;
     }
     .p-card-date {
-      font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5);
+      font-size: 0.48rem; letter-spacing: 0.1em; color: #000;
       margin-bottom: 12px; display: block;
     }
     .p-card-listen {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 0.5rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold-lt);
+      color: #000; text-decoration: underline; text-underline-offset: 3px;
       opacity: 0; transform: translateY(4px);
       transition: opacity 0.3s, transform 0.3s;
     }
@@ -1721,7 +1719,7 @@
     <h2 class="serif-h reveal d1" style="font-size:clamp(2rem,3.5vw,3.6rem); margin-bottom:16px;">
       Heard on the<br /><em>industry's top shows</em>
     </h2>
-    <p class="reveal d2" style="color:var(--mid); font-size:0.84rem; max-width:480px; line-height:1.8; margin:0 auto;">
+    <p class="reveal d2" style="color:#000; font-size:0.84rem; max-width:480px; line-height:1.8; margin:0 auto;">
       Heather brings the same depth to every conversation that she brings to every client engagement.
     </p>
   </div>
