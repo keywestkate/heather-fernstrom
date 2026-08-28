@@ -894,8 +894,9 @@
 
     /* ════ AWARD FEATURE ROWS (Inc. 5000, Inc. Regionals) ════ */
     .award-feature-row {
-      display: grid; grid-template-columns: 1fr auto;
-      align-items: center; gap: 60px;
+      display: grid; grid-template-columns: auto auto;
+      justify-content: center; align-items: center;
+      gap: clamp(40px, 6vw, 110px);
       padding: 52px 60px; border-bottom: 1px solid var(--border);
       background: var(--surface);
     }
