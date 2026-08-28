@@ -725,24 +725,25 @@
     .p-card-content {
       grid-row: 2;
       display: flex; flex-direction: column;
-      padding: 22px 20px; z-index: 3;
+      padding: 16px 18px; z-index: 3;
       background: #fff; border-top: 1px solid var(--border);
       min-height: 0; overflow: hidden;
     }
     .p-card-show {
       font-size: 0.48rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
-      color: #000; margin-bottom: 8px; display: block;
+      color: #000; margin-bottom: 5px; display: block;
     }
     .p-card-title {
       font-family: var(--serif); font-size: 1.1rem; font-weight: 300;
-      line-height: 1.25; color: #000; margin-bottom: 6px;
+      line-height: 1.2; color: #000; margin-bottom: 4px;
     }
     .p-card-date {
       font-size: 0.48rem; letter-spacing: 0.1em; color: #000;
-      margin-bottom: 12px; display: block;
+      margin-bottom: 7px; display: block;
     }
     .p-card-listen {
       margin-top: auto;
+      flex-shrink: 0;
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 0.5rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
       color: #000; text-decoration: underline; text-underline-offset: 3px;
@@ -1037,6 +1038,11 @@
     }
 
     /* ─── RESPONSIVE ──────────────────────────── */
+    /* Tablet: 4 podcast columns get too narrow for full episode titles here,
+       so use 2 columns until the true 4-up desktop layout (>=1200px). */
+    @media (min-width: 961px) and (max-width: 1199px) {
+      .podcast-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 960px) {
       /* ─── NAV ─── */
       nav { padding: 16px 20px; }
@@ -1726,6 +1732,18 @@
     </p>
   </div>
   <div class="podcast-grid">
+
+    <!-- Card 0 — NextGen Capital Conversations -->
+    <a class="p-card reveal" href="https://alliance-globaladvisors.com/insights-podcasts-videos/episode-3-the-emerging-manager-journey" target="_blank" rel="noopener">
+      <img class="p-card-thumb" src="images/podcast-nextgen-capital.avif" alt="NextGen Capital Conversations — The Emerging Manager Journey: What It Really Takes to Compete" />
+      <div class="p-card-overlay"></div>
+      <div class="p-card-content">
+        <div class="p-card-show">NextGen Capital Conversations</div>
+        <div class="p-card-title">Episode 3: The Emerging Manager Journey: What It Really Takes to Compete</div>
+        <div class="p-card-date">March 2026</div>
+        <div class="p-card-listen">Watch Now</div>
+      </div>
+    </a>
 
     <!-- Card 1 — Real Estate Capital -->
     <a class="p-card reveal" href="https://parkmadisonpartners.com/podcast-info?ID=76148" target="_blank" rel="noopener">
