@@ -10,7 +10,7 @@
   <meta name="author" content="Heather Fernstrom Border" />
 
   <!-- iOS / mobile -->
-  <meta name="theme-color" content="#080d14" />
+  <meta name="theme-color" content="#17150f" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Heather Fernstrom" />
@@ -143,7 +143,9 @@
       display: flex; align-items: center;
       min-height: 100vh;
       overflow: hidden;
-      background: #080d14;
+      /* warm brown on the left for text contrast, easing into the photo's own
+         olive-tan backdrop on the right so the picture melts in — no black, no seam */
+      background: linear-gradient(100deg, #17150f 0%, #201d15 18%, #38341f 36%, #554d38 50%, #6c6650 62%, #78745a 74%);
     }
     /* Full-bleed photo behind everything — no column seam */
     .hero-photo {
@@ -154,18 +156,18 @@
        transparent with a mask so the photo melts into the dark — no column edge. */
     .hero-photo img {
       position: absolute; top: 0; right: 0;
-      height: 104%; width: auto; max-width: none;
+      height: 120%; width: auto; max-width: none;
       object-fit: cover; object-position: right top;
       display: block;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.55) 9%, rgba(0,0,0,0.9) 18%, #000 28%);
-              mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.55) 9%, rgba(0,0,0,0.9) 18%, #000 28%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 13%, rgba(0,0,0,0.85) 27%, #000 42%);
+              mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 13%, rgba(0,0,0,0.85) 27%, #000 42%);
     }
-    /* Barely-there feather at the very left edge only — the face stays fully clear */
+    /* Warm, barely-there feather at the very left edge only — the face stays fully clear */
     .hero-photo::before {
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(8,13,20,0.5) 0%, rgba(8,13,20,0.12) 16%, rgba(8,13,20,0) 32%),
-        linear-gradient(180deg, rgba(8,13,20,0.32) 0%, rgba(8,13,20,0) 18%, rgba(8,13,20,0) 80%, rgba(8,13,20,0.38) 100%);
+        linear-gradient(90deg, rgba(20,18,12,0.5) 0%, rgba(20,18,12,0.14) 20%, rgba(20,18,12,0) 38%),
+        linear-gradient(180deg, rgba(20,18,12,0.28) 0%, rgba(20,18,12,0) 16%, rgba(20,18,12,0) 82%, rgba(20,18,12,0.34) 100%);
     }
     .hero-panel {
       position: relative; z-index: 2;
@@ -1047,14 +1049,14 @@
       .container { padding: 0 20px; }
 
       /* ─── HERO — photo bleeds into the copy, no seam ─── */
-      #hero { display: flex; flex-direction: column; min-height: 0; }
+      #hero { display: flex; flex-direction: column; min-height: 0; background: #17150f; }
       .hero-photo {
         position: relative; inset: auto; order: -1;
         width: 100%; height: 76vh; min-height: 380px; max-height: 560px;
       }
       .hero-photo img { position: static; width: 100%; height: 100%; object-fit: cover; object-position: center 12%; -webkit-mask-image: none; mask-image: none; }
       .hero-photo::before {
-        background: linear-gradient(180deg, rgba(8,13,20,0) 38%, rgba(8,13,20,0.5) 68%, rgba(8,13,20,0.9) 90%, #080d14 100%);
+        background: linear-gradient(180deg, rgba(23,21,15,0) 38%, rgba(23,21,15,0.5) 68%, rgba(23,21,15,0.9) 90%, #17150f 100%);
       }
       .hero-panel {
         min-height: 0;
