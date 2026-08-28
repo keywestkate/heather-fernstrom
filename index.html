@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Heather Fernstrom — Investment. Innovation. Influence.</title>
   <meta name="description" content="Heather Fernstrom Border is co-founder of Alliance Global Advisors, an award-winning leader in institutional real asset investment recognized by Inc. Magazine, Inc. 5000, and The CEO Views." />
+  <link rel="canonical" href="https://heatherfernstrom.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Heather Fernstrom Border" />
+
+  <!-- iOS / mobile -->
+  <meta name="theme-color" content="#080d14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Heather Fernstrom" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="icon" type="image/png" href="images/heather-fernstrom-logos-1.png" />
+  <link rel="apple-touch-icon" href="images/heather-fernstrom-logos-1.png" />
 
   <!-- Social share preview (iMessage, LinkedIn, Facebook, etc.) -->
   <meta property="og:type" content="website" />
@@ -135,13 +147,13 @@
     }
     .hero-panel {
       display: flex; align-items: center;
-      padding: 120px 72px 100px 60px;
-      background: linear-gradient(105deg, #080d14 75%, rgba(8,13,20,0.88) 100%);
+      padding: 120px 48px 100px 44px;
+      background: linear-gradient(105deg, #080d14 56%, rgba(8,13,20,0.8) 82%, rgba(8,13,20,0.4) 100%);
       position: relative; z-index: 2;
     }
     .hero-left {
       display: flex; flex-direction: column;
-      max-width: 580px; width: 100%;
+      max-width: 620px; width: 100%;
     }
     /* Logo inside hero */
     .hero-logo-wrap {
@@ -159,7 +171,7 @@
     }
     .hero-photo::before {
       content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to right, #080d14 0%, transparent 28%);
+      background: linear-gradient(to right, rgba(8,13,20,0.7) 0%, rgba(8,13,20,0.32) 16%, transparent 36%);
       pointer-events: none;
     }
     .hero-eyebrow {
@@ -172,7 +184,7 @@
       font-family: var(--serif); font-size: clamp(6rem, 9vw, 12rem);
       font-weight: 300; line-height: 0.88; letter-spacing: -0.02em; margin-bottom: 0; color: #fff;
     }
-    .hero-h1 .line { display: block; overflow: hidden; }
+    .hero-h1 .line { display: block; overflow: hidden; padding-right: 380px; margin-right: -380px; }
     .hero-h1 .line-inner {
       display: block; transform: translateY(105%);
       animation: slideUp 1s var(--ease) forwards;
@@ -859,20 +871,21 @@
       padding: 80px 60px;
       border-right: 1px solid var(--border);
       position: relative; overflow: hidden;
+      text-align: center;
     }
     .stat-block:last-child { border-right: none; }
     .stat-num {
       font-family: var(--serif);
       font-size: clamp(4.5rem, 8vw, 9rem);
       font-weight: 300; line-height: 0.9; color: var(--gold);
-      letter-spacing: -0.02em; margin-bottom: 20px; display: block;
+      letter-spacing: -0.02em; margin-bottom: 34px; display: block;
     }
     .stat-num sup {
       font-size: 0.4em; vertical-align: super; letter-spacing: 0.05em;
     }
     .stat-label {
-      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--mid); line-height: 1.6;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--mid); line-height: 1.7;
     }
 
     /* ════ AWARD FEATURE ROWS (Inc. 5000, Inc. Regionals) ════ */
@@ -1034,6 +1047,7 @@
       .hero-eyebrow::before { display: none; }
       .hero-eyebrow span { font-size: clamp(0.6rem, 3.4vw, 0.74rem); letter-spacing: 0.1em; white-space: nowrap; }
       .hero-h1 { font-size: clamp(3.4rem, 16vw, 5.5rem); text-align: center; width: 100%; order: 1; margin-top: 0; }
+      .hero-h1 .line { padding-right: 0; margin-right: 0; }
       .hero-tagline { font-size: clamp(0.55rem, 3vw, 0.75rem); white-space: nowrap; letter-spacing: 0.2em; order: 2; }
       .hero-divider, .hero-body, .hero-ctas { order: 4; }
       .hero-body { font-size: 0.84rem; max-width: 100%; margin-bottom: 36px; }
@@ -1069,7 +1083,7 @@
       .stat-block:nth-child(odd) { border-right: 1px solid var(--border); }
       .stat-block:last-child { grid-column: 1 / -1; border-bottom: none; border-right: none; }
       .stat-num { font-size: clamp(3.5rem, 12vw, 6rem); }
-      .stat-label { font-size: 0.6rem; }
+      .stat-label { font-size: 0.72rem; }
 
       /* ─── CEO VIEWS: stack photo above text, photo max-width 100% ─── */
       section[style*="display:flex"][style*="justify-content:center"] {
@@ -1203,6 +1217,60 @@
       .btn-gold, .btn-outline { min-height: 44px; padding: 16px 28px; display: flex; align-items: center; justify-content: center; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://heatherfernstrom.com/#website",
+        "url": "https://heatherfernstrom.com/",
+        "name": "Heather Fernstrom",
+        "description": "Heather Fernstrom Border — co-founder of Alliance Global Advisors, an award-winning leader in institutional real asset investment.",
+        "inLanguage": "en-US",
+        "publisher": { "@id": "https://heatherfernstrom.com/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://heatherfernstrom.com/#person",
+        "name": "Heather Fernstrom Border",
+        "alternateName": "Heather Fernstrom",
+        "url": "https://heatherfernstrom.com/",
+        "image": "https://heatherfernstrom.com/images/heather-hero-green.jpg",
+        "jobTitle": "Co-Founder & Managing Partner",
+        "gender": "Female",
+        "nationality": "American",
+        "description": "Co-founder and Managing Partner of Alliance Global Advisors with more than 20 years in institutional real asset investment. Advised on $520B+ in assets under management. Recognized on the Inc. Female Founders 500 (2026), a three-time Inc. 5000 honoree, and featured on the cover of Inc. Magazine's 10 Most Empowering Women in Business (2024).",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Alliance Global Advisors",
+          "url": "https://alliance-globaladvisors.com"
+        },
+        "knowsAbout": [
+          "Institutional real estate investment",
+          "Real asset investment advisory",
+          "Capital raising",
+          "Limited partner relationships",
+          "Investment consulting"
+        ],
+        "award": [
+          "Inc. Female Founders 500 (2026)",
+          "Inc. 5000 Honoree (2023, 2024, 2025)",
+          "Inc. Magazine — 10 Most Empowering Women in Business, Cover Story (2024)",
+          "The CEO Views — Most Innovative Companies to Watch (2025)",
+          "Stevie Award — Great Employers, Bronze (2024)",
+          "Stevie Award — Thought Leadership, Women in Business (2023)",
+          "Connect CRE — Women in Real Estate, Florida Gulf Coast (2024)"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/heatherfernstrom/",
+          "https://alliance-globaladvisors.com"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -1759,10 +1827,12 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Hero photo subtle parallax
-  window.addEventListener('scroll', () => {
-    const hr = document.querySelector('.hero-right');
-    if (hr) hr.style.transform = `translateY(${window.scrollY * 0.12}px)`;
-  });
+  const heroImg = document.querySelector('.hero-photo img');
+  if (heroImg && !window.matchMedia('(max-width: 960px)').matches) {
+    window.addEventListener('scroll', () => {
+      heroImg.style.transform = `translateY(${window.scrollY * 0.06}px) scale(1.06)`;
+    }, { passive: true });
+  }
 
   // FAQ Accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
@@ -1784,9 +1854,6 @@
       }
     });
   });
-
-  // Drag-scroll for ticker (bonus UX)
-  const track = document.querySelector('.ticker-track');
 
   // Mobile hamburger menu
   const hamburger = document.getElementById('navHamburger');
