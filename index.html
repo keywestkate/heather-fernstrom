@@ -153,8 +153,8 @@
     /* Photo at natural scale, anchored right. Its own left edge is feathered to
        transparent with a mask so the photo melts into the dark — no column edge. */
     .hero-photo img {
-      position: absolute; top: 0; right: 0;
-      height: 100%; width: auto; max-width: none;
+      position: absolute; top: -3%; right: 0;
+      height: 106%; width: auto; max-width: none;
       object-fit: cover; object-position: right top;
       display: block;
       -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 20%, rgba(0,0,0,0.8) 38%, #000 56%);
@@ -171,7 +171,7 @@
       position: relative; z-index: 2;
       display: flex; align-items: center;
       width: 100%; min-height: 100vh;
-      padding: 120px 48px 100px 60px;
+      padding: 120px 48px 100px 108px;
     }
     .hero-left {
       display: flex; flex-direction: column;
@@ -224,7 +224,7 @@
     #hero .btn-outline { border-color: rgba(255,255,255,0.28); color: #fff; }
     #hero .btn-outline:hover { border-color: var(--gold-lt); color: var(--gold-lt); }
     .hero-scroll-ind {
-      position: absolute; bottom: 44px; left: 60px; z-index: 3;
+      position: absolute; bottom: 44px; left: 108px; z-index: 3;
       display: flex; align-items: center; gap: 12px;
       opacity: 0; animation: fadeUp 0.7s var(--ease) 1.8s forwards;
     }
